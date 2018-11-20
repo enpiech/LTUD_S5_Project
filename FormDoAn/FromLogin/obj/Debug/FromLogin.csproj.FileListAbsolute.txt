@@ -1,0 +1,19 @@
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\bin\Debug\FromLogin.exe.config
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\bin\Debug\FromLogin.exe
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\bin\Debug\FromLogin.pdb
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\obj\Debug\FromLogin.csprojResolveAssemblyReference.cache
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\obj\Debug\FromLogin.Properties.Resources.resources
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\obj\Debug\FromLogin.csproj.GenerateResource.Cache
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\obj\Debug\FromLogin.exe
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\obj\Debug\FromLogin.pdb
+D:\học kì 3\lt_ud\do_an\from\FromDoAn\FromLogin\obj\Debug\FromLogin.frmDangNhap.resources
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\bin\Debug\FromLogin.exe.config
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\bin\Debug\FromLogin.exe
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\bin\Debug\FromLogin.pdb
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\obj\Debug\FromLogin.csprojAssemblyReference.cache
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\obj\Debug\FromLogin.frmDangNhap.resources
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\obj\Debug\FromLogin.Properties.Resources.resources
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\obj\Debug\FromLogin.csproj.GenerateResource.cache
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\obj\Debug\FromLogin.csproj.CoreCompileInputs.cache
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\obj\Debug\FromLogin.exe
+C:\Users\enpie\Downloads\FORM_login_ketoan\from\login\FromDoAn\FromLogin\obj\Debug\FromLogin.pdb
