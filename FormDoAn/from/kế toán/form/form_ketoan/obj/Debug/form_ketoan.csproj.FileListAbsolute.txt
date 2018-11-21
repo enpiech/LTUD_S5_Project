@@ -1,0 +1,20 @@
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\bin\Debug\form_ketoan.exe.config
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\bin\Debug\form_ketoan.exe
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\bin\Debug\form_ketoan.pdb
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\obj\Debug\form_ketoan.csprojResolveAssemblyReference.cache
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\obj\Debug\form_ketoan.frmKeToan.resources
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\obj\Debug\form_ketoan.Properties.Resources.resources
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\obj\Debug\form_ketoan.csproj.GenerateResource.Cache
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\obj\Debug\form_ketoan.exe
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\obj\Debug\form_ketoan.pdb
+D:\học kì 3\lt_ud\do_an\from\form\form_ketoan\obj\Debug\form_ketoan.frmTinhTien.resources
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\bin\Debug\form_ketoan.exe.config
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\obj\Debug\form_ketoan.exe
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\obj\Debug\form_ketoan.pdb
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\obj\Debug\form_ketoan.csprojResolveAssemblyReference.cache
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\obj\Debug\form_ketoan.frmKeToan.resources
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\obj\Debug\form_ketoan.frmTinhTien.resources
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\obj\Debug\form_ketoan.Properties.Resources.resources
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\obj\Debug\form_ketoan.csproj.GenerateResource.Cache
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\bin\Debug\form_ketoan.exe
+D:\học kì 3\lt_ud\do_an\from\kế toán\form\form_ketoan\bin\Debug\form_ketoan.pdb
