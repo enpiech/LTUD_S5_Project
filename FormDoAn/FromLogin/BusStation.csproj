@@ -126,6 +126,12 @@
     <EmbeddedResource Include="FormHangXe.resx">
       <DependentUpon>FormHangXe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormKhachHang.resx">
+      <DependentUpon>FormKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoaiNhanVien.resx">
+      <DependentUpon>FormLoaiNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLoaiXe.resx">
       <DependentUpon>FormLoaiXe.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,8 +141,14 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormNhanVien.resx">
+      <DependentUpon>FormNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormQuanLy.resx">
       <DependentUpon>FormQuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTaiKhoanNhanVien.resx">
+      <DependentUpon>FormTaiKhoanNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTinhTien.resx">
       <DependentUpon>FormTinhTien.cs</DependentUpon>

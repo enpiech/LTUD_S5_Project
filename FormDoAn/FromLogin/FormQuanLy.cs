@@ -64,23 +64,33 @@ namespace FromLogin
             }
             else if (tenBang == "Xe")
             {
-
+                frmXe formXe = new frmXe();
+                formXe.Show();
+                this.Hide();
             }
             else if (tenBang == "Loại Nhân Viên")
             {
-
+                frmLoaiNhanVien formLoaiNhanVien = new frmLoaiNhanVien();
+                formLoaiNhanVien.Show();
+                this.Hide();
             }
             else if (tenBang == "Nhân Viên")
             {
-
+                frmNhanVien formNhanVien = new frmNhanVien();
+                formNhanVien.Show();
+                this.Hide();
             }
             else if (tenBang == "Tài Khoản Nhân Viên")
             {
-
+                frmTaiKhoanNhanVien formTaiKhoan = new frmTaiKhoanNhanVien();
+                formTaiKhoan.Show();
+                this.Hide();
             }
             else if (tenBang == "Khách Hàng")
             {
-
+                frmNhanVien formNhanVien = new frmNhanVien();
+                formNhanVien.Show();
+                this.Hide();
             }
         }
     }

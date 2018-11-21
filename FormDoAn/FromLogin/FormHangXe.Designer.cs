@@ -189,7 +189,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmHangXe";
             this.Text = "FormHangXe";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmHangXe_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuongXe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numChiPhi)).EndInit();

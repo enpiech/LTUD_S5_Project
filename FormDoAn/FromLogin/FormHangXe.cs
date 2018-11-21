@@ -102,17 +102,5 @@ namespace FromLogin
             formQuanLy.Show();
             this.Close();
         }
-
-        /// <summary>
-        /// Xác nhận trước khi đóng form
-        /// </summary>
-        private void frmHangXe_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
     }
 }

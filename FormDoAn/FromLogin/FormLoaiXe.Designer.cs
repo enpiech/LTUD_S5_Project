@@ -151,7 +151,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmLoaiXe";
             this.Text = "Quản Lý Loại Xe";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLoaiXe_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
