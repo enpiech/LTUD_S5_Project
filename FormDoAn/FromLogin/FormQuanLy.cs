@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FromLogin
+namespace BusStation
 {
     public partial class frmQuanLy : Form
     {
@@ -34,14 +34,11 @@ namespace FromLogin
         /// <summary>
         /// Đăng xuất tài khoản nhân viên hiện tại
         /// </summary>
-        private void btnDangXuat_Click(object sender, EventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             // Đóng form hiện tại
             this.Close();
 
-            // Mở form đăng nhập
-            frmLogin formLogin = new frmLogin();
-            formLogin.Show();
         }
 
         /// <summary>
@@ -52,45 +49,52 @@ namespace FromLogin
             string tenBang = this.cboTenBang.Text;
             if (tenBang == "Loại Xe")
             {
-                frmLoaiXe formLoaiXe = new frmLoaiXe();
-                formLoaiXe.Show();
-                this.Hide();
+                ((frmMain)this.MdiParent).moForm("LoaiXe");
+                //frmLoaiXe formLoaiXe = new frmLoaiXe();
+                //formLoaiXe.Show();
+                this.Visible = false;
             }
             else if (tenBang == "Hãng Xe")
             {
-                frmHangXe formHangXe = new frmHangXe();
-                formHangXe.Show();
-                this.Hide();
+                ((frmMain)this.MdiParent).moForm("HangXe");
+                //frmHangXe formHangXe = new frmHangXe();
+                //formHangXe.Show();
+                this.Visible = false;
             }
             else if (tenBang == "Xe")
             {
-                frmXe formXe = new frmXe();
-                formXe.Show();
-                this.Hide();
+                ((frmMain)this.MdiParent).moForm("Xe");
+                //frmXe formXe = new frmXe();
+                //formXe.Show();
+                this.Visible = false;
             }
             else if (tenBang == "Loại Nhân Viên")
             {
-                frmLoaiNhanVien formLoaiNhanVien = new frmLoaiNhanVien();
-                formLoaiNhanVien.Show();
-                this.Hide();
+                ((frmMain)this.MdiParent).moForm("LoaiNhanVien");
+                //frmLoaiNhanVien formLoaiNhanVien = new frmLoaiNhanVien();
+                //formLoaiNhanVien.Show();
+                this.Visible = false;
             }
             else if (tenBang == "Nhân Viên")
             {
-                frmNhanVien formNhanVien = new frmNhanVien();
-                formNhanVien.Show();
-                this.Hide();
+                ((frmMain)this.MdiParent).moForm("NhanVien");
+                //frmNhanVien formNhanVien = new frmNhanVien();
+                //formNhanVien.Show();
+                this.Visible = false;
             }
             else if (tenBang == "Tài Khoản Nhân Viên")
             {
-                frmTaiKhoanNhanVien formTaiKhoan = new frmTaiKhoanNhanVien();
-                formTaiKhoan.Show();
-                this.Hide();
+                ((frmMain)this.MdiParent).moForm("TaiKhoanNhanVien");
+                //frmTaiKhoanNhanVien formTaiKhoan = new frmTaiKhoanNhanVien();
+                //formTaiKhoan.Show();
+                this.Visible = false;
             }
             else if (tenBang == "Khách Hàng")
             {
-                frmNhanVien formNhanVien = new frmNhanVien();
-                formNhanVien.Show();
-                this.Hide();
+                ((frmMain)this.MdiParent).moForm("KhachHang");
+                //frmNhanVien formNhanVien = new frmNhanVien();
+                //formNhanVien.Show();
+                this.Visible = false;
             }
         }
     }

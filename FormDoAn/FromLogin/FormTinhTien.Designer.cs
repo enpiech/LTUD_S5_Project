@@ -1,4 +1,4 @@
-﻿namespace FromLogin
+﻿namespace BusStation
 {
     partial class frmTinhTien
     {

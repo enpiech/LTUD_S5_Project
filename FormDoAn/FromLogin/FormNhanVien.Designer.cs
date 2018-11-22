@@ -1,4 +1,4 @@
-﻿namespace FromLogin
+﻿namespace BusStation
 {
     partial class frmNhanVien
     {
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSoDienThoai = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@
             this.cboLoaiNhanVien = new System.Windows.Forms.ComboBox();
             this.numLuong = new System.Windows.Forms.NumericUpDown();
             this.lblLuong = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLuong)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             // btnBack
             // 
             this.btnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnBack.Location = new System.Drawing.Point(561, 298);
+            this.btnBack.Location = new System.Drawing.Point(681, 188);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(89, 44);
             this.btnBack.TabIndex = 37;
@@ -69,7 +70,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(365, 298);
+            this.btnAdd.Location = new System.Drawing.Point(387, 188);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(92, 44);
             this.btnAdd.TabIndex = 35;
@@ -80,7 +81,7 @@
             // lblSoDienThoai
             // 
             this.lblSoDienThoai.AutoSize = true;
-            this.lblSoDienThoai.Location = new System.Drawing.Point(16, 134);
+            this.lblSoDienThoai.Location = new System.Drawing.Point(14, 124);
             this.lblSoDienThoai.Name = "lblSoDienThoai";
             this.lblSoDienThoai.Size = new System.Drawing.Size(102, 17);
             this.lblSoDienThoai.TabIndex = 32;
@@ -88,17 +89,18 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(463, 298);
+            this.btnDelete.Location = new System.Drawing.Point(485, 188);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(92, 44);
             this.btnDelete.TabIndex = 36;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblCmnd
             // 
             this.lblCmnd.AutoSize = true;
-            this.lblCmnd.Location = new System.Drawing.Point(16, 106);
+            this.lblCmnd.Location = new System.Drawing.Point(14, 96);
             this.lblCmnd.Name = "lblCmnd";
             this.lblCmnd.Size = new System.Drawing.Size(52, 17);
             this.lblCmnd.TabIndex = 33;
@@ -107,7 +109,7 @@
             // lblTenNhanVien
             // 
             this.lblTenNhanVien.AutoSize = true;
-            this.lblTenNhanVien.Location = new System.Drawing.Point(14, 78);
+            this.lblTenNhanVien.Location = new System.Drawing.Point(12, 68);
             this.lblTenNhanVien.Name = "lblTenNhanVien";
             this.lblTenNhanVien.Size = new System.Drawing.Size(107, 17);
             this.lblTenNhanVien.TabIndex = 34;
@@ -118,7 +120,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Blue;
-            this.lblTitle.Location = new System.Drawing.Point(12, 12);
+            this.lblTitle.Location = new System.Drawing.Point(272, 24);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(252, 25);
             this.lblTitle.TabIndex = 29;
@@ -126,63 +128,63 @@
             // 
             // txtSoDienThoai
             // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(139, 131);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(137, 121);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(220, 22);
             this.txtSoDienThoai.TabIndex = 26;
             // 
             // txtCmnd
             // 
-            this.txtCmnd.Location = new System.Drawing.Point(139, 103);
+            this.txtCmnd.Location = new System.Drawing.Point(137, 93);
             this.txtCmnd.Name = "txtCmnd";
             this.txtCmnd.Size = new System.Drawing.Size(220, 22);
             this.txtCmnd.TabIndex = 27;
             // 
             // txtTenNhanVien
             // 
-            this.txtTenNhanVien.Location = new System.Drawing.Point(139, 75);
+            this.txtTenNhanVien.Location = new System.Drawing.Point(137, 65);
             this.txtTenNhanVien.Name = "txtTenNhanVien";
             this.txtTenNhanVien.Size = new System.Drawing.Size(220, 22);
             this.txtTenNhanVien.TabIndex = 28;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 348);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 252);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(638, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(758, 262);
             this.dataGridView1.TabIndex = 24;
             // 
             // dtpNgaySinh
             // 
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaySinh.Location = new System.Drawing.Point(139, 160);
+            this.dtpNgaySinh.Location = new System.Drawing.Point(137, 150);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(220, 22);
             this.dtpNgaySinh.TabIndex = 38;
@@ -190,7 +192,7 @@
             // lblNgaySinh
             // 
             this.lblNgaySinh.AutoSize = true;
-            this.lblNgaySinh.Location = new System.Drawing.Point(16, 165);
+            this.lblNgaySinh.Location = new System.Drawing.Point(14, 155);
             this.lblNgaySinh.Name = "lblNgaySinh";
             this.lblNgaySinh.Size = new System.Drawing.Size(77, 17);
             this.lblNgaySinh.TabIndex = 39;
@@ -198,7 +200,7 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(139, 188);
+            this.txtDiaChi.Location = new System.Drawing.Point(550, 61);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(220, 22);
             this.txtDiaChi.TabIndex = 26;
@@ -206,7 +208,7 @@
             // lblDiaChi
             // 
             this.lblDiaChi.AutoSize = true;
-            this.lblDiaChi.Location = new System.Drawing.Point(16, 191);
+            this.lblDiaChi.Location = new System.Drawing.Point(427, 64);
             this.lblDiaChi.Name = "lblDiaChi";
             this.lblDiaChi.Size = new System.Drawing.Size(57, 17);
             this.lblDiaChi.TabIndex = 32;
@@ -214,7 +216,7 @@
             // 
             // txtQueQuan
             // 
-            this.txtQueQuan.Location = new System.Drawing.Point(139, 216);
+            this.txtQueQuan.Location = new System.Drawing.Point(550, 89);
             this.txtQueQuan.Name = "txtQueQuan";
             this.txtQueQuan.Size = new System.Drawing.Size(220, 22);
             this.txtQueQuan.TabIndex = 26;
@@ -222,7 +224,7 @@
             // lblQueQuan
             // 
             this.lblQueQuan.AutoSize = true;
-            this.lblQueQuan.Location = new System.Drawing.Point(16, 219);
+            this.lblQueQuan.Location = new System.Drawing.Point(427, 92);
             this.lblQueQuan.Name = "lblQueQuan";
             this.lblQueQuan.Size = new System.Drawing.Size(78, 17);
             this.lblQueQuan.TabIndex = 32;
@@ -231,7 +233,7 @@
             // lblMaLoaiNV
             // 
             this.lblMaLoaiNV.AutoSize = true;
-            this.lblMaLoaiNV.Location = new System.Drawing.Point(16, 247);
+            this.lblMaLoaiNV.Location = new System.Drawing.Point(427, 120);
             this.lblMaLoaiNV.Name = "lblMaLoaiNV";
             this.lblMaLoaiNV.Size = new System.Drawing.Size(109, 17);
             this.lblMaLoaiNV.TabIndex = 32;
@@ -241,14 +243,14 @@
             // 
             this.cboLoaiNhanVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLoaiNhanVien.FormattingEnabled = true;
-            this.cboLoaiNhanVien.Location = new System.Drawing.Point(139, 244);
+            this.cboLoaiNhanVien.Location = new System.Drawing.Point(550, 117);
             this.cboLoaiNhanVien.Name = "cboLoaiNhanVien";
             this.cboLoaiNhanVien.Size = new System.Drawing.Size(220, 24);
             this.cboLoaiNhanVien.TabIndex = 40;
             // 
             // numLuong
             // 
-            this.numLuong.Location = new System.Drawing.Point(139, 275);
+            this.numLuong.Location = new System.Drawing.Point(550, 148);
             this.numLuong.Name = "numLuong";
             this.numLuong.Size = new System.Drawing.Size(220, 22);
             this.numLuong.TabIndex = 41;
@@ -256,23 +258,37 @@
             // lblLuong
             // 
             this.lblLuong.AutoSize = true;
-            this.lblLuong.Location = new System.Drawing.Point(16, 277);
+            this.lblLuong.Location = new System.Drawing.Point(427, 150);
             this.lblLuong.Name = "lblLuong";
             this.lblLuong.Size = new System.Drawing.Size(52, 17);
             this.lblLuong.TabIndex = 42;
             this.lblLuong.Text = "Lương:";
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(583, 188);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(92, 44);
+            this.btnUpdate.TabIndex = 35;
+            this.btnUpdate.Text = "Sửa";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmNhanVien
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 680);
+            this.CancelButton = this.btnBack;
+            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ControlBox = false;
             this.Controls.Add(this.lblLuong);
             this.Controls.Add(this.numLuong);
             this.Controls.Add(this.cboLoaiNhanVien);
             this.Controls.Add(this.lblNgaySinh);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblMaLoaiNV);
             this.Controls.Add(this.lblQueQuan);
@@ -289,8 +305,11 @@
             this.Controls.Add(this.txtTenNhanVien);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmNhanVien";
-            this.Text = "FormNhanVien";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormNhanVien_FormClosing);
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Quản Lý Thông Tin Nhân Viên";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLuong)).EndInit();
             this.ResumeLayout(false);
@@ -320,5 +339,6 @@
         private System.Windows.Forms.ComboBox cboLoaiNhanVien;
         private System.Windows.Forms.NumericUpDown numLuong;
         private System.Windows.Forms.Label lblLuong;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

@@ -5,10 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FromLogin
+namespace BusStation
 {
     public partial class frmNhanVien : Form
     {
@@ -18,9 +19,58 @@ namespace FromLogin
         }
 
         /// <summary>
+        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
+        /// </summary>
+        private bool stringValidator(string input)
+        {
+            string pattern = "[^a-zA-Z]";
+            if (Regex.IsMatch(input, pattern))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra nếu chuỗi nhập vào là số
+        /// </summary>
+        private bool integerValidator(string input)
+        {
+            string pattern = "[^0-9]";
+            if (Regex.IsMatch(input, pattern))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Thêm nhân viên mới vào cơ sở dữ liệu
         /// </summary>
         private bool themNhanVien()
+        {
+            string tenNhanVien = this.txtTenNhanVien.Text;
+            string cmnd = this.txtCmnd.Text;
+            string ngaySinh = this.dtpNgaySinh.Text;
+            string diaChi = this.txtDiaChi.Text;
+            string queQuan = this.txtQueQuan.Text;
+            string loaiNhanVien = this.cboLoaiNhanVien.Text;
+            string soDienThoai = this.txtSoDienThoai.Text;
+            double luong = Convert.ToDouble(this.numLuong);
+
+            return false;
+        }
+
+        /// <summary>
+        /// Sửa nhân viên đang chọn trong cơ sở dữ liệu
+        /// </summary>
+        private bool suaNhanVien()
         {
             string tenNhanVien = this.txtTenNhanVien.Text;
             string cmnd = this.txtCmnd.Text;
@@ -44,82 +94,143 @@ namespace FromLogin
             return false;
         }
 
-        private bool xacNhanTruocKhiXoa()
+        /// <summary>
+        /// Xác nhận trước khi xóa nhân viên
+        /// </summary>
+        /// <returns></returns>
+        private bool deleteConfirm()
         {
-            DialogResult result = MessageBox.Show("Bạn muốn xóa?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-            if (result == DialogResult.No)
+            string tenNhanVien = this.txtTenNhanVien.Text.Trim();
+            if (tenNhanVien == "")
             {
+                MessageBox.Show("Vui lòng chọn nhân viên muốn xóa!");
                 return false;
             }
             else
             {
-                return true;
+                DialogResult result = MessageBox.Show("Bạn muốn xóa?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                if (result == DialogResult.No)
+                {
+                    return false;
+                }
             }
+            return true;
         }
 
         /// <summary>
-        /// 
+        /// Kiểm tra lỗi nhập liệu
+        /// </summary>
+        /// <returns></returns>
+        private bool isError()
+        {
+            string tenNhanVien = this.txtTenNhanVien.Text;
+            string cmnd = this.txtCmnd.Text;
+            string loaiNV = this.cboLoaiNhanVien.Text;
+
+            // Kiểm tra xem người dùng đã nhập tên nhân viên mới
+            if (tenNhanVien == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên nhân viên mới!");
+                return true;
+            }
+            else if (!stringValidator(tenNhanVien))
+            {
+                MessageBox.Show("Tên không phù hợp, vui lòng nhập lại!");
+                return true;
+            }
+            // Kiểm tra xem người dùng đã nhập chứng minh nhân dân của nhân viên mới
+            else if (cmnd == "")
+            {
+                MessageBox.Show("Vui lòng nhập số chứng minh nhân dân!");
+                return true;
+            }
+            else if (cmnd.Length != 9 || cmnd.Length != 12)
+            {
+                MessageBox.Show("Chứng minh nhân dân không phù hợp, vui lòng nhập lại");
+                return true;
+            }
+            // Kiểm tra xem người dùng đã chọn loại nhân viên
+            else if (loaiNV == "")
+            {
+                MessageBox.Show("Vui lòng chọn loại nhân viên!");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Thêm nhân viên mới
         /// </summary>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             // Xác nhận trước khi xóa
-            if (xacNhanTruocKhiXoa())
+            if (!isError())
             {
-                string tenNhanVien = this.txtTenNhanVien.Text;
-                string cmnd = this.txtCmnd.Text;
-                string loaiNV = this.cboLoaiNhanVien.Text;
-
-                // Kiểm tra xem người dùng đã nhập tên nhân viên mới
-                if (tenNhanVien == "")
+                // Kiểm tra xem đã thêm thành công hay không
+                if (themNhanVien())
                 {
-                    MessageBox.Show("Vui lòng nhập tên nhân viên mới!");
-                }
-                // Kiểm tra xem người dùng đã nhập chứng minh nhân dân của nhân viên mới
-                else if (cmnd == "")
-                {
-                    MessageBox.Show("Vui lòng nhập số chứng minh nhân dân!");
-                }
-                // Kiểm tra xem người dùng đã chọn loại nhân viên
-                else if (loaiNV == "")
-                {
-                    MessageBox.Show("Vui lòng chọn loại nhân viên!");
+                    MessageBox.Show("Thêm mới thành công!");
                 }
                 else
                 {
-                    // Kiểm tra xem đã thêm thành công hay không
-                    if (themNhanVien())
-                    {
-                        MessageBox.Show("Thêm mới thành công!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Có lỗi phát sinh, không thể thêm mới!");
-                    }
+                    MessageBox.Show("Có lỗi phát sinh, không thể thêm mới!");
                 }
             }
         }
 
         /// <summary>
-        /// Trở về form quản lý
+        /// Trở về form chọn bảng
         /// </summary>
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmQuanLy formQuanLy = new frmQuanLy();
-            formQuanLy.Show();
+            foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
+            {
+                if (form.Text == "Quản Lý")
+                {
+                    form.Visible = true;
+                    break;
+                }
+            }
             this.Close();
         }
 
         /// <summary>
-        /// Xác nhận trước khi đóng form
+        /// Sửa nhân viên đang chọn
         /// </summary>
-        private void FormNhanVien_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn muốn thoát?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            
-            if (result == DialogResult.No)
+            // Xác nhận trước khi xóa
+            if (!isError())
             {
-                e.Cancel = true;
+                // Kiểm tra xem đã thêm thành công hay không
+                if (xoaNhanVien())
+                {
+                    MessageBox.Show("Thêm mới thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi phát sinh, không thể thêm mới!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Xóa nhân viên đang chọn
+        /// </summary>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (deleteConfirm())
+            {
+                if (xoaNhanVien())
+                {
+                    MessageBox.Show("Xóa thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi phát sinh, không thể xóa!");
+                }
             }
         }
     }

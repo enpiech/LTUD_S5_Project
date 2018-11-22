@@ -1,4 +1,4 @@
-﻿namespace FromLogin
+﻿namespace BusStation
 {
     partial class frmLoaiNhanVien
     {
@@ -37,9 +37,10 @@
             this.lblLuongCoBan = new System.Windows.Forms.Label();
             this.lblTenLoaiNhanVien = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.txtTenKhachHang = new System.Windows.Forms.TextBox();
+            this.txtTenLoaiNV = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numLuongCoBan = new System.Windows.Forms.NumericUpDown();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLuongCoBan)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +48,7 @@
             // btnBack
             // 
             this.btnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnBack.Location = new System.Drawing.Point(561, 124);
+            this.btnBack.Location = new System.Drawing.Point(681, 124);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(89, 44);
             this.btnBack.TabIndex = 37;
@@ -57,7 +58,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(365, 124);
+            this.btnAdd.Location = new System.Drawing.Point(387, 124);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(92, 44);
             this.btnAdd.TabIndex = 35;
@@ -67,7 +68,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(463, 124);
+            this.btnDelete.Location = new System.Drawing.Point(485, 124);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(92, 44);
             this.btnDelete.TabIndex = 36;
@@ -78,7 +79,7 @@
             // lblLuongCoBan
             // 
             this.lblLuongCoBan.AutoSize = true;
-            this.lblLuongCoBan.Location = new System.Drawing.Point(14, 104);
+            this.lblLuongCoBan.Location = new System.Drawing.Point(232, 87);
             this.lblLuongCoBan.Name = "lblLuongCoBan";
             this.lblLuongCoBan.Size = new System.Drawing.Size(102, 17);
             this.lblLuongCoBan.TabIndex = 33;
@@ -87,7 +88,7 @@
             // lblTenLoaiNhanVien
             // 
             this.lblTenLoaiNhanVien.AutoSize = true;
-            this.lblTenLoaiNhanVien.Location = new System.Drawing.Point(14, 77);
+            this.lblTenLoaiNhanVien.Location = new System.Drawing.Point(232, 60);
             this.lblTenLoaiNhanVien.Name = "lblTenLoaiNhanVien";
             this.lblTenLoaiNhanVien.Size = new System.Drawing.Size(91, 17);
             this.lblTenLoaiNhanVien.TabIndex = 34;
@@ -98,18 +99,18 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Blue;
-            this.lblTitle.Location = new System.Drawing.Point(7, 9);
+            this.lblTitle.Location = new System.Drawing.Point(248, 19);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(317, 25);
             this.lblTitle.TabIndex = 29;
             this.lblTitle.Text = "DANH SÁCH LOẠI NHÂN VIÊN";
             // 
-            // txtTenKhachHang
+            // txtTenLoaiNV
             // 
-            this.txtTenKhachHang.Location = new System.Drawing.Point(139, 74);
-            this.txtTenKhachHang.Name = "txtTenKhachHang";
-            this.txtTenKhachHang.Size = new System.Drawing.Size(220, 22);
-            this.txtTenKhachHang.TabIndex = 28;
+            this.txtTenLoaiNV.Location = new System.Drawing.Point(357, 57);
+            this.txtTenLoaiNV.Name = "txtTenLoaiNV";
+            this.txtTenLoaiNV.Size = new System.Drawing.Size(220, 22);
+            this.txtTenLoaiNV.TabIndex = 28;
             // 
             // dataGridView1
             // 
@@ -142,7 +143,7 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(638, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(758, 348);
             this.dataGridView1.TabIndex = 24;
             // 
             // numLuongCoBan
@@ -152,27 +153,45 @@
             0,
             0,
             0});
-            this.numLuongCoBan.Location = new System.Drawing.Point(139, 102);
+            this.numLuongCoBan.Location = new System.Drawing.Point(357, 85);
             this.numLuongCoBan.Name = "numLuongCoBan";
             this.numLuongCoBan.Size = new System.Drawing.Size(220, 22);
             this.numLuongCoBan.TabIndex = 38;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(583, 124);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(92, 44);
+            this.btnUpdate.TabIndex = 35;
+            this.btnUpdate.Text = "Sửa";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmLoaiNhanVien
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 505);
+            this.CancelButton = this.btnBack;
+            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ControlBox = false;
             this.Controls.Add(this.numLuongCoBan);
             this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblLuongCoBan);
             this.Controls.Add(this.lblTenLoaiNhanVien);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.txtTenKhachHang);
+            this.Controls.Add(this.txtTenLoaiNV);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmLoaiNhanVien";
-            this.Text = "FormLoaiNhanVien";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Quản Lý Thông Tin Loại Nhân Viên";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLuongCoBan)).EndInit();
             this.ResumeLayout(false);
@@ -187,8 +206,9 @@
         private System.Windows.Forms.Label lblLuongCoBan;
         private System.Windows.Forms.Label lblTenLoaiNhanVien;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TextBox txtTenKhachHang;
+        private System.Windows.Forms.TextBox txtTenLoaiNV;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown numLuongCoBan;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FromLogin
+﻿namespace BusStation
 {
     partial class frmQuanLy
     {
@@ -32,13 +32,13 @@
             this.cboTenBang = new System.Windows.Forms.ComboBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTenBang
             // 
             this.lblTenBang.AutoSize = true;
-            this.lblTenBang.Location = new System.Drawing.Point(28, 58);
+            this.lblTenBang.Location = new System.Drawing.Point(22, 139);
             this.lblTenBang.Name = "lblTenBang";
             this.lblTenBang.Size = new System.Drawing.Size(115, 17);
             this.lblTenBang.TabIndex = 0;
@@ -56,9 +56,9 @@
             "Loại Nhân Viên",
             "Nhân Viên",
             "Tài Khoản Nhân Viên"});
-            this.cboTenBang.Location = new System.Drawing.Point(149, 55);
+            this.cboTenBang.Location = new System.Drawing.Point(143, 136);
             this.cboTenBang.Name = "cboTenBang";
-            this.cboTenBang.Size = new System.Drawing.Size(198, 24);
+            this.cboTenBang.Size = new System.Drawing.Size(233, 24);
             this.cboTenBang.TabIndex = 1;
             // 
             // lblTitle
@@ -66,7 +66,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblTitle.Location = new System.Drawing.Point(74, 9);
+            this.lblTitle.Location = new System.Drawing.Point(91, 67);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(320, 29);
             this.lblTitle.TabIndex = 2;
@@ -74,7 +74,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(353, 50);
+            this.btnSelect.Location = new System.Drawing.Point(382, 131);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(72, 32);
             this.btnSelect.TabIndex = 3;
@@ -82,26 +82,25 @@
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
-            // btnLogout
+            // btnThoat
             // 
-            this.btnLogout.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnLogout.Location = new System.Drawing.Point(184, 129);
-            this.btnLogout.Name = "btnDangXuat";
-            this.btnLogout.Size = new System.Drawing.Size(104, 32);
-            this.btnLogout.TabIndex = 4;
-            this.btnLogout.Text = "Đăng xuất";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnDangXuat_Click);
+            this.btnThoat.Location = new System.Drawing.Point(194, 214);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(104, 32);
+            this.btnThoat.TabIndex = 4;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmQuanLy
             // 
             this.AcceptButton = this.btnSelect;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnLogout;
-            this.ClientSize = new System.Drawing.Size(494, 209);
+            this.CancelButton = this.btnThoat;
+            this.ClientSize = new System.Drawing.Size(494, 337);
             this.ControlBox = false;
-            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.cboTenBang);
@@ -122,6 +121,6 @@
         private System.Windows.Forms.ComboBox cboTenBang;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnSelect;
-        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnThoat;
     }
 }

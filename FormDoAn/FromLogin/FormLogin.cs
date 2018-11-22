@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FromLogin
+namespace BusStation
 {
     public partial class frmLogin : Form
     {
@@ -17,13 +17,6 @@ namespace FromLogin
 
         public frmLogin()
         {
-            this.NhanVien = new NhanVien();
-            this.NhanVien.IsLogged = false;
-            this.NhanVien.MaNV = string.Empty;
-            this.NhanVien.TenNV = string.Empty;
-            this.NhanVien.LoaiNV = string.Empty;
-            this.NhanVien.Luong = 0;
-
             InitializeComponent();
         }
 
@@ -43,7 +36,8 @@ namespace FromLogin
         /// </summary>
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.NhanVien.IsLogged == false)
+            // Nếu người dùng chưa đăng nhập
+            if (this.NhanVien == null)
             {
                 DialogResult result;
                 result = MessageBox.Show("Bạn muốn thoát?", "Xác nhận",
@@ -55,10 +49,30 @@ namespace FromLogin
             }
         }
 
-        private void getThongTinNhanVien()
+        /// <summary>
+        /// Lấy thông tin nhân viên từ cơ sở dữ liệu
+        /// </summary>
+        private void getNhanVienTuCSDL()
         {
+            this.NhanVien = new NhanVien();
+
+            this.NhanVien.IsLogged = false;
+            this.NhanVien.MaNV = string.Empty;
+            this.NhanVien.TenNV = string.Empty;
+            this.NhanVien.LoaiNV = string.Empty;
+            this.NhanVien.Luong = 0;
+
             this.NhanVien.LoaiNV = "QL";
             this.NhanVien.IsLogged = true;
+        }
+
+        /// <summary>
+        /// Truyền dữ liệu vào main form
+        /// </summary>
+        private void enableFormMain()
+        {
+            ((frmMain)this.MdiParent).ActiveNhanVien = this.NhanVien;
+            ((frmMain)this.MdiParent).enableFormMain();
         }
 
         /// <summary>
@@ -70,16 +84,16 @@ namespace FromLogin
             string user = this.txtUser.Text.Trim();
             string pass = this.txtPassword.Text.Trim();
 
-            // Nếu người dùng đăng nhập thành công thì mở form main
+            // Nếu người dùng đăng nhập thành công thì mở form main và truyền dữ liệu vào
             if (login.isLoggedIn(user, pass))
             {
                 MessageBox.Show("Đăng nhập thành công!");
-                // Lấy thông tin nhân viên hiện tại
-                getThongTinNhanVien();
 
-                // Mở form theo loại nhân viên dựa theo mã số nhân viên sau khi đăng nhập
-                frmMain formMain = new frmMain();
-                formMain.moFormTheoLoaiNV(this.NhanVien.LoaiNV);
+                // Lấy thông tin nhân viên vừa đăng nhập từ cơ sở dữ liệu
+                getNhanVienTuCSDL();
+
+                // Truyền dữ liệu vào form main
+                enableFormMain();
 
                 // Đóng form hiện tại
                 this.Close();

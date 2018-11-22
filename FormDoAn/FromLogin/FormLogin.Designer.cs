@@ -1,4 +1,4 @@
-﻿namespace FromLogin
+﻿namespace BusStation
 {
     partial class frmLogin
     {
@@ -58,7 +58,7 @@
             this.grpLogin.Margin = new System.Windows.Forms.Padding(4);
             this.grpLogin.Name = "grpLogin";
             this.grpLogin.Padding = new System.Windows.Forms.Padding(4);
-            this.grpLogin.Size = new System.Drawing.Size(544, 484);
+            this.grpLogin.Size = new System.Drawing.Size(544, 429);
             this.grpLogin.TabIndex = 0;
             this.grpLogin.TabStop = false;
             // 

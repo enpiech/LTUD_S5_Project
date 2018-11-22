@@ -1,4 +1,4 @@
-﻿namespace FromLogin
+﻿namespace BusStation
 {
     partial class frmMain
     {
@@ -28,83 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.mnuMain = new System.Windows.Forms.MenuStrip();
+            this.mnuTuyChon = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuThoat = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBanVe = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTinhLuong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuQuanLy = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuLichSu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mnuMain
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuFile,
-            this.menuHelp});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1002, 28);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mnuMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuTuyChon,
+            this.mnuBanVe,
+            this.mnuTinhLuong,
+            this.mnuQuanLy,
+            this.mnuLichSu});
+            this.mnuMain.Location = new System.Drawing.Point(0, 0);
+            this.mnuMain.Name = "mnuMain";
+            this.mnuMain.Size = new System.Drawing.Size(1006, 28);
+            this.mnuMain.TabIndex = 1;
+            this.mnuMain.Text = "MainMenu";
             // 
-            // menuFile
+            // mnuTuyChon
             // 
-            this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuNew,
-            this.menuDangXuat,
-            this.menuClose});
-            this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(44, 24);
-            this.menuFile.Text = "&File";
+            this.mnuTuyChon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuDangXuat,
+            this.mnuThoat});
+            this.mnuTuyChon.Name = "mnuTuyChon";
+            this.mnuTuyChon.Size = new System.Drawing.Size(82, 24);
+            this.mnuTuyChon.Text = "Tùy Chọn";
             // 
-            // menuNew
+            // mnuDangXuat
             // 
-            this.menuNew.AutoSize = false;
-            this.menuNew.Enabled = false;
-            this.menuNew.Name = "menuNew";
-            this.menuNew.Size = new System.Drawing.Size(216, 26);
-            this.menuNew.Text = "&New";
+            this.mnuDangXuat.Name = "mnuDangXuat";
+            this.mnuDangXuat.Size = new System.Drawing.Size(216, 26);
+            this.mnuDangXuat.Text = "Đăng Xuất";
+            this.mnuDangXuat.Click += new System.EventHandler(this.mnuDangXuat_Click);
             // 
-            // menuClose
+            // mnuThoat
             // 
-            this.menuClose.AutoSize = false;
-            this.menuClose.Name = "menuClose";
-            this.menuClose.Size = new System.Drawing.Size(216, 26);
-            this.menuClose.Text = "E&xit";
-            this.menuClose.Click += new System.EventHandler(this.menuClose_Click);
+            this.mnuThoat.Name = "mnuThoat";
+            this.mnuThoat.Size = new System.Drawing.Size(216, 26);
+            this.mnuThoat.Text = "Thoát";
+            this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
             // 
-            // menuHelp
+            // mnuBanVe
             // 
-            this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(53, 24);
-            this.menuHelp.Text = "&Help";
+            this.mnuBanVe.Name = "mnuBanVe";
+            this.mnuBanVe.Size = new System.Drawing.Size(66, 24);
+            this.mnuBanVe.Text = "Bán Vé";
+            this.mnuBanVe.Click += new System.EventHandler(this.mnuBanVe_Click);
             // 
-            // menuDangXuat
+            // mnuTinhLuong
             // 
-            this.menuDangXuat.AutoSize = false;
-            this.menuDangXuat.Enabled = false;
-            this.menuDangXuat.Name = "menuDangXuat";
-            this.menuDangXuat.Size = new System.Drawing.Size(216, 26);
-            this.menuDangXuat.Text = "Đăng X&uất";
-            this.menuDangXuat.Click += new System.EventHandler(this.menuDangXuat_Click);
+            this.mnuTinhLuong.Name = "mnuTinhLuong";
+            this.mnuTinhLuong.Size = new System.Drawing.Size(95, 24);
+            this.mnuTinhLuong.Text = "Tính Lương";
+            this.mnuTinhLuong.Click += new System.EventHandler(this.mnuTinhLuong_Click);
+            // 
+            // mnuQuanLy
+            // 
+            this.mnuQuanLy.Name = "mnuQuanLy";
+            this.mnuQuanLy.Size = new System.Drawing.Size(73, 24);
+            this.mnuQuanLy.Text = "Quản Lý";
+            this.mnuQuanLy.Click += new System.EventHandler(this.mnuQuanLy_Click);
+            // 
+            // mnuLichSu
+            // 
+            this.mnuLichSu.Name = "mnuLichSu";
+            this.mnuLichSu.Size = new System.Drawing.Size(68, 24);
+            this.mnuLichSu.Text = "Lịch Sử";
+            this.mnuLichSu.Click += new System.EventHandler(this.mnuLichSu_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 721);
-            this.Controls.Add(this.menuStrip1);
-            this.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.mnuMain);
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mnuMain;
             this.Name = "frmMain";
             this.Text = "FormMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mnuMain.ResumeLayout(false);
+            this.mnuMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,11 +127,13 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menuFile;
-        private System.Windows.Forms.ToolStripMenuItem menuHelp;
-        private System.Windows.Forms.ToolStripMenuItem menuNew;
-        private System.Windows.Forms.ToolStripMenuItem menuClose;
-        private System.Windows.Forms.ToolStripMenuItem menuDangXuat;
+        private System.Windows.Forms.MenuStrip mnuMain;
+        private System.Windows.Forms.ToolStripMenuItem mnuBanVe;
+        private System.Windows.Forms.ToolStripMenuItem mnuTinhLuong;
+        private System.Windows.Forms.ToolStripMenuItem mnuQuanLy;
+        private System.Windows.Forms.ToolStripMenuItem mnuLichSu;
+        private System.Windows.Forms.ToolStripMenuItem mnuTuyChon;
+        private System.Windows.Forms.ToolStripMenuItem mnuDangXuat;
+        private System.Windows.Forms.ToolStripMenuItem mnuThoat;
     }
 }
