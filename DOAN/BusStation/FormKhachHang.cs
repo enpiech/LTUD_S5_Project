@@ -219,26 +219,14 @@ namespace BusStation
                 }
             }
         }
-        //ham lay du lieu dua vao datagidview
-        xuLyDB xuly = new xuLyDB();
-        public DataTable getAllKhachHang()
-        {
-            DataTable dtKH = new DataTable();
-            string nameSp = "SP_layBangKhachHang";
-            SqlCommand cm = new SqlCommand(nameSp, xuLyDB.connect);
-            cm.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adepter = new SqlDataAdapter(cm);
-            adepter.Fill(dtKH);
-            xuLyDB.connect.Close();
-
-            dataGridView1.DataSource = dtKH;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            return dtKH;
-        }
+        
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
-            getAllKhachHang();
+            //gọi hàm để hiển thị
+            DB db = new DB();
+            db.moKetNoi();
+            dataGridView1.DataSource = db.layDuLieuTuBang("KhachHang");
+            db.dongKetNoi();
         }
     }
 }

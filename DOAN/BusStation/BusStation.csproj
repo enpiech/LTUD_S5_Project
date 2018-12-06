@@ -106,6 +106,7 @@
     <Compile Include="FormXe.designer.cs">
       <DependentUpon>FormXe.cs</DependentUpon>
     </Compile>
+    <Compile Include="KiemTraNhapLieu.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="FormBanVe.cs">
       <SubType>Form</SubType>
@@ -113,10 +114,11 @@
     <Compile Include="FormBanVe.designer.cs">
       <DependentUpon>FormBanVe.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongBao.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="xuLyDB.cs" />
+    <Compile Include="DB.cs" />
     <EmbeddedResource Include="FormHangXe.resx">
       <DependentUpon>FormHangXe.cs</DependentUpon>
     </EmbeddedResource>

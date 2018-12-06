@@ -14,63 +14,62 @@ namespace BusStation
 {
     public partial class frmHangXe : Form
     {
+        private const string TEN_BANG = "HangXe";
+
         public frmHangXe()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
-        /// </summary>
-        private bool stringValidator(string input)
-        {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra nếu chuỗi nhập vào là số
-        /// </summary>
-        private bool integerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Kiểm tra lỗi nhập liệu
         /// </summary>
-        private bool isError()
+        /// <returns>true Nếu có lỗi nhập liệu</returns>
+        private bool coLoi()
         {
-            string tenHangXe = this.txtTenHangXe.Text.Trim();
+            // Lấy dữ liệu từ control
+            string maHangXe = this.txtMaHangXe.Text;
+            string tenHangXe = this.txtTenHangXe.Text;
+            string soLuong = this.txtSoLuongXe.Text;
+            string chiPhi = this.txtChiPhiThueBai.Text;
 
-            if (!stringValidator(tenHangXe) || tenHangXe == "")
+            // Kiểm tra xem tên hãng xe có hợp lệ hay không
+            if (!KiemTraNhapLieu.laChuoi(tenHangXe))
             {
-                MessageBox.Show("Tên không phù hợp, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
+                return true;
+            }
+
+            // Kiểm tra xem mã hãng xe có hợp lệ hay không
+            if (!KiemTraNhapLieu.laChuoi(maHangXe))
+            {
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
+                return true;
+            }
+
+            // Kiểm tra xem số lượng xe có hợp lệ không
+            if (!KiemTraNhapLieu.laSoNguyen(soLuong))
+            {
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
+                return true;
+            }
+
+            // Kiểm tra chi phí thuê bãi có hợp lệ không
+            if (!KiemTraNhapLieu.laSoNguyen(chiPhi))
+            {
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
 
             return false;
         }
+        
         /// <summary>
-        /// Trở về form chọn bảng
+        /// Trở về form quản lý
         /// </summary>
-        private void btnBack_Click(object sender, EventArgs e)
+        private void btnTroVe_Click(object sender, EventArgs e)
         {
+            // Duyệt danh sách form con nếu form và mở form quản lý
             foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
             {
                 if (form.Text == "Quản Lý")
@@ -79,208 +78,206 @@ namespace BusStation
                     break;
                 }
             }
+            // Đóng form hiện tại
             this.Close();
         }
 
-        /***** Doc Du Lieu Tu Database Va Thuc Hien Cac Phuong Thuc xem xoa sua *****/
-
-
-
-        //khoi tao gia tri 
-        xuLyDB xuly = new xuLyDB();
-        
-
         /// <summary>
-        /// hàm đọc database
+        /// Lấy dữ liệu từ csdl lên view khi mở form
         /// </summary>
-        /// <returns></returns>
-        public DataTable getAllHangXe()
-        {
-            DataTable dtHangXe = new DataTable();
-            string nameSp = "SP_layBangHangXe";
-            SqlCommand cm = new SqlCommand(nameSp, xuLyDB.connect);
-            cm.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adepter = new SqlDataAdapter(cm);
-            adepter.Fill(dtHangXe);
-            xuLyDB.connect.Close();
-
-            dataGridView1.DataSource = dtHangXe;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            return dtHangXe;
-        }
-        //load dữ liệu lên datagidview
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmHangXe_Load(object sender, EventArgs e)
         {
-           //gọi hàm để hiển thị
-          getAllHangXe();
+            DB db = new DB();
+            db.moKetNoi();
+            dgvhangXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
+            db.dongKetNoi();
         }
-
 
         /// <summary>
-        /// hàm thêm dữ liệu vào trong database
+        /// Xóa những control nhập dữ liệu
         /// </summary>
-        /// <param name="MaHangXe"></param>
-        /// <param name="TenHangXe"></param>
-        /// <param name="SoLuongXe"></param>
-        /// <param name="ChiPhiThueBai"></param>
-        /// <returns></returns>
-        public int themDataHangXe(string MaHangXe, string TenHangXe, int SoLuongXe, int ChiPhiThueBai)
+        private void xoaDuLieuTrenControl()
         {
-            xuLyDB.connect.Open();
-            int result = 0;
-            string nameSP = "SP_ThemHangXe";
-            SqlCommand cm = new SqlCommand(nameSP, xuLyDB.connect);
-            cm.CommandType = CommandType.StoredProcedure;
-            cm.Parameters.AddWithValue("@maHangXe", MaHangXe);
-            cm.Parameters.AddWithValue("@tenHangXe", TenHangXe);
-            cm.Parameters.AddWithValue("@soLuongXe", SoLuongXe);
-            cm.Parameters.AddWithValue("@chiPhiThueBai", ChiPhiThueBai);
-            result = cm.ExecuteNonQuery();
-            xuLyDB.connect.Close();
-            return result;
-        }
-        //them du lieu
-        private void btnAdd_Click_1(object sender, EventArgs e)
-        {
-            //goi ham them
-            themDataHangXe(txtMaHangXe.Text, txtTenHangXe.Text, Convert.ToInt32(txtSoLuongXe.Text), Convert.ToInt32(txtChiPhiThueBai.Text));
-            //gọi hàm để hiển thị
-            getAllHangXe();
-            //xóa những dữ liệu vùa nhập vào để lưu
             txtMaHangXe.Clear();
             txtTenHangXe.Clear();
             txtSoLuongXe.Clear();
             txtChiPhiThueBai.Clear();
         }
 
-
         /// <summary>
-        /// hàm xóa dữ liệu trong database
+        /// Thêm hãng xe mới
         /// </summary>
-        /// <param name="MaHangXe"></param>
-        /// <returns></returns>
-        public bool xoaHangXe(string MaHangXe)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnThem_Click(object sender, EventArgs e)
         {
-            try
+            // Kiểm tra nếu không có lỗi thì thêm mới
+            if (!coLoi())
             {
-                xuLyDB.connect.Open();
-                string nameSP = "SP_xoaHangXe";
-                SqlCommand cm = new SqlCommand(nameSP, xuLyDB.connect);
-                cm.CommandType = CommandType.StoredProcedure;
-                cm.Parameters.AddWithValue("@maHangXe", MaHangXe);
-                cm.ExecuteNonQuery();
-                xuLyDB.connect.Close();
+                string tenHangXe = txtMaHangXe.Text;
+                string maHangXe = txtTenHangXe.Text;
+                int soLuong = Convert.ToInt32(txtSoLuongXe.Text);
+                double chiPhi = Convert.ToDouble(txtChiPhiThueBai.Text);
+                DB db = new DB();
+                db.moKetNoi();
+                db.themHangXe(tenHangXe, maHangXe, soLuong, chiPhi);
 
-            }
-            catch
-            {
-                xuLyDB.connect.Close();
-                return false;
-            }
-            return true;
-        }
-        /// <summary>
-        /// hàm kiểm tra trước khi xóa
-        /// </summary>
-        private bool deleteConfirm()
-        {
-            string hangXe = this.txtMaHangXe.Text;
+                // Cập nhật view
+                DB.dgv_capNhat(dgvhangXe, TEN_BANG);
 
-            if (hangXe == "")
-            {
-                MessageBox.Show("Vui lòng chọn hãng xe muốn xóa!");
-                return false;
+                xoaDuLieuTrenControl();
             }
             else
             {
-                DialogResult result = MessageBox.Show("Bạn muốn xóa hãng xe này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                if (result == DialogResult.No)
-                {
-                    return false;
-                }
+                MessageBox.Show(ThongBao.khongtheThem);
             }
-
-            return true;
-        }
-        //xoa hang xe theo ma xe
-        private void btnDelete_Click_1(object sender, EventArgs e)
-        {
-            if (deleteConfirm() )
-            {
-                xoaHangXe(txtMaHangXe.Text);
-                MessageBox.Show("Xóa Thành Công");
-            }else
-            {
-                MessageBox.Show("xóa chưa thành công vui lòng kiểm tra lại");
-            }
-            //hien thi lai danh sach sau khi xoa
-            getAllHangXe();
         }
 
         /// <summary>
-        /// hàm sửa dữ liệu trong database
+        /// Kiểm tra trước khi xóa hãng xe
         /// </summary>
-        /// <param name="MaHangXe"></param>
-        /// <param name="TenHangXe"></param>
-        /// <param name="SoLuongXe"></param>
-        /// <param name="ChiPhiThueBai"></param>
-        /// <returns></returns>
-        public bool suaDataLop(string MaHangXe, string TenHangXe, int SoLuongXe, int ChiPhiThueBai)
+        /// <returns>true Nếu xác nhận xóa</returns>
+        private bool xacNhanXoa()
         {
-            try
-            {
-                xuLyDB.connect.Open();
-                string nameSP = "SP_SuaHangXe";
-                SqlCommand cm = new SqlCommand(nameSP, xuLyDB.connect);
-                cm.CommandType = CommandType.StoredProcedure;
-                cm.Parameters.AddWithValue("@maHangXe", MaHangXe);
-                cm.Parameters.AddWithValue("@tenHangXe", TenHangXe);
-                cm.Parameters.AddWithValue("@soLuongXe", SoLuongXe);
-                cm.Parameters.AddWithValue("@chiPhiThueBai", ChiPhiThueBai);
-                cm.ExecuteNonQuery();
-                xuLyDB.connect.Close();
-            }
-            catch
-            {
+            DialogResult result = MessageBox.Show("Bạn muốn xóa hãng xe này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
+            if (result == DialogResult.No)
+            {
                 return false;
             }
+
             return true;
         }
-        //load dữ liệu vào test box
-        private void btnUpdate_Click_1(object sender, EventArgs e)
+
+        /// <summary>
+        /// Kiểm tra trước khi sửa hãng xe
+        /// </summary>
+        /// <returns>true Nếu xác nhận sửa</returns>
+        private bool xacNhanSua()
         {
-            DialogResult r;
-            r = MessageBox.Show("bạn chắc chắn muốn sửa thông tin", "Cảnh Báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if(r == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Bạn muốn sửa dữ liệu hãng xe này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (result == DialogResult.No)
             {
-                suaDataLop(txtMaHangXe.Text, txtTenHangXe.Text, Convert.ToInt32(txtSoLuongXe.Text), Convert.ToInt32(txtChiPhiThueBai.Text));
-                //hien thi lai danh sach sau khi xoa
-                getAllHangXe();
-            }else
-            {
-                MessageBox.Show("Sửa Không Thành Công");
+                return false;
             }
+
+            return true;
         }
 
-        private void btnBack_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// Xóa hãng xe đã chọn trong csdl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnXoa_Click(object sender, EventArgs e)
         {
-            foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
+            // Nếu đã xác nhận xóa
+            if (xacNhanXoa())
             {
-                if (form.Text == "Quản Lý")
+                DB db = new DB();
+                db.moKetNoi();
+                // Nếu xóa thành công thì thông báo và cập nhật lại view
+                if (db.xoaHangXe(txtMaHangXe.Text) != -1)
                 {
-                    form.Visible = true;
-                    break;
+                    MessageBox.Show("Xóa Thành Công");
+                    DB.dgv_capNhat(dgvhangXe, TEN_BANG);
                 }
+
+                db.dongKetNoi();
+                xoaDuLieuTrenControl();
+
+                btnXoa.Enabled = false;
+                btnSua.Enabled = false;
+                btnThem.Enabled = true;
             }
-            this.Close();
+            else
+            {
+                MessageBox.Show("Không thể xóa! Vui lòng kiểm tra lại");
+            }
         }
 
+        /// <summary>
+        /// Sửa hãng xe đã chọn trong csdl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if(xacNhanSua() && !coLoi())
+            {
+                DB db = new DB();
+                db.moKetNoi();
+                // Kiểm tra nếu sửa thành công thì thông báo cho người dùng rồi cập nhật lại danh sách
+                if (db.suaHangXe(txtMaHangXe.Text, txtTenHangXe.Text, Convert.ToInt32(txtSoLuongXe.Text), Convert.ToDouble(txtChiPhiThueBai.Text)) != -1)
+                {
+                    MessageBox.Show("Sửa dữ liệu thành công!");
+                    DB.dgv_capNhat(dgvhangXe, TEN_BANG);
+                }
 
+                db.dongKetNoi();
+                xoaDuLieuTrenControl();
 
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnThem.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show(ThongBao.khongTheXoa);
+            }
+        }
 
+        /// <summary>
+        /// Khi chọn 1 hàng trong View thì lấy dữ liệu lên form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvHangXe_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Lấy dữ liệu từ view
+            string maHangXe = dgvhangXe.SelectedRows[0].Cells[0].Value.ToString();
+            string tenHangXe = dgvhangXe.SelectedRows[0].Cells[1].Value.ToString();
+            string soLuong = dgvhangXe.SelectedRows[0].Cells[2].Value.ToString();
+            string chiPhi = dgvhangXe.SelectedRows[0].Cells[3].Value.ToString();
 
+            // Truyền dữ liệu lên control tương ứng
+            txtMaHangXe.Text = maHangXe;
+            txtTenHangXe.Text = tenHangXe;
+            txtSoLuongXe.Text = soLuong;
+            txtChiPhiThueBai.Text = chiPhi;
+
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnThem.Enabled = false;
+        }
+
+        /// <summary>
+        /// Kiểm tra nếu người dùng bỏ qua thì nhập dữ liệu mặc định vào
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSoLuongXe_Leave(object sender, EventArgs e)
+        {
+            if (!KiemTraNhapLieu.khongRong(txtSoLuongXe.Text))
+            {
+                txtSoLuongXe.Text = "0";
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra nếu người dùng bỏ qua thì nhập dữ liệu mặc định vào
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtChiPhiThueBai_Leave(object sender, EventArgs e)
+        {
+            if (!KiemTraNhapLieu.khongRong(txtChiPhiThueBai.Text))
+            {
+                txtChiPhiThueBai.Text = "0";
+            }
+        }
     }
 }

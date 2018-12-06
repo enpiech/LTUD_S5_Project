@@ -234,27 +234,14 @@ namespace BusStation
                 }
             }
         }
-        //
-        //khoi tao gia tri 
-        xuLyDB xuly = new xuLyDB();
-        public DataTable getAllXe()
-        {
-            DataTable dtXe = new DataTable();
-            string nameSp = "SP_layBangXe";
-            SqlCommand cm = new SqlCommand(nameSp, xuLyDB.connect);
-            cm.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adepter = new SqlDataAdapter(cm);
-            adepter.Fill(dtXe);
-            xuLyDB.connect.Close();
 
-            dataGridView1.DataSource = dtXe;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            return dtXe;
-        }
         private void frmXe_Load(object sender, EventArgs e)
         {
-            getAllXe();
+            //gọi hàm để hiển thị
+            DB db = new DB();
+            db.moKetNoi();
+            dataGridView1.DataSource = db.layDuLieuTuBang("Xe");
+            db.dongKetNoi();
         }
     }
 }

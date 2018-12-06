@@ -12,12 +12,12 @@ namespace BusStation
 {
     public partial class frmMain : Form
     {
-        private NhanVien activeNhanVien;
+        private NhanVien nhanVienHienTai;
 
-        internal NhanVien ActiveNhanVien
+        internal NhanVien NhanVienHienTai
         {
-            get { return activeNhanVien; }
-            set { activeNhanVien = value; }
+            get { return nhanVienHienTai; }
+            set { nhanVienHienTai = value; }
         }
 
 
@@ -27,7 +27,7 @@ namespace BusStation
         }
 
         /// <summary>
-        /// Mở form theo tên
+        /// Mở form theo tên truyền vào
         /// </summary>
         public void moForm(string tenForm)
         {
@@ -72,7 +72,6 @@ namespace BusStation
             {
                 form = new frmXe();
             }
-
             try
             {
                 form.MdiParent = this;
@@ -80,10 +79,8 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Chức năng đang phát triển");
+                MessageBox.Show("Phát sinh lỗi/n" + ex.StackTrace.ToString());
             }
-            
-
         }
 
         /// <summary>
@@ -91,27 +88,27 @@ namespace BusStation
         /// </summary>
         public void enableFormMain()
         {
-            if (this.ActiveNhanVien != null)
+            if (NhanVienHienTai != null)
             {
                 // Nếu là nhân viên quản lý
-                if (this.ActiveNhanVien.LoaiNV == "QL")
+                if (NhanVienHienTai.LoaiNV == "QL")
                 {
                     // Mở khóa menu cho nhân viên quản lý
-                    this.mnuQuanLy.Enabled = true;
-                    this.mnuBanVe.Enabled = true;
-                    this.mnuTinhLuong.Enabled = true;
+                    mnuQuanLy.Enabled = true;
+                    mnuBanVe.Enabled = true;
+                    mnuTinhLuong.Enabled = true;
                 }
                 // Nếu là nhân viên phòng vé
-                else if (this.ActiveNhanVien.LoaiNV == "NVPV")
+                else if (NhanVienHienTai.LoaiNV == "NVPV")
                 {
                     // Mở khóa menu cho nhân viên phòng vé
-                    this.mnuBanVe.Enabled = true;
+                    mnuBanVe.Enabled = true;
                 }
                 // Nếu là nhân viên kế toán
-                else if (this.ActiveNhanVien.LoaiNV == "KT")
+                else if (this.NhanVienHienTai.LoaiNV == "KT")
                 {
                     // Mở khóa menu cho nhân viên kế toán
-                    this.mnuTinhLuong.Enabled = true;
+                    mnuTinhLuong.Enabled = true;
                 }
 
                 // Mở khóa menu đăng xuất
@@ -122,12 +119,12 @@ namespace BusStation
         /// <summary>
         /// Vô hiệu hóa các chức năng trong form main
         /// </summary>
-        public void disableFormMain()
+        public void voHieuHoaFormMain()
         {
-            this.mnuBanVe.Enabled = false;
-            this.mnuQuanLy.Enabled = false;
-            this.mnuTinhLuong.Enabled = false;
-            this.mnuDangXuat.Enabled = false;
+            mnuBanVe.Enabled = false;
+            mnuQuanLy.Enabled = false;
+            mnuTinhLuong.Enabled = false;
+            mnuDangXuat.Enabled = false;
         }
 
         /// <summary>
@@ -136,9 +133,9 @@ namespace BusStation
         private void FormMain_Load(object sender, EventArgs e)
         {
             // Nếu người dùng chưa đăng nhập thì khóa tất cả chức năng trừ thoát chương trình
-            if (this.ActiveNhanVien == null)
+            if (NhanVienHienTai == null)
             {
-                disableFormMain();
+                voHieuHoaFormMain();
             }
 
             // Mở form yêu cầu đăng nhập khi khởi động chương trình
@@ -159,15 +156,15 @@ namespace BusStation
         public void dangXuat()
         {
             // Nếu người dùng đã đăng nhập thì đăng xuất tài khoản và tắt các chức năng
-            if (this.ActiveNhanVien != null)
+            if (NhanVienHienTai != null)
             {
-                this.activeNhanVien = null;
-                this.disableFormMain();
+                nhanVienHienTai = null;
+                voHieuHoaFormMain();
                 moForm("Login");
             }
             else
             {
-                this.mnuDangXuat.Enabled = false;
+                mnuDangXuat.Enabled = false;
             }
         }
 
@@ -184,7 +181,7 @@ namespace BusStation
         /// </summary>
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.ActiveNhanVien != null)
+            if (NhanVienHienTai != null)
             {
                 DialogResult result = MessageBox.Show("Bạn muốn thoát", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 

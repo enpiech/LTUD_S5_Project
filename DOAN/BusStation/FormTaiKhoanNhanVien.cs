@@ -221,26 +221,14 @@ namespace BusStation
         {
 
         }
-        //ham lay du lieu dua vao datagidview
-        xuLyDB xuly = new xuLyDB();
-        public DataTable getAllTKNV()
-        {
-            DataTable dtTKNV = new DataTable();
-            string nameSp = "SP_layTaiKhoanNhanVien";
-            SqlCommand cm = new SqlCommand(nameSp, xuLyDB.connect);
-            cm.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adepter = new SqlDataAdapter(cm);
-            adepter.Fill(dtTKNV);
-            xuLyDB.connect.Close();
 
-            dataGridView1.DataSource = dtTKNV;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            return dtTKNV;
-        }
         private void frmTaiKhoanNhanVien_Load(object sender, EventArgs e)
         {
-            getAllTKNV();
+            //gọi hàm để hiển thị
+            DB db = new DB();
+            db.moKetNoi();
+            dataGridView1.DataSource = db.layDuLieuTuBang("TaiKhoanNhanVien");
+            db.dongKetNoi();
         }
     }
 }

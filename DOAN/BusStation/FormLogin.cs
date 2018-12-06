@@ -52,49 +52,25 @@ namespace BusStation
             }
         }
 
-
-
         /// <summary>
         /// Truyền dữ liệu vào main form
         /// </summary>
         private void enableFormMain()
         {
-            ((frmMain)this.MdiParent).ActiveNhanVien = this.NhanVien;
+            NhanVien = new NhanVien("NV1", "QL");
+            ((frmMain)this.MdiParent).NhanVienHienTai = NhanVien;
+
             ((frmMain)this.MdiParent).enableFormMain();
         }
 
         /// <summary>
         /// Kiểm tra tài khoản nhân viên và mật khẩu rồi đăng nhập vào hệ thống
         /// </summary>
-        SqlConnection conn = new SqlConnection();
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            string sql = "SELECT *  FROM TaiKhoanNhanVien WHERE MaTK = @taikhoan AND MatKhau = @matkhau";
-            SqlCommand cm = new SqlCommand(sql,conn);
-            cm.Parameters.AddWithValue("@taikhoan", txtUser.Text);
-            cm.Parameters.AddWithValue("@matkhau", txtPassword.Text);
-
-            Login login = new Login(txtUser.Text, txtPassword.Text);
-            SqlDataReader dr = cm.ExecuteReader();
-            int count = 0;
-            while(dr.Read())
+            Login login = new Login();
+            if(login.isLoggedIn(txtTaiKhoan.Text, txtMatKhau.Text))
             {
-                count += 1;
-            }
-            if(count == 1)
-            {
-                MessageBox.Show("dang nhap thanh cong", "thong bao");
-                this.NhanVien = new NhanVien();
-
-                this.NhanVien.IsLogged = false;
-                this.NhanVien.MaNV = string.Empty;
-                this.NhanVien.TenNV = string.Empty;
-                this.NhanVien.LoaiNV = string.Empty;
-                this.NhanVien.Luong = 0;
-
-                this.NhanVien.LoaiNV = "QL";
-                this.NhanVien.IsLogged = true;
                 // Truyền dữ liệu vào form main
                 enableFormMain();
 
@@ -102,20 +78,11 @@ namespace BusStation
                 this.Close();
 
             }
-            else if(count > 1)
-            {
-                MessageBox.Show("Null");
-            }else
-            {
-                lblThongBao.Text = "sai ten tai khoan hoac mat khau! vui long kiem tra lai!";
-            }
-            conn.Close();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            conn.ConnectionString = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLyBenXe;Integrated Security=True";
-            txtPassword.UseSystemPasswordChar = true;
+            txtMatKhau.UseSystemPasswordChar = true;
         }
 
 

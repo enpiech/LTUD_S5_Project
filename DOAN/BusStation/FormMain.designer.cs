@@ -51,8 +51,8 @@
             this.mnuQuanLy});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mnuMain.Size = new System.Drawing.Size(754, 28);
+            this.mnuMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.mnuMain.Size = new System.Drawing.Size(1005, 30);
             this.mnuMain.TabIndex = 1;
             this.mnuMain.Text = "MainMenu";
             // 
@@ -67,14 +67,14 @@
             this.mnuTuyChon.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.mnuTuyChon.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.mnuTuyChon.Name = "mnuTuyChon";
-            this.mnuTuyChon.Size = new System.Drawing.Size(101, 24);
+            this.mnuTuyChon.Size = new System.Drawing.Size(119, 26);
             this.mnuTuyChon.Text = "Tùy Chọn";
             // 
             // mnuDangXuat
             // 
             this.mnuDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("mnuDangXuat.Image")));
             this.mnuDangXuat.Name = "mnuDangXuat";
-            this.mnuDangXuat.Size = new System.Drawing.Size(143, 24);
+            this.mnuDangXuat.Size = new System.Drawing.Size(167, 26);
             this.mnuDangXuat.Text = "Đăng Xuất";
             this.mnuDangXuat.Click += new System.EventHandler(this.mnuDangXuat_Click);
             // 
@@ -82,7 +82,7 @@
             // 
             this.mnuThoat.Image = ((System.Drawing.Image)(resources.GetObject("mnuThoat.Image")));
             this.mnuThoat.Name = "mnuThoat";
-            this.mnuThoat.Size = new System.Drawing.Size(143, 24);
+            this.mnuThoat.Size = new System.Drawing.Size(167, 26);
             this.mnuThoat.Text = "Thoát";
             this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
             // 
@@ -91,7 +91,7 @@
             this.mnuBanVe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuBanVe.Image = ((System.Drawing.Image)(resources.GetObject("mnuBanVe.Image")));
             this.mnuBanVe.Name = "mnuBanVe";
-            this.mnuBanVe.Size = new System.Drawing.Size(87, 24);
+            this.mnuBanVe.Size = new System.Drawing.Size(100, 26);
             this.mnuBanVe.Text = "Bán Vé";
             this.mnuBanVe.Click += new System.EventHandler(this.mnuBanVe_Click);
             // 
@@ -100,7 +100,7 @@
             this.mnuTinhLuong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuTinhLuong.Image = ((System.Drawing.Image)(resources.GetObject("mnuTinhLuong.Image")));
             this.mnuTinhLuong.Name = "mnuTinhLuong";
-            this.mnuTinhLuong.Size = new System.Drawing.Size(111, 24);
+            this.mnuTinhLuong.Size = new System.Drawing.Size(134, 26);
             this.mnuTinhLuong.Text = "Tính Lương";
             this.mnuTinhLuong.Click += new System.EventHandler(this.mnuTinhLuong_Click);
             // 
@@ -109,7 +109,7 @@
             this.mnuQuanLy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuQuanLy.Image = ((System.Drawing.Image)(resources.GetObject("mnuQuanLy.Image")));
             this.mnuQuanLy.Name = "mnuQuanLy";
-            this.mnuQuanLy.Size = new System.Drawing.Size(94, 24);
+            this.mnuQuanLy.Size = new System.Drawing.Size(109, 26);
             this.mnuQuanLy.Text = "Quản Lý";
             this.mnuQuanLy.Click += new System.EventHandler(this.mnuQuanLy_Click);
             // 
@@ -129,15 +129,15 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(754, 586);
+            this.ClientSize = new System.Drawing.Size(1005, 721);
             this.Controls.Add(this.mnuMain);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuMain;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMain";
             this.ShowIcon = false;
             this.Text = "FormMain";
