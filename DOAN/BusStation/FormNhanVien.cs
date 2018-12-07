@@ -13,6 +13,8 @@ namespace BusStation
 {
     public partial class frmNhanVien : Form
     {
+        DB db = new DB();
+
         public frmNhanVien()
         {
             InitializeComponent();
@@ -243,10 +245,8 @@ namespace BusStation
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             //gọi hàm để hiển thị
-            DB db = new DB();
-            db.moKetNoi();
+            
             dataGridView1.DataSource = db.layDuLieuTuBang("NhanVien");
-            db.dongKetNoi();
         }
     }
 }

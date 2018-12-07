@@ -45,81 +45,87 @@
             this.cboHangXe = new System.Windows.Forms.ComboBox();
             this.cboLoaiXe = new System.Windows.Forms.ComboBox();
             this.cboGhe = new System.Windows.Forms.ComboBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gbThongTin = new System.Windows.Forms.GroupBox();
             this.lblUngDungMuaVe = new System.Windows.Forms.Label();
             this.gbLuaChon = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gbThongTin.SuspendLayout();
             this.gbLuaChon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTenKH
             // 
             this.lblTenKH.AutoSize = true;
-            this.lblTenKH.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenKH.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenKH.ForeColor = System.Drawing.Color.Red;
             this.lblTenKH.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTenKH.Location = new System.Drawing.Point(3, 23);
+            this.lblTenKH.Location = new System.Drawing.Point(8, 27);
+            this.lblTenKH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTenKH.Name = "lblTenKH";
-            this.lblTenKH.Size = new System.Drawing.Size(98, 15);
+            this.lblTenKH.Size = new System.Drawing.Size(149, 22);
             this.lblTenKH.TabIndex = 0;
             this.lblTenKH.Text = "Tên Khách Hàng";
             // 
             // lblCmnd
             // 
             this.lblCmnd.AutoSize = true;
-            this.lblCmnd.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCmnd.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCmnd.ForeColor = System.Drawing.Color.Red;
-            this.lblCmnd.Location = new System.Drawing.Point(215, 23);
+            this.lblCmnd.Location = new System.Drawing.Point(250, 27);
+            this.lblCmnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCmnd.Name = "lblCmnd";
-            this.lblCmnd.Size = new System.Drawing.Size(45, 15);
+            this.lblCmnd.Size = new System.Drawing.Size(70, 22);
             this.lblCmnd.TabIndex = 2;
             this.lblCmnd.Text = "CMND";
             // 
             // lblSoDienThoai
             // 
             this.lblSoDienThoai.AutoSize = true;
-            this.lblSoDienThoai.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoDienThoai.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoDienThoai.ForeColor = System.Drawing.Color.Red;
-            this.lblSoDienThoai.Location = new System.Drawing.Point(423, 23);
+            this.lblSoDienThoai.Location = new System.Drawing.Point(493, 27);
+            this.lblSoDienThoai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSoDienThoai.Name = "lblSoDienThoai";
-            this.lblSoDienThoai.Size = new System.Drawing.Size(84, 15);
+            this.lblSoDienThoai.Size = new System.Drawing.Size(127, 22);
             this.lblSoDienThoai.TabIndex = 4;
             this.lblSoDienThoai.Text = "Số Điện Thoại";
             // 
             // lblHangXe
             // 
             this.lblHangXe.AutoSize = true;
-            this.lblHangXe.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHangXe.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHangXe.ForeColor = System.Drawing.Color.Red;
-            this.lblHangXe.Location = new System.Drawing.Point(10, 104);
+            this.lblHangXe.Location = new System.Drawing.Point(8, 121);
+            this.lblHangXe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHangXe.Name = "lblHangXe";
-            this.lblHangXe.Size = new System.Drawing.Size(54, 15);
+            this.lblHangXe.Size = new System.Drawing.Size(81, 22);
             this.lblHangXe.TabIndex = 6;
             this.lblHangXe.Text = "Hãng Xe";
             // 
             // lblLoaiXe
             // 
             this.lblLoaiXe.AutoSize = true;
-            this.lblLoaiXe.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoaiXe.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoaiXe.ForeColor = System.Drawing.Color.Red;
-            this.lblLoaiXe.Location = new System.Drawing.Point(215, 104);
+            this.lblLoaiXe.Location = new System.Drawing.Point(250, 121);
+            this.lblLoaiXe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLoaiXe.Name = "lblLoaiXe";
-            this.lblLoaiXe.Size = new System.Drawing.Size(49, 15);
+            this.lblLoaiXe.Size = new System.Drawing.Size(74, 22);
             this.lblLoaiXe.TabIndex = 8;
             this.lblLoaiXe.Text = "Loại Xe";
             // 
             // lblSoGhe
             // 
             this.lblSoGhe.AutoSize = true;
-            this.lblSoGhe.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoGhe.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoGhe.ForeColor = System.Drawing.Color.Red;
-            this.lblSoGhe.Location = new System.Drawing.Point(427, 104);
+            this.lblSoGhe.Location = new System.Drawing.Point(493, 121);
+            this.lblSoGhe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSoGhe.Name = "lblSoGhe";
-            this.lblSoGhe.Size = new System.Drawing.Size(46, 15);
+            this.lblSoGhe.Size = new System.Drawing.Size(70, 22);
             this.lblSoGhe.TabIndex = 10;
             this.lblSoGhe.Text = "Số Ghế";
             // 
@@ -131,9 +137,10 @@
             this.btnMuaVe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMuaVe.ImageKey = "tinhTien.png";
             this.btnMuaVe.ImageList = this.imglBanVe;
-            this.btnMuaVe.Location = new System.Drawing.Point(102, 23);
+            this.btnMuaVe.Location = new System.Drawing.Point(8, 28);
+            this.btnMuaVe.Margin = new System.Windows.Forms.Padding(4);
             this.btnMuaVe.Name = "btnMuaVe";
-            this.btnMuaVe.Size = new System.Drawing.Size(110, 54);
+            this.btnMuaVe.Size = new System.Drawing.Size(147, 55);
             this.btnMuaVe.TabIndex = 12;
             this.btnMuaVe.Text = "Mua Vé";
             this.btnMuaVe.UseVisualStyleBackColor = false;
@@ -172,9 +179,10 @@
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThoat.ImageKey = "dangXuat.jpg";
             this.btnThoat.ImageList = this.imglBanVe;
-            this.btnThoat.Location = new System.Drawing.Point(102, 91);
+            this.btnThoat.Location = new System.Drawing.Point(8, 124);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(4);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(110, 58);
+            this.btnThoat.Size = new System.Drawing.Size(147, 52);
             this.btnThoat.TabIndex = 13;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
@@ -182,28 +190,31 @@
             // 
             // txtTenKH
             // 
-            this.txtTenKH.Location = new System.Drawing.Point(6, 41);
+            this.txtTenKH.Location = new System.Drawing.Point(12, 54);
+            this.txtTenKH.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenKH.Multiline = true;
             this.txtTenKH.Name = "txtTenKH";
-            this.txtTenKH.Size = new System.Drawing.Size(157, 27);
+            this.txtTenKH.Size = new System.Drawing.Size(208, 32);
             this.txtTenKH.TabIndex = 1;
             this.txtTenKH.TextChanged += new System.EventHandler(this.txtTenKH_TextChanged);
             // 
             // txtCMND
             // 
-            this.txtCMND.Location = new System.Drawing.Point(214, 41);
+            this.txtCMND.Location = new System.Drawing.Point(254, 53);
+            this.txtCMND.Margin = new System.Windows.Forms.Padding(4);
             this.txtCMND.Multiline = true;
             this.txtCMND.Name = "txtCMND";
-            this.txtCMND.Size = new System.Drawing.Size(157, 27);
+            this.txtCMND.Size = new System.Drawing.Size(208, 32);
             this.txtCMND.TabIndex = 3;
             this.txtCMND.TextChanged += new System.EventHandler(this.txtCMND_TextChanged);
             // 
             // txtSoDienThoai
             // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(426, 41);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(497, 54);
+            this.txtSoDienThoai.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoDienThoai.Multiline = true;
             this.txtSoDienThoai.Name = "txtSoDienThoai";
-            this.txtSoDienThoai.Size = new System.Drawing.Size(157, 27);
+            this.txtSoDienThoai.Size = new System.Drawing.Size(208, 32);
             this.txtSoDienThoai.TabIndex = 5;
             this.txtSoDienThoai.TextChanged += new System.EventHandler(this.txtSoDienThoai_TextChanged);
             // 
@@ -217,9 +228,10 @@
             "Ngọc Thành",
             "Hoàng Tuấn",
             "Phan Huy"});
-            this.cboHangXe.Location = new System.Drawing.Point(10, 122);
+            this.cboHangXe.Location = new System.Drawing.Point(8, 147);
+            this.cboHangXe.Margin = new System.Windows.Forms.Padding(4);
             this.cboHangXe.Name = "cboHangXe";
-            this.cboHangXe.Size = new System.Drawing.Size(157, 27);
+            this.cboHangXe.Size = new System.Drawing.Size(208, 31);
             this.cboHangXe.TabIndex = 7;
             // 
             // cboLoaiXe
@@ -229,9 +241,10 @@
             this.cboLoaiXe.Items.AddRange(new object[] {
             "Xe Ngồi",
             "Xe Nằm"});
-            this.cboLoaiXe.Location = new System.Drawing.Point(218, 122);
+            this.cboLoaiXe.Location = new System.Drawing.Point(254, 147);
+            this.cboLoaiXe.Margin = new System.Windows.Forms.Padding(4);
             this.cboLoaiXe.Name = "cboLoaiXe";
-            this.cboLoaiXe.Size = new System.Drawing.Size(157, 27);
+            this.cboLoaiXe.Size = new System.Drawing.Size(208, 31);
             this.cboLoaiXe.TabIndex = 9;
             // 
             // cboGhe
@@ -269,22 +282,20 @@
             "13b",
             "14b",
             "15b"});
-            this.cboGhe.Location = new System.Drawing.Point(430, 122);
+            this.cboGhe.Location = new System.Drawing.Point(497, 147);
+            this.cboGhe.Margin = new System.Windows.Forms.Padding(4);
             this.cboGhe.Name = "cboGhe";
-            this.cboGhe.Size = new System.Drawing.Size(157, 27);
+            this.cboGhe.Size = new System.Drawing.Size(208, 31);
             this.cboGhe.TabIndex = 11;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 211);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 245);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(995, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(910, 230);
             this.dataGridView1.TabIndex = 14;
             // 
             // gbThongTin
@@ -303,9 +314,11 @@
             this.gbThongTin.Controls.Add(this.lblLoaiXe);
             this.gbThongTin.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbThongTin.ForeColor = System.Drawing.Color.Red;
-            this.gbThongTin.Location = new System.Drawing.Point(13, 43);
+            this.gbThongTin.Location = new System.Drawing.Point(13, 51);
+            this.gbThongTin.Margin = new System.Windows.Forms.Padding(4);
             this.gbThongTin.Name = "gbThongTin";
-            this.gbThongTin.Size = new System.Drawing.Size(623, 162);
+            this.gbThongTin.Padding = new System.Windows.Forms.Padding(4);
+            this.gbThongTin.Size = new System.Drawing.Size(713, 186);
             this.gbThongTin.TabIndex = 15;
             this.gbThongTin.TabStop = false;
             this.gbThongTin.Text = "Thông Tin";
@@ -315,9 +328,10 @@
             this.lblUngDungMuaVe.AutoSize = true;
             this.lblUngDungMuaVe.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUngDungMuaVe.ForeColor = System.Drawing.Color.Red;
-            this.lblUngDungMuaVe.Location = new System.Drawing.Point(186, 9);
+            this.lblUngDungMuaVe.Location = new System.Drawing.Point(248, 11);
+            this.lblUngDungMuaVe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUngDungMuaVe.Name = "lblUngDungMuaVe";
-            this.lblUngDungMuaVe.Size = new System.Drawing.Size(232, 31);
+            this.lblUngDungMuaVe.Size = new System.Drawing.Size(292, 38);
             this.lblUngDungMuaVe.TabIndex = 16;
             this.lblUngDungMuaVe.Text = "Ứng Dụng Mua Vé";
             // 
@@ -327,34 +341,41 @@
             this.gbLuaChon.Controls.Add(this.btnMuaVe);
             this.gbLuaChon.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbLuaChon.ForeColor = System.Drawing.Color.Red;
-            this.gbLuaChon.Location = new System.Drawing.Point(666, 43);
+            this.gbLuaChon.Location = new System.Drawing.Point(734, 53);
+            this.gbLuaChon.Margin = new System.Windows.Forms.Padding(4);
             this.gbLuaChon.Name = "gbLuaChon";
-            this.gbLuaChon.Size = new System.Drawing.Size(307, 162);
+            this.gbLuaChon.Padding = new System.Windows.Forms.Padding(4);
+            this.gbLuaChon.Size = new System.Drawing.Size(163, 184);
             this.gbLuaChon.TabIndex = 17;
             this.gbLuaChon.TabStop = false;
             this.gbLuaChon.Text = "Lựa Chọn";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmBanVe
             // 
             this.AcceptButton = this.btnMuaVe;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnThoat;
-            this.ClientSize = new System.Drawing.Size(995, 461);
+            this.ClientSize = new System.Drawing.Size(910, 475);
             this.ControlBox = false;
             this.Controls.Add(this.gbLuaChon);
             this.Controls.Add(this.lblUngDungMuaVe);
             this.Controls.Add(this.gbThongTin);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBanVe";
             this.Text = "Mua Vé";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MuaVe_FormClosing);
             this.Load += new System.EventHandler(this.frmBanVe_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.gbThongTin.ResumeLayout(false);
             this.gbThongTin.PerformLayout();
             this.gbLuaChon.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,11 +397,11 @@
         private System.Windows.Forms.ComboBox cboHangXe;
         private System.Windows.Forms.ComboBox cboLoaiXe;
         private System.Windows.Forms.ComboBox cboGhe;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblUngDungMuaVe;
         private System.Windows.Forms.GroupBox gbThongTin;
         private System.Windows.Forms.GroupBox gbLuaChon;
         private System.Windows.Forms.ImageList imglBanVe;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

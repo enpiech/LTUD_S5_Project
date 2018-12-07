@@ -24,14 +24,14 @@ namespace BusStation
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
         /// <summary>
         /// Mở kết nối mới
         /// </summary>
-        public void moKetNoi()
+        private void moKetNoi()
         {
             try
             {
@@ -39,14 +39,14 @@ namespace BusStation
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
         /// <summary>
         /// Đóng kết nối hiện tại
         /// </summary>
-        public void dongKetNoi()
+        private void dongKetNoi()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace BusStation
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -72,6 +72,8 @@ namespace BusStation
 
             try
             {
+                moKetNoi();
+
                 SqlCommand cmd = new SqlCommand(tensp, connectDB);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@maTK", taiKhoan);
@@ -85,12 +87,15 @@ namespace BusStation
                 {
                     soLuongKetQua += 1;
                 }
+
+                dongKetNoi();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
             }
-            Console.WriteLine(soLuongKetQua);
+
+            // Nếu tìm được thì xác nhận đăng nhập
             xacNhan = (soLuongKetQua >= 1) ? true : false;
 
             return xacNhan;
@@ -108,16 +113,20 @@ namespace BusStation
 
             try
             {
+                moKetNoi();
+
                 SqlCommand command = new SqlCommand(tensp, connectDB);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@maNV", maNV);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(bangTraVe);
+
+                dongKetNoi();
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
             }
 
             return bangTraVe;
@@ -133,12 +142,23 @@ namespace BusStation
             DataTable bangTraVe = new DataTable();
             string tensp = "sp_layDuLieuTuBang";
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@tenBang", tenBang);
+            try
+            {
+                moKetNoi();
 
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            adapter.Fill(bangTraVe);
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", tenBang);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(bangTraVe);
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
+            }
 
             return bangTraVe;
         }
@@ -151,12 +171,25 @@ namespace BusStation
         public int xoaHangXe(string maHangXe)
         {
             string tensp = "sp_xoaHangXe";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maHangXe", maHangXe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maHangXe", maHangXe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+
             return exc;
         }
 
@@ -168,12 +201,24 @@ namespace BusStation
         public int xoaKhachHang(string maHangXe)
         {
             string tensp = "sp_xoaHangXe";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maHangXe", maHangXe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maHangXe", maHangXe);
+
+                 exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -185,12 +230,24 @@ namespace BusStation
         public int xoaLoaiNV(string maLoaiNV)
         {
             string tensp = "sp_xoaLoaiNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -202,12 +259,25 @@ namespace BusStation
         public int xoaLoaiXe(string maLoaiXe)
         {
             string tensp = "sp_xoaLoaiXe";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+
             return exc;
         }
 
@@ -219,12 +289,25 @@ namespace BusStation
         public int xoaNhanVien(string maNV)
         {
             string tensp = "sp_xoaNhanVien";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maNV", maNV);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maNV", maNV);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+
             return exc;
         }
 
@@ -236,12 +319,24 @@ namespace BusStation
         public int xoaTaiKhoanNV(string maNV)
         {
             string tensp = "sp_xoaTaiKhoanNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maNV", maNV);
+            try
+            {
+                moKetNoi();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maNV", maNV);
 
-            int exc = command.ExecuteNonQuery();
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+
             return exc;
         }
 
@@ -256,15 +351,27 @@ namespace BusStation
         public int themHangXe(string maHangXe, string tenHangXe, int soLuongXe, double chiPhi)
         {
             string tensp = "sp_themHangXe";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maHangXe", maHangXe);
-            command.Parameters.AddWithValue("@tenHangXe", tenHangXe);
-            command.Parameters.AddWithValue("@soLuongXe", soLuongXe);
-            command.Parameters.AddWithValue("@chiPhiThueBai", chiPhi);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maHangXe", maHangXe);
+                command.Parameters.AddWithValue("@tenHangXe", tenHangXe);
+                command.Parameters.AddWithValue("@soLuongXe", soLuongXe);
+                command.Parameters.AddWithValue("@chiPhiThueBai", chiPhi);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -281,17 +388,29 @@ namespace BusStation
         public int themKhachHang(string maKH, string tenKH, string cmnd , string sdt, string maXe, string maGhe)
         {
             string tensp = "sp_themKhachHang";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maKH", maKH);
-            command.Parameters.AddWithValue("@tenKH", tenKH);
-            command.Parameters.AddWithValue("@cmnd", cmnd);
-            command.Parameters.AddWithValue("@soDienThoai", sdt);
-            command.Parameters.AddWithValue("@maXe", maXe);
-            command.Parameters.AddWithValue("@maGhe", maGhe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maKH", maKH);
+                command.Parameters.AddWithValue("@tenKH", tenKH);
+                command.Parameters.AddWithValue("@cmnd", cmnd);
+                command.Parameters.AddWithValue("@soDienThoai", sdt);
+                command.Parameters.AddWithValue("@maXe", maXe);
+                command.Parameters.AddWithValue("@maGhe", maGhe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -305,14 +424,26 @@ namespace BusStation
         public int themLoaiNV(string maLoaiNV, string tenLoaiNV, double luongCoBan)
         {
             string tensp = "sp_themNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
-            command.Parameters.AddWithValue("@tenLoaiNV", tenLoaiNV);
-            command.Parameters.AddWithValue("@luongCoBan", luongCoBan);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
+                command.Parameters.AddWithValue("@tenLoaiNV", tenLoaiNV);
+                command.Parameters.AddWithValue("@luongCoBan", luongCoBan);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -325,13 +456,25 @@ namespace BusStation
         public int themLoaiXe(string maLoaiXe, string tenLoaiXe)
         {
             string tensp = "sp_themNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
-            command.Parameters.AddWithValue("@tenLoaiXe", tenLoaiXe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
+                command.Parameters.AddWithValue("@tenLoaiXe", tenLoaiXe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -351,20 +494,32 @@ namespace BusStation
         public int themNhanVien(string maNV, string tenNV, DateTime ngaySinh, string diaChi, string queQuan, DateTime ngayBatDau, string maLoaiNV, string sdt, double luong)
         {
             string tensp = "sp_themNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maNV", maNV);
-            command.Parameters.AddWithValue("@tenNV", tenNV);
-            command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
-            command.Parameters.AddWithValue("@diaChi", diaChi);
-            command.Parameters.AddWithValue("@queQuan", queQuan);
-            command.Parameters.AddWithValue("@ngayBatDau", ngayBatDau);
-            command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
-            command.Parameters.AddWithValue("@soDienThoai", sdt);
-            command.Parameters.AddWithValue("@luong", luong);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@tenNV", tenNV);
+                command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
+                command.Parameters.AddWithValue("@diaChi", diaChi);
+                command.Parameters.AddWithValue("@queQuan", queQuan);
+                command.Parameters.AddWithValue("@ngayBatDau", ngayBatDau);
+                command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
+                command.Parameters.AddWithValue("@soDienThoai", sdt);
+                command.Parameters.AddWithValue("@luong", luong);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -378,14 +533,25 @@ namespace BusStation
         public int themTaiKhoanNV(string maNV, string maTK, string matKhau)
         {
             string tensp = "sp_themTaiKhoanNV";
+            int exc = -1;
+            try
+            {
+                moKetNoi();
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maNV", maNV);
-            command.Parameters.AddWithValue("@maTK", maTK);
-            command.Parameters.AddWithValue("@matKhau", matKhau);
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@maTK", maTK);
+                command.Parameters.AddWithValue("@matKhau", matKhau);
 
-            int exc = command.ExecuteNonQuery();
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -406,21 +572,33 @@ namespace BusStation
         public int themXe(string maXe, string maHangXe, string soXe, string maLoaiXe, string hanhTrinh, int gia, DateTime gioXuatPhat, int soLuongGhe, int soLuongKhachHang, string maNVLaiXe)
         {
             string tensp = "sp_themTaiKhoanNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maXe", maXe);
-            command.Parameters.AddWithValue("@maHangXe", maHangXe);
-            command.Parameters.AddWithValue("@soXe", soXe);
-            command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
-            command.Parameters.AddWithValue("@hanhTrinh", hanhTrinh);
-            command.Parameters.AddWithValue("@gia", gia);
-            command.Parameters.AddWithValue("@gioXuatPhat", gioXuatPhat);
-            command.Parameters.AddWithValue("@soLuongGhe", soLuongGhe);
-            command.Parameters.AddWithValue("@soLuongKhachHang", soLuongKhachHang);
-            command.Parameters.AddWithValue("@maNVLaiXe", maNVLaiXe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maXe", maXe);
+                command.Parameters.AddWithValue("@maHangXe", maHangXe);
+                command.Parameters.AddWithValue("@soXe", soXe);
+                command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
+                command.Parameters.AddWithValue("@hanhTrinh", hanhTrinh);
+                command.Parameters.AddWithValue("@gia", gia);
+                command.Parameters.AddWithValue("@gioXuatPhat", gioXuatPhat);
+                command.Parameters.AddWithValue("@soLuongGhe", soLuongGhe);
+                command.Parameters.AddWithValue("@soLuongKhachHang", soLuongKhachHang);
+                command.Parameters.AddWithValue("@maNVLaiXe", maNVLaiXe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -435,15 +613,27 @@ namespace BusStation
         public int suaHangXe(string maHangXe, string tenHangXe, int soLuongXe, double chiPhi)
         {
             string tensp = "sp_suaHangXe";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maHangXe", maHangXe);
-            command.Parameters.AddWithValue("@tenHangXe", tenHangXe);
-            command.Parameters.AddWithValue("@soLuongXe", soLuongXe);
-            command.Parameters.AddWithValue("@chiPhiThueBai", chiPhi);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maHangXe", maHangXe);
+                command.Parameters.AddWithValue("@tenHangXe", tenHangXe);
+                command.Parameters.AddWithValue("@soLuongXe", soLuongXe);
+                command.Parameters.AddWithValue("@chiPhiThueBai", chiPhi);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -460,17 +650,29 @@ namespace BusStation
         public int suaKhachHang(string maKH, string tenKH, string cmnd, string sdt, string maXe, string maGhe)
         {
             string tensp = "sp_suaKhachHang";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maKH", maKH);
-            command.Parameters.AddWithValue("@tenKH", tenKH);
-            command.Parameters.AddWithValue("@cmnd", cmnd);
-            command.Parameters.AddWithValue("@soDienThoai", sdt);
-            command.Parameters.AddWithValue("@maXe", maXe);
-            command.Parameters.AddWithValue("@maGhe", maGhe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maKH", maKH);
+                command.Parameters.AddWithValue("@tenKH", tenKH);
+                command.Parameters.AddWithValue("@cmnd", cmnd);
+                command.Parameters.AddWithValue("@soDienThoai", sdt);
+                command.Parameters.AddWithValue("@maXe", maXe);
+                command.Parameters.AddWithValue("@maGhe", maGhe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -484,14 +686,26 @@ namespace BusStation
         public int suaLoaiNV(string maLoaiNV, string tenLoaiNV, double luongCoBan)
         {
             string tensp = "sp_suaNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
-            command.Parameters.AddWithValue("@tenLoaiNV", tenLoaiNV);
-            command.Parameters.AddWithValue("@luongCoBan", luongCoBan);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
+                command.Parameters.AddWithValue("@tenLoaiNV", tenLoaiNV);
+                command.Parameters.AddWithValue("@luongCoBan", luongCoBan);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -504,13 +718,25 @@ namespace BusStation
         public int suaLoaiXe(string maLoaiXe, string tenLoaiXe)
         {
             string tensp = "sp_suaNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
-            command.Parameters.AddWithValue("@tenLoaiXe", tenLoaiXe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
+                command.Parameters.AddWithValue("@tenLoaiXe", tenLoaiXe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -530,20 +756,32 @@ namespace BusStation
         public int suaNhanVien(string maNV, string tenNV, DateTime ngaySinh, string diaChi, string queQuan, DateTime ngayBatDau, string maLoaiNV, string sdt, double luong)
         {
             string tensp = "sp_suaNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maNV", maNV);
-            command.Parameters.AddWithValue("@tenNV", tenNV);
-            command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
-            command.Parameters.AddWithValue("@diaChi", diaChi);
-            command.Parameters.AddWithValue("@queQuan", queQuan);
-            command.Parameters.AddWithValue("@ngayBatDau", ngayBatDau);
-            command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
-            command.Parameters.AddWithValue("@soDienThoai", sdt);
-            command.Parameters.AddWithValue("@luong", luong);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@tenNV", tenNV);
+                command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
+                command.Parameters.AddWithValue("@diaChi", diaChi);
+                command.Parameters.AddWithValue("@queQuan", queQuan);
+                command.Parameters.AddWithValue("@ngayBatDau", ngayBatDau);
+                command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
+                command.Parameters.AddWithValue("@soDienThoai", sdt);
+                command.Parameters.AddWithValue("@luong", luong);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -557,14 +795,26 @@ namespace BusStation
         public int suaTaiKhoanNV(string maNV, string maTK, string matKhau)
         {
             string tensp = "sp_suaTaiKhoanNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maNV", maNV);
-            command.Parameters.AddWithValue("@maTK", maTK);
-            command.Parameters.AddWithValue("@matKhau", matKhau);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@maTK", maTK);
+                command.Parameters.AddWithValue("@matKhau", matKhau);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
             return exc;
         }
 
@@ -585,21 +835,33 @@ namespace BusStation
         public int suaXe(string maXe, string maHangXe, string soXe, string maLoaiXe, string hanhTrinh, int gia, DateTime gioXuatPhat, int soLuongGhe, int soLuongKhachHang, string maNVLaiXe)
         {
             string tensp = "sp_suaTaiKhoanNV";
+            int exc = -1;
 
-            SqlCommand command = new SqlCommand(tensp, connectDB);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@maXe", maXe);
-            command.Parameters.AddWithValue("@maHangXe", maHangXe);
-            command.Parameters.AddWithValue("@soXe", soXe);
-            command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
-            command.Parameters.AddWithValue("@hanhTrinh", hanhTrinh);
-            command.Parameters.AddWithValue("@gia", gia);
-            command.Parameters.AddWithValue("@gioXuatPhat", gioXuatPhat);
-            command.Parameters.AddWithValue("@soLuongGhe", soLuongGhe);
-            command.Parameters.AddWithValue("@soLuongKhachHang", soLuongKhachHang);
-            command.Parameters.AddWithValue("@maNVLaiXe", maNVLaiXe);
+            try
+            {
+                moKetNoi();
 
-            int exc = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maXe", maXe);
+                command.Parameters.AddWithValue("@maHangXe", maHangXe);
+                command.Parameters.AddWithValue("@soXe", soXe);
+                command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
+                command.Parameters.AddWithValue("@hanhTrinh", hanhTrinh);
+                command.Parameters.AddWithValue("@gia", gia);
+                command.Parameters.AddWithValue("@gioXuatPhat", gioXuatPhat);
+                command.Parameters.AddWithValue("@soLuongGhe", soLuongGhe);
+                command.Parameters.AddWithValue("@soLuongKhachHang", soLuongKhachHang);
+                command.Parameters.AddWithValue("@maNVLaiXe", maNVLaiXe);
+
+                exc = command.ExecuteNonQuery();
+
+                dongKetNoi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
             return exc;
         }
 

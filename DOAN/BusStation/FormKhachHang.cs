@@ -14,9 +14,30 @@ namespace BusStation
 {
     public partial class frmKhachHang : Form
     {
+        private const string TEN_BANG = "KhachHang";
+        DB db = new DB();
+
         public frmKhachHang()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Lấy dữ liệu từ csdl lên view khi load form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmKhachHang_Load(object sender, EventArgs e)
+        {
+            DB.dgv_capNhat(dgvKhachHang, TEN_BANG);
+        }
+
+        /// <summary>
+        /// Lấy dữ liệu từ csdl
+        /// </summary>
+        private void capNhatDGV()
+        {
+            DB.dgv_capNhat(dgvKhachHang, TEN_BANG);
         }
 
         /// <summary>
@@ -24,11 +45,22 @@ namespace BusStation
         /// </summary>
         private bool themKhachHang()
         {
+            // Lấy dữ liệu từ các control
+            string maKH = this.txtMaKhachHang.Text;
             string tenKhachHang = this.txtTenKhachHang.Text;
             string cmnd = this.txtCmnd.Text;
             string soDienThoai = this.txtSoDienThoai.Text;
             string maXe = this.cboMaXe.Text;
             string maGhe = this.txtMaGhe.Text;
+
+            // Thêm dữ liệu mới vào csdl
+            if (db.themKhachHang(maKH, tenKhachHang, cmnd, soDienThoai, maXe, maGhe) == -1)
+            {
+                return true;
+            }
+
+            // Cập nhật lại view
+            capNhatDGV();
 
             return false;
         }
@@ -38,11 +70,23 @@ namespace BusStation
         /// </summary>
         private bool suaKhachHang()
         {
+            // Lấy dữ liệu từ các control
+            string maKH = this.txtMaKhachHang.Text;
             string tenKhachHang = this.txtTenKhachHang.Text;
             string cmnd = this.txtCmnd.Text;
             string soDienThoai = this.txtSoDienThoai.Text;
             string maXe = this.cboMaXe.Text;
             string maGhe = this.txtMaGhe.Text;
+
+            // Thêm dữ liệu mới vào csdl
+
+            if (db.suaKhachHang(maKH, tenKhachHang, cmnd, soDienThoai, maXe, maGhe) == -1)
+            {
+                return true;
+            }
+
+            // Cập nhật lại view
+            capNhatDGV();
 
             return false;
         }
@@ -52,91 +96,65 @@ namespace BusStation
         /// </summary>
         private bool xoaKhachHang()
         {
-            string tenKhachHang = this.txtTenKhachHang.Text;
+            string maKhachHang = this.txtMaKhachHang.Text;
+
+            if (db.xoaKhachHang(maKhachHang) == -1)
+            {
+                return true;
+            }
 
             return false;
         }
 
         /// <summary>
-        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
-        /// </summary>
-        private bool stringValidator(string input)
-        {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra nếu chuỗi nhập vào là số
-        /// </summary>
-        private bool integerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Kiểm tra nếu người dùng nhập dữ liệu bị lỗi
         /// </summary>
-        private bool isError()
+        private bool coLoi()
         {
             string tenKhachHang = this.txtTenKhachHang.Text.Trim();
             string cmnd = this.txtCmnd.Text.Trim();
             string sdt = this.txtSoDienThoai.Text.Trim();
             string maGhe = this.txtMaGhe.Text.Trim();
 
-            if (!stringValidator(tenKhachHang) || tenKhachHang == "")
+            if (!KiemTraNhapLieu.khongRong(tenKhachHang))
             {
-                MessageBox.Show("Tên không hợp lệ, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else if (!integerValidator(cmnd) && (cmnd.Length != 9 || cmnd.Length != 12))
+            if (!KiemTraNhapLieu.laCMND(cmnd))
             {
-                MessageBox.Show("CMND không hợp lệ, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else if (!integerValidator(sdt) && (sdt.Length != 9 || cmnd.Length != 10))
+            else if (!KiemTraNhapLieu.laSoDienThoai(sdt))
             {
-                MessageBox.Show("Số điện thoại không hợp lệ, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else if (maGhe.Length < 3 || maGhe.Length > 4)
+            else if (!KiemTraNhapLieu.khongRong(maGhe))
             {
-                MessageBox.Show("Mã ghế không hợp lệ, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
+
             return false;
         }
 
         /// <summary>
         /// Kiểm tra lỗi rồi thêm khách hàng mới
         /// </summary>
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem đã nhập tên khách hàng
-            if (!isError())
+            if (!coLoi())
             { 
                 if (themKhachHang())
                 {
-                    MessageBox.Show("Thêm khách hàng mới thành công!");
+                    MessageBox.Show(ThongBao.themThanhCong);
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm khách hàng!");
+                    MessageBox.Show(ThongBao.khongTheThem);
                 }
             }
         }
@@ -144,34 +162,26 @@ namespace BusStation
         /// <summary>
         /// Trở về form chọn bảng
         /// </summary>
-        private void btnBack_Click(object sender, EventArgs e)
+        private void btnTroVe_Click(object sender, EventArgs e)
         {
-            foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
-            {
-                if (form.Text == "Quản Lý")
-                {
-                    form.Visible = true;
-                    break;
-                }
-            }
             this.Close();
         }
 
         /// <summary>
         /// Cập nhật dữ liệu
         /// </summary>
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnCapNhat_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem đã nhập tên khách hàng
-            if (!isError())
+            if (!coLoi())
             {
                 if (suaKhachHang())
                 {
-                    MessageBox.Show("Thêm khách hàng mới thành công!");
+                    MessageBox.Show(ThongBao.suaThanhCong);
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm khách hàng!");
+                    MessageBox.Show(ThongBao.khongTheSua);
                 }
             }
         }
@@ -181,11 +191,11 @@ namespace BusStation
         /// </summary>
         private bool deleteConfirm()
         {
-            string tenKhachHang = this.txtTenKhachHang.Text;
+            string maKH = this.txtMaKhachHang.Text;
 
-            if (tenKhachHang == "")
+            if (!KiemTraNhapLieu.khongRong(maKH))
             {
-                MessageBox.Show("Vui lòng chọn khách hàng muốn xóa!");
+                MessageBox.Show(ThongBao.chonTruocKhiXoa);
                 return false;
             }
             else
@@ -204,29 +214,21 @@ namespace BusStation
         /// <summary>
         /// Xóa khách hàng đã chọn
         /// </summary>
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
             if (deleteConfirm())
             {
                 // Kiểm tra nếu xóa thành công
                 if (xoaKhachHang())
                 {
-                    MessageBox.Show("Xóa thành công!");
+                    MessageBox.Show(ThongBao.xoaThanhCong);
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi phát sinh, không thể xóa!");
+                    MessageBox.Show(ThongBao.khongTheXoa);
                 }
             }
         }
-        
-        private void frmKhachHang_Load(object sender, EventArgs e)
-        {
-            //gọi hàm để hiển thị
-            DB db = new DB();
-            db.moKetNoi();
-            dataGridView1.DataSource = db.layDuLieuTuBang("KhachHang");
-            db.dongKetNoi();
-        }
+ 
     }
 }

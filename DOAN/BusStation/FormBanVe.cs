@@ -14,31 +14,19 @@ namespace BusStation
 {
     public partial class frmBanVe : Form
     {
+        DB db = new DB();
+
         public frmBanVe()
         {
             InitializeComponent();
         }
-        /// <summary>
-        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
-        /// </summary>
-        private bool stringValidator(string input)
-        {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+
         private void txtTenKH_TextChanged(object sender, EventArgs e)
         {
-            Control ctrl = (Control)sender;
-            if (stringValidator(txtTenKH.Text))
+            Control ctrl = (Control) sender;
+            if (KiemTraNhapLieu.laChuoi(txtTenKH.Text))
             {
-                errorProvider1.SetError(txtTenKH, "không nhập được số");
+                errorProvider1.SetError(ctrl, ThongBao.duLieuKhongPhuHop);
                 txtTenKH.Clear();
                 txtTenKH.Focus();
             }
@@ -52,25 +40,11 @@ namespace BusStation
                 errorProvider1.Clear();
             }
         }
-        /// <summary>
-        /// Kiểm tra nếu chuỗi nhập vào là số
-        /// </summary>
-        private bool integerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+
         private void txtCMND_TextChanged(object sender, EventArgs e)
         {
             Control ctrl = (Control)sender;
-            if (integerValidator(txtCMND.Text))
+            if (KiemTraNhapLieu.laSoNguyen(txtCMND.Text))
             {
                 errorProvider1.SetError(txtCMND, "không được nhập chữ");
                 txtCMND.Clear();
@@ -91,7 +65,7 @@ namespace BusStation
         private void txtSoDienThoai_TextChanged(object sender, EventArgs e)
         {
             Control ctrl = (Control)sender;
-            if (integerValidator(txtSoDienThoai.Text))
+            if (KiemTraNhapLieu.laSoNguyen(txtSoDienThoai.Text))
             {
                 errorProvider1.SetError(txtSoDienThoai, "không được nhập chữ");
                 txtCMND.Clear();
@@ -187,12 +161,7 @@ namespace BusStation
         private void frmBanVe_Load(object sender, EventArgs e)
         {
             //gọi hàm để hiển thị
-            DB db = new DB();
-            db.moKetNoi();
             dataGridView1.DataSource = db.layDuLieuTuBang("HangXe");
-            db.dongKetNoi();
-        }
-
-       
+        }  
     }
 }

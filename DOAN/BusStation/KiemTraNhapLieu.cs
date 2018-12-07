@@ -30,7 +30,9 @@ namespace BusStation
             foreach (char digit in input)
             {
                 if (Char.IsDigit(digit))
+                {
                     return false;
+                }
             }
 
             return true;
@@ -44,7 +46,59 @@ namespace BusStation
             foreach (char digit in input)
             {
                 if (!Char.IsDigit(digit))
+                {
                     return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Kiểm tra nếu chuỗi nhập vào là chứng minh nhân dân
+        /// </summary>
+        /// <param name="input">Chuỗi cần kiểm tra</param>
+        /// <returns></returns>
+        public static bool laCMND(string input)
+        {
+            // Kiểm tra chuỗi nhập vào không có chữ cái
+            foreach (char digit in input)
+            {
+                if (!Char.IsDigit(digit))
+                {
+                    return false;
+                }
+            }
+
+            // Kiểm tra độ dài chuỗi nhập vào
+            if (input.Length != 9 || input.Length != 12)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Kiểm tra nếu chuỗi nhập vào là số điện thoại
+        /// </summary>
+        /// <param name="input">Chuỗi cần kiểm tra</param>
+        /// <returns></returns>
+        public static bool laSoDienThoai(string input)
+        {
+            // Kiểm tra chuỗi nhập vào không có chữ cái
+            foreach (char digit in input)
+            {
+                if (!Char.IsDigit(digit))
+                {
+                    return false;
+                }
+            }
+
+            // Kiểm tra độ dài chuỗi nhập vào
+            if (input.Length != 10)
+            {
+                return false;
             }
 
             return true;

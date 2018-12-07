@@ -10,6 +10,8 @@ namespace BusStation
 {
     class Login
     {
+        DB db = new DB();
+
         /// <summary>
         /// Xóa text box cho 2 field của login form
         /// </summary>
@@ -50,14 +52,11 @@ namespace BusStation
             // Kiểm tra lỗi nhập liệu
             if (!coLoi(taiKhoan, matKhau))
             {
-                DB db = new DB();
-                db.moKetNoi();
 
                 // Nếu xác nhận đúng mã tài khoản và mật khẩu
                 if (db.kiemTraDangNhap(taiKhoan, matKhau))
                 {
                     MessageBox.Show("Đăng nhập thành công!");
-                    db.dongKetNoi();
                     return true;
                 }    
             }

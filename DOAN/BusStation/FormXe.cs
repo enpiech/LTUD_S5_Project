@@ -14,6 +14,8 @@ namespace BusStation
 {
     public partial class frmXe : Form
     {
+        DB db = new DB();
+
         public frmXe()
         {
             InitializeComponent();
@@ -238,10 +240,8 @@ namespace BusStation
         private void frmXe_Load(object sender, EventArgs e)
         {
             //gọi hàm để hiển thị
-            DB db = new DB();
-            db.moKetNoi();
+
             dataGridView1.DataSource = db.layDuLieuTuBang("Xe");
-            db.dongKetNoi();
         }
     }
 }

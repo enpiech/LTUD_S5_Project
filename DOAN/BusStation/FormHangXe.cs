@@ -15,6 +15,7 @@ namespace BusStation
     public partial class frmHangXe : Form
     {
         private const string TEN_BANG = "HangXe";
+        DB db = new DB();
 
         public frmHangXe()
         {
@@ -69,15 +70,6 @@ namespace BusStation
         /// </summary>
         private void btnTroVe_Click(object sender, EventArgs e)
         {
-            // Duyệt danh sách form con nếu form và mở form quản lý
-            foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
-            {
-                if (form.Text == "Quản Lý")
-                {
-                    form.Visible = true;
-                    break;
-                }
-            }
             // Đóng form hiện tại
             this.Close();
         }
@@ -89,10 +81,7 @@ namespace BusStation
         /// <param name="e"></param>
         private void frmHangXe_Load(object sender, EventArgs e)
         {
-            DB db = new DB();
-            db.moKetNoi();
             dgvhangXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
-            db.dongKetNoi();
         }
 
         /// <summary>
@@ -120,8 +109,7 @@ namespace BusStation
                 string maHangXe = txtTenHangXe.Text;
                 int soLuong = Convert.ToInt32(txtSoLuongXe.Text);
                 double chiPhi = Convert.ToDouble(txtChiPhiThueBai.Text);
-                DB db = new DB();
-                db.moKetNoi();
+
                 db.themHangXe(tenHangXe, maHangXe, soLuong, chiPhi);
 
                 // Cập nhật view
@@ -131,7 +119,7 @@ namespace BusStation
             }
             else
             {
-                MessageBox.Show(ThongBao.khongtheThem);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
         }
 
@@ -177,8 +165,6 @@ namespace BusStation
             // Nếu đã xác nhận xóa
             if (xacNhanXoa())
             {
-                DB db = new DB();
-                db.moKetNoi();
                 // Nếu xóa thành công thì thông báo và cập nhật lại view
                 if (db.xoaHangXe(txtMaHangXe.Text) != -1)
                 {
@@ -186,7 +172,6 @@ namespace BusStation
                     DB.dgv_capNhat(dgvhangXe, TEN_BANG);
                 }
 
-                db.dongKetNoi();
                 xoaDuLieuTrenControl();
 
                 btnXoa.Enabled = false;
@@ -208,16 +193,12 @@ namespace BusStation
         {
             if(xacNhanSua() && !coLoi())
             {
-                DB db = new DB();
-                db.moKetNoi();
                 // Kiểm tra nếu sửa thành công thì thông báo cho người dùng rồi cập nhật lại danh sách
                 if (db.suaHangXe(txtMaHangXe.Text, txtTenHangXe.Text, Convert.ToInt32(txtSoLuongXe.Text), Convert.ToDouble(txtChiPhiThueBai.Text)) != -1)
                 {
                     MessageBox.Show("Sửa dữ liệu thành công!");
                     DB.dgv_capNhat(dgvhangXe, TEN_BANG);
                 }
-
-                db.dongKetNoi();
                 xoaDuLieuTrenControl();
 
                 btnSua.Enabled = false;
