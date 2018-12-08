@@ -71,7 +71,7 @@ namespace BusStation
             }
 
             // Kiểm tra độ dài chuỗi nhập vào
-            if (input.Length != 9 || input.Length != 12)
+            if (input.Length != 9 && input.Length != 12)
             {
                 return false;
             }
@@ -101,6 +101,20 @@ namespace BusStation
                 return false;
             }
 
+            return true;
+        }
+
+        /// <summary>
+        /// Kiểm tra nếu nhân viên đủ tuổi làm việc
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static bool duTuoi(DateTime date)
+        {
+            if (DateTime.Now.Year - date.Year <= 16)
+            {
+                return false;
+            }
             return true;
         }
     }

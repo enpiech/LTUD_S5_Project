@@ -60,7 +60,7 @@
             this.lblTenHangXe.AutoSize = true;
             this.lblTenHangXe.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenHangXe.ForeColor = System.Drawing.Color.Red;
-            this.lblTenHangXe.Location = new System.Drawing.Point(277, 37);
+            this.lblTenHangXe.Location = new System.Drawing.Point(7, 69);
             this.lblTenHangXe.Name = "lblTenHangXe";
             this.lblTenHangXe.Size = new System.Drawing.Size(109, 19);
             this.lblTenHangXe.TabIndex = 3;
@@ -71,7 +71,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Red;
-            this.lblTitle.Location = new System.Drawing.Point(310, 11);
+            this.lblTitle.Location = new System.Drawing.Point(211, 11);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(464, 38);
             this.lblTitle.TabIndex = 0;
@@ -79,7 +79,7 @@
             // 
             // txtTenHangXe
             // 
-            this.txtTenHangXe.Location = new System.Drawing.Point(281, 58);
+            this.txtTenHangXe.Location = new System.Drawing.Point(122, 63);
             this.txtTenHangXe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenHangXe.Name = "txtTenHangXe";
             this.txtTenHangXe.Size = new System.Drawing.Size(220, 30);
@@ -111,7 +111,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvhangXe.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvhangXe.Location = new System.Drawing.Point(12, 255);
+            this.dgvhangXe.Location = new System.Drawing.Point(12, 284);
             this.dgvhangXe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvhangXe.MultiSelect = false;
             this.dgvhangXe.Name = "dgvhangXe";
@@ -125,7 +125,7 @@
             this.dgvhangXe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvhangXe.RowTemplate.Height = 24;
             this.dgvhangXe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvhangXe.Size = new System.Drawing.Size(1057, 301);
+            this.dgvhangXe.Size = new System.Drawing.Size(929, 386);
             this.dgvhangXe.TabIndex = 11;
             this.dgvhangXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHangXe_CellClick);
             // 
@@ -134,7 +134,7 @@
             this.lblSoLuong.AutoSize = true;
             this.lblSoLuong.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoLuong.ForeColor = System.Drawing.Color.Red;
-            this.lblSoLuong.Location = new System.Drawing.Point(552, 37);
+            this.lblSoLuong.Location = new System.Drawing.Point(374, 35);
             this.lblSoLuong.Name = "lblSoLuong";
             this.lblSoLuong.Size = new System.Drawing.Size(109, 19);
             this.lblSoLuong.TabIndex = 6;
@@ -145,7 +145,7 @@
             this.lblChiPhi.AutoSize = true;
             this.lblChiPhi.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChiPhi.ForeColor = System.Drawing.Color.Red;
-            this.lblChiPhi.Location = new System.Drawing.Point(824, 37);
+            this.lblChiPhi.Location = new System.Drawing.Point(374, 69);
             this.lblChiPhi.Name = "lblChiPhi";
             this.lblChiPhi.Size = new System.Drawing.Size(142, 19);
             this.lblChiPhi.TabIndex = 8;
@@ -208,7 +208,7 @@
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.ImageKey = "tải xuống.jpg";
             this.btnThem.ImageList = this.imglThongTinXe;
-            this.btnThem.Location = new System.Drawing.Point(79, 45);
+            this.btnThem.Location = new System.Drawing.Point(8, 31);
             this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(148, 41);
@@ -224,7 +224,7 @@
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.ImageKey = "xoa.png";
             this.btnXoa.ImageList = this.imglThongTinXe;
-            this.btnXoa.Location = new System.Drawing.Point(321, 45);
+            this.btnXoa.Location = new System.Drawing.Point(8, 80);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(148, 41);
@@ -240,7 +240,7 @@
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.ImageKey = "sua.png";
             this.btnSua.ImageList = this.imglThongTinXe;
-            this.btnSua.Location = new System.Drawing.Point(589, 45);
+            this.btnSua.Location = new System.Drawing.Point(8, 129);
             this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(148, 41);
@@ -256,7 +256,7 @@
             this.btnTroVe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTroVe.ImageKey = "arrow-sign-rotation-icon-reload-button-refresh-vector-12935532.jpg";
             this.btnTroVe.ImageList = this.imglThongTinXe;
-            this.btnTroVe.Location = new System.Drawing.Point(828, 45);
+            this.btnTroVe.Location = new System.Drawing.Point(8, 178);
             this.btnTroVe.Margin = new System.Windows.Forms.Padding(4);
             this.btnTroVe.Name = "btnTroVe";
             this.btnTroVe.Size = new System.Drawing.Size(148, 41);
@@ -281,7 +281,7 @@
             this.gbThongTin.Margin = new System.Windows.Forms.Padding(4);
             this.gbThongTin.Name = "gbThongTin";
             this.gbThongTin.Padding = new System.Windows.Forms.Padding(4);
-            this.gbThongTin.Size = new System.Drawing.Size(1055, 94);
+            this.gbThongTin.Size = new System.Drawing.Size(751, 219);
             this.gbThongTin.TabIndex = 16;
             this.gbThongTin.TabStop = false;
             this.gbThongTin.Text = "Thông Tin";
@@ -291,7 +291,7 @@
             this.lblMaHangXe.AutoSize = true;
             this.lblMaHangXe.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaHangXe.ForeColor = System.Drawing.Color.Red;
-            this.lblMaHangXe.Location = new System.Drawing.Point(3, 37);
+            this.lblMaHangXe.Location = new System.Drawing.Point(7, 35);
             this.lblMaHangXe.Name = "lblMaHangXe";
             this.lblMaHangXe.Size = new System.Drawing.Size(106, 19);
             this.lblMaHangXe.TabIndex = 1;
@@ -299,7 +299,7 @@
             // 
             // txtMaHangXe
             // 
-            this.txtMaHangXe.Location = new System.Drawing.Point(7, 58);
+            this.txtMaHangXe.Location = new System.Drawing.Point(122, 29);
             this.txtMaHangXe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaHangXe.Name = "txtMaHangXe";
             this.txtMaHangXe.Size = new System.Drawing.Size(220, 30);
@@ -307,7 +307,7 @@
             // 
             // txtChiPhiThueBai
             // 
-            this.txtChiPhiThueBai.Location = new System.Drawing.Point(828, 58);
+            this.txtChiPhiThueBai.Location = new System.Drawing.Point(522, 63);
             this.txtChiPhiThueBai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtChiPhiThueBai.Name = "txtChiPhiThueBai";
             this.txtChiPhiThueBai.Size = new System.Drawing.Size(220, 30);
@@ -316,7 +316,7 @@
             // 
             // txtSoLuongXe
             // 
-            this.txtSoLuongXe.Location = new System.Drawing.Point(556, 58);
+            this.txtSoLuongXe.Location = new System.Drawing.Point(522, 29);
             this.txtSoLuongXe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoLuongXe.Name = "txtSoLuongXe";
             this.txtSoLuongXe.Size = new System.Drawing.Size(220, 30);
@@ -331,11 +331,11 @@
             this.gbLuaChon.Controls.Add(this.btnSua);
             this.gbLuaChon.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbLuaChon.ForeColor = System.Drawing.Color.Red;
-            this.gbLuaChon.Location = new System.Drawing.Point(15, 155);
+            this.gbLuaChon.Location = new System.Drawing.Point(783, 53);
             this.gbLuaChon.Margin = new System.Windows.Forms.Padding(4);
             this.gbLuaChon.Name = "gbLuaChon";
             this.gbLuaChon.Padding = new System.Windows.Forms.Padding(4);
-            this.gbLuaChon.Size = new System.Drawing.Size(1053, 94);
+            this.gbLuaChon.Size = new System.Drawing.Size(163, 225);
             this.gbLuaChon.TabIndex = 17;
             this.gbLuaChon.TabStop = false;
             this.gbLuaChon.Text = "Lựa Chọn";
@@ -345,7 +345,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnTroVe;
-            this.ClientSize = new System.Drawing.Size(1081, 567);
+            this.ClientSize = new System.Drawing.Size(953, 681);
             this.ControlBox = false;
             this.Controls.Add(this.gbLuaChon);
             this.Controls.Add(this.gbThongTin);

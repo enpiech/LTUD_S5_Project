@@ -86,13 +86,15 @@ namespace BusStation
                 while (duLieuTraVe.Read())
                 {
                     soLuongKetQua += 1;
-                }
-
-                dongKetNoi();
+                }              
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
 
             // Nếu tìm được thì xác nhận đăng nhập
@@ -121,12 +123,14 @@ namespace BusStation
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(bangTraVe);
-
-                dongKetNoi();
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
 
             return bangTraVe;
@@ -152,12 +156,14 @@ namespace BusStation
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(bangTraVe);
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
 
             return bangTraVe;
@@ -182,12 +188,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maHangXe", maHangXe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
 
             return exc;
@@ -212,12 +220,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maHangXe", maHangXe);
 
                  exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -241,12 +251,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maLoaiNV", maLoaiNV);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -270,12 +282,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maLoaiXe", maLoaiXe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
 
             return exc;
@@ -300,12 +314,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maNV", maNV);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
 
             return exc;
@@ -329,12 +345,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maNV", maNV);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
 
             return exc;
@@ -365,12 +383,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@chiPhiThueBai", chiPhi);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -404,12 +424,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maGhe", maGhe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -437,12 +459,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@luongCoBan", luongCoBan);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -468,12 +492,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@tenLoaiXe", tenLoaiXe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -513,12 +539,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@luong", luong);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -545,12 +573,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@matKhau", matKhau);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -592,12 +622,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maNVLaiXe", maNVLaiXe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -627,12 +659,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@chiPhiThueBai", chiPhi);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -666,12 +700,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maGhe", maGhe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -685,7 +721,7 @@ namespace BusStation
         /// <returns>-1 nếu có lỗi xảy ra</returns>
         public int suaLoaiNV(string maLoaiNV, string tenLoaiNV, double luongCoBan)
         {
-            string tensp = "sp_suaNV";
+            string tensp = "sp_suaLoaiNhanVien";
             int exc = -1;
 
             try
@@ -699,12 +735,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@luongCoBan", luongCoBan);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -717,7 +755,7 @@ namespace BusStation
         /// <returns></returns>
         public int suaLoaiXe(string maLoaiXe, string tenLoaiXe)
         {
-            string tensp = "sp_suaNV";
+            string tensp = "sp_suaLoaiXe";
             int exc = -1;
 
             try
@@ -730,12 +768,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@tenLoaiXe", tenLoaiXe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -753,9 +793,9 @@ namespace BusStation
         /// <param name="sdt">Số diện thoại nhân viên mới</param>
         /// <param name="luong">Lương của nhân viên mới</param>
         /// <returns></returns>
-        public int suaNhanVien(string maNV, string tenNV, DateTime ngaySinh, string diaChi, string queQuan, DateTime ngayBatDau, string maLoaiNV, string sdt, double luong)
+        public int suaNhanVien(string maNV, string tenNV, string cmnd, DateTime ngaySinh, string diaChi, string queQuan, DateTime ngayBatDau, string maLoaiNV, string sdt, double luong)
         {
-            string tensp = "sp_suaNV";
+            string tensp = "sp_suaNhanVien";
             int exc = -1;
 
             try
@@ -766,6 +806,7 @@ namespace BusStation
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@maNV", maNV);
                 command.Parameters.AddWithValue("@tenNV", tenNV);
+                command.Parameters.AddWithValue("@cmnd", cmnd);
                 command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
                 command.Parameters.AddWithValue("@diaChi", diaChi);
                 command.Parameters.AddWithValue("@queQuan", queQuan);
@@ -775,12 +816,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@luong", luong);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -808,12 +851,14 @@ namespace BusStation
                 command.Parameters.AddWithValue("@matKhau", matKhau);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+            }
+            finally
+            {
+                dongKetNoi();
             }
             return exc;
         }
@@ -855,27 +900,16 @@ namespace BusStation
                 command.Parameters.AddWithValue("@maNVLaiXe", maNVLaiXe);
 
                 exc = command.ExecuteNonQuery();
-
-                dongKetNoi();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
             }
+            finally
+            {
+                dongKetNoi();
+            }
             return exc;
-        }
-
-        /// <summary>
-        /// Cập nhật dữ liệu trong DataGridView từ CSDL
-        /// </summary>
-        /// <param name="dgv_ten">Tên DataGridView</param>
-        /// <param name="tenBang">Tên bảng dữ liệu</param>
-        public static void dgv_capNhat(DataGridView dgv_ten, string tenBang)
-        {
-            DB db = new DB();
-            db.moKetNoi();
-            dgv_ten.DataSource = db.layDuLieuTuBang(tenBang);
-            db.dongKetNoi();
         }
     }
 }

@@ -29,15 +29,7 @@ namespace BusStation
         /// <param name="e"></param>
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
-            DB.dgv_capNhat(dgvKhachHang, TEN_BANG);
-        }
-
-        /// <summary>
-        /// Lấy dữ liệu từ csdl
-        /// </summary>
-        private void capNhatDGV()
-        {
-            DB.dgv_capNhat(dgvKhachHang, TEN_BANG);
+            dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
         }
 
         /// <summary>
@@ -60,7 +52,7 @@ namespace BusStation
             }
 
             // Cập nhật lại view
-            capNhatDGV();
+            dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
 
             return false;
         }
@@ -86,7 +78,7 @@ namespace BusStation
             }
 
             // Cập nhật lại view
-            capNhatDGV();
+            dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
 
             return false;
         }

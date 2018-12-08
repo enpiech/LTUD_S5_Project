@@ -29,25 +29,29 @@ namespace BusStation
         private bool coLoi()
         {
             // Lấy dữ liệu từ control
-            string maHangXe = this.txtMaHangXe.Text;
-            string tenHangXe = this.txtTenHangXe.Text;
-            string soLuong = this.txtSoLuongXe.Text;
-            string chiPhi = this.txtChiPhiThueBai.Text;
+            string maHangXe = txtMaHangXe.Text;
+            string tenHangXe = txtTenHangXe.Text;
+            string soLuong = txtSoLuongXe.Text;
+            string chiPhi = txtChiPhiThueBai.Text;
 
             // Kiểm tra xem tên hãng xe có hợp lệ hay không
-            if (!KiemTraNhapLieu.laChuoi(tenHangXe))
+            if (!KiemTraNhapLieu.khongRong(tenHangXe))
             {
                 MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
 
             // Kiểm tra xem mã hãng xe có hợp lệ hay không
-            if (!KiemTraNhapLieu.laChuoi(maHangXe))
+            if (!KiemTraNhapLieu.khongRong(maHangXe))
             {
                 MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
 
+            if (!KiemTraNhapLieu.khongRong(soLuong))
+            {
+                txtSoLuongXe.Text = "0";
+            }
             // Kiểm tra xem số lượng xe có hợp lệ không
             if (!KiemTraNhapLieu.laSoNguyen(soLuong))
             {
@@ -56,10 +60,9 @@ namespace BusStation
             }
 
             // Kiểm tra chi phí thuê bãi có hợp lệ không
-            if (!KiemTraNhapLieu.laSoNguyen(chiPhi))
+            if (!KiemTraNhapLieu.khongRong(chiPhi))
             {
-                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
-                return true;
+                txtChiPhiThueBai.Text = "0";
             }
 
             return false;
@@ -71,7 +74,7 @@ namespace BusStation
         private void btnTroVe_Click(object sender, EventArgs e)
         {
             // Đóng form hiện tại
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -113,7 +116,7 @@ namespace BusStation
                 db.themHangXe(tenHangXe, maHangXe, soLuong, chiPhi);
 
                 // Cập nhật view
-                DB.dgv_capNhat(dgvhangXe, TEN_BANG);
+                dgvhangXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
 
                 xoaDuLieuTrenControl();
             }
@@ -168,8 +171,8 @@ namespace BusStation
                 // Nếu xóa thành công thì thông báo và cập nhật lại view
                 if (db.xoaHangXe(txtMaHangXe.Text) != -1)
                 {
-                    MessageBox.Show("Xóa Thành Công");
-                    DB.dgv_capNhat(dgvhangXe, TEN_BANG);
+                    MessageBox.Show(ThongBao.xoaThanhCong);
+                    dgvhangXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
                 }
 
                 xoaDuLieuTrenControl();
@@ -196,8 +199,8 @@ namespace BusStation
                 // Kiểm tra nếu sửa thành công thì thông báo cho người dùng rồi cập nhật lại danh sách
                 if (db.suaHangXe(txtMaHangXe.Text, txtTenHangXe.Text, Convert.ToInt32(txtSoLuongXe.Text), Convert.ToDouble(txtChiPhiThueBai.Text)) != -1)
                 {
-                    MessageBox.Show("Sửa dữ liệu thành công!");
-                    DB.dgv_capNhat(dgvhangXe, TEN_BANG);
+                    //MessageBox.Show(ThongBao.suaThanhCong);
+                    dgvhangXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
                 }
                 xoaDuLieuTrenControl();
 
@@ -207,7 +210,7 @@ namespace BusStation
             }
             else
             {
-                MessageBox.Show(ThongBao.khongTheXoa);
+               // MessageBox.Show(ThongBao.khongTheSua);
             }
         }
 

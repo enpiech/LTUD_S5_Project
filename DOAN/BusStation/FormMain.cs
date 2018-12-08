@@ -97,10 +97,12 @@ namespace BusStation
             }
             try
             {
-                form.ShowDialog();
+                form.MdiParent = this;
+                form.Show();
             }
             catch (Exception ex)
             {
+                form.Focus();
                 MessageBox.Show("Phát sinh lỗi\n\n" + ex.Message.ToString());
             }
         }
