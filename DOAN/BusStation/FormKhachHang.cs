@@ -14,165 +14,155 @@ namespace BusStation
 {
     public partial class frmKhachHang : Form
     {
+        private const string TEN_BANG = "KhachHang";
+        DB db = new DB();
+
         public frmKhachHang()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Thêm khách khàng mới vào cơ sở dữ liệu
+        /// Lấy dữ liệu từ csdl lên view khi load form
         /// </summary>
-        private bool themKhachHang()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmKhachHang_Load(object sender, EventArgs e)
         {
-            string tenKhachHang = this.txtTenKhachHang.Text;
-            string cmnd = this.txtCmnd.Text;
-            string soDienThoai = this.txtSoDienThoai.Text;
-            string maXe = this.cboMaXe.Text;
-            string maGhe = this.txtMaGhe.Text;
+            dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
 
-            return false;
+            cboMaXe.DataSource = db.layDuLieuTuBang("Xe");
+            cboMaXe.ValueMember = "MaXe";
+            cboMaXe.DisplayMember = "SoXe";
         }
 
         /// <summary>
-        /// Sửa khách hàng trong cơ sở dữ liệu
+        /// Xóa tất cả dữ liệu trên các input control
         /// </summary>
-        private bool suaKhachHang()
+        private void xoaDuLieuTrenControl()
         {
-            string tenKhachHang = this.txtTenKhachHang.Text;
-            string cmnd = this.txtCmnd.Text;
-            string soDienThoai = this.txtSoDienThoai.Text;
-            string maXe = this.cboMaXe.Text;
-            string maGhe = this.txtMaGhe.Text;
-
-            return false;
-        }
-
-        /// <summary>
-        /// Xóa khách hàng trong cơ sở dữ liệu
-        /// </summary>
-        private bool xoaKhachHang()
-        {
-            string tenKhachHang = this.txtTenKhachHang.Text;
-
-            return false;
-        }
-
-        /// <summary>
-        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
-        /// </summary>
-        private bool stringValidator(string input)
-        {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra nếu chuỗi nhập vào là số
-        /// </summary>
-        private bool integerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            txtMaKhachHang.Clear();
+            txtTenKhachHang.Clear();
+            cboMaXe.SelectedIndex = cboMaXe.Items.Count - 1;
+            txtSoDienThoai.Clear();
+            txtMaGhe.Clear();
+            txtCmnd.Clear();
         }
 
         /// <summary>
         /// Kiểm tra nếu người dùng nhập dữ liệu bị lỗi
         /// </summary>
-        private bool isError()
+        private bool coLoi()
         {
-            string tenKhachHang = this.txtTenKhachHang.Text.Trim();
-            string cmnd = this.txtCmnd.Text.Trim();
-            string sdt = this.txtSoDienThoai.Text.Trim();
-            string maGhe = this.txtMaGhe.Text.Trim();
+            string maKH = txtMaKhachHang.Text;
+            string tenKhachHang = txtTenKhachHang.Text;
+            string cmnd = txtCmnd.Text;
+            string sdt = txtSoDienThoai.Text;
+            string maGhe = txtMaGhe.Text;
 
-            if (!stringValidator(tenKhachHang) || tenKhachHang == "")
+            if (!KiemTraNhapLieu.khongRong(maKH))
             {
-                MessageBox.Show("Tên không hợp lệ, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else if (!integerValidator(cmnd) && (cmnd.Length != 9 || cmnd.Length != 12))
+            if (!KiemTraNhapLieu.khongRong(tenKhachHang))
             {
-                MessageBox.Show("CMND không hợp lệ, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else if (!integerValidator(sdt) && (sdt.Length != 9 || cmnd.Length != 10))
+            if (!KiemTraNhapLieu.laCMND(cmnd))
             {
-                MessageBox.Show("Số điện thoại không hợp lệ, vui lòng nhập lại!");
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else if (maGhe.Length < 3 || maGhe.Length > 4)
+
+            if (!KiemTraNhapLieu.khongRong(sdt))
             {
-                MessageBox.Show("Mã ghế không hợp lệ, vui lòng nhập lại!");
+                txtSoDienThoai.Text = "";
+            }
+            else if (!KiemTraNhapLieu.laSoDienThoai(sdt))
+            {
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
+            else if (!KiemTraNhapLieu.khongRong(maGhe))
+            {
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
+                return true;
+            }
+
             return false;
         }
 
         /// <summary>
         /// Kiểm tra lỗi rồi thêm khách hàng mới
         /// </summary>
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem đã nhập tên khách hàng
-            if (!isError())
-            { 
-                if (themKhachHang())
+            if (!coLoi())
+            { // Lấy dữ liệu từ các control
+                string maKH = this.txtMaKhachHang.Text;
+                string tenKhachHang = this.txtTenKhachHang.Text;
+                string cmnd = this.txtCmnd.Text;
+                string soDienThoai = this.txtSoDienThoai.Text;
+                string maXe = this.cboMaXe.SelectedValue.ToString();
+                string maGhe = this.txtMaGhe.Text;
+
+                // Thêm dữ liệu mới vào csdl
+                if (db.themKhachHang(maKH, tenKhachHang, cmnd, soDienThoai, maXe, maGhe) == -1)
                 {
-                    MessageBox.Show("Thêm khách hàng mới thành công!");
+                    // Cập nhật lại view
+                    dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                    MessageBox.Show(ThongBao.themThanhCong);
                 }
-                else
-                {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm khách hàng!");
-                }
+                xoaDuLieuTrenControl();
+            }
+            else
+            {
+                MessageBox.Show(ThongBao.khongTheThem);
             }
         }
 
         /// <summary>
         /// Trở về form chọn bảng
         /// </summary>
-        private void btnBack_Click(object sender, EventArgs e)
+        private void btnTroVe_Click(object sender, EventArgs e)
         {
-            foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
-            {
-                if (form.Text == "Quản Lý")
-                {
-                    form.Visible = true;
-                    break;
-                }
-            }
             this.Close();
         }
 
         /// <summary>
         /// Cập nhật dữ liệu
         /// </summary>
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnCapNhat_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem đã nhập tên khách hàng
-            if (!isError())
+            if (!coLoi())
             {
-                if (suaKhachHang())
+                // Lấy dữ liệu từ các control
+                string maKH = this.txtMaKhachHang.Text;
+                string tenKhachHang = this.txtTenKhachHang.Text;
+                string cmnd = this.txtCmnd.Text;
+                string soDienThoai = this.txtSoDienThoai.Text;
+                string maXe = this.cboMaXe.SelectedValue.ToString();
+                string maGhe = this.txtMaGhe.Text;
+
+                // Thêm dữ liệu mới vào csdl
+
+                if (db.suaKhachHang(maKH, tenKhachHang, cmnd, soDienThoai, maXe, maGhe) != -1)
                 {
-                    MessageBox.Show("Thêm khách hàng mới thành công!");
+                    // Cập nhật lại view
+                    dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                    MessageBox.Show(ThongBao.suaThanhCong);
                 }
-                else
-                {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm khách hàng!");
-                }
+                xoaDuLieuTrenControl();
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show(ThongBao.khongTheSua);
             }
         }
 
@@ -181,11 +171,11 @@ namespace BusStation
         /// </summary>
         private bool deleteConfirm()
         {
-            string tenKhachHang = this.txtTenKhachHang.Text;
+            string maKH = this.txtMaKhachHang.Text;
 
-            if (tenKhachHang == "")
+            if (!KiemTraNhapLieu.khongRong(maKH))
             {
-                MessageBox.Show("Vui lòng chọn khách hàng muốn xóa!");
+                MessageBox.Show(ThongBao.chonTruocKhiXoa);
                 return false;
             }
             else
@@ -204,41 +194,45 @@ namespace BusStation
         /// <summary>
         /// Xóa khách hàng đã chọn
         /// </summary>
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
             if (deleteConfirm())
             {
+                string maKH = txtMaKhachHang.Text;
                 // Kiểm tra nếu xóa thành công
-                if (xoaKhachHang())
+                if (db.xoaKhachHang(maKH) != -1)
                 {
-                    MessageBox.Show("Xóa thành công!");
+                    MessageBox.Show(ThongBao.xoaThanhCong);
+                    dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
+
+                    xoaDuLieuTrenControl();
+                    btnDelete.Enabled = false;
+                    btnUpdate.Enabled = false;
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi phát sinh, không thể xóa!");
+                    MessageBox.Show(ThongBao.khongTheXoa);
                 }
             }
         }
-        //ham lay du lieu dua vao datagidview
-        xuLyDB xuly = new xuLyDB();
-        public DataTable getAllKhachHang()
-        {
-            DataTable dtKH = new DataTable();
-            string nameSp = "SP_layBangKhachHang";
-            SqlCommand cm = new SqlCommand(nameSp, xuLyDB.connect);
-            cm.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adepter = new SqlDataAdapter(cm);
-            adepter.Fill(dtKH);
-            xuLyDB.connect.Close();
 
-            dataGridView1.DataSource = dtKH;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            return dtKH;
-        }
-        private void frmKhachHang_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Lấy hàng dữ liệu từ view rồi cập nhật control tương ứng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            getAllKhachHang();
+            txtMaKhachHang.Text = dgvKhachHang.SelectedRows[0].Cells[0].Value.ToString();
+            txtTenKhachHang.Text = dgvKhachHang.SelectedRows[0].Cells[1].Value.ToString();
+            txtCmnd.Text = dgvKhachHang.SelectedRows[0].Cells[2].Value.ToString();
+            txtSoDienThoai.Text = dgvKhachHang.SelectedRows[0].Cells[3].Value.ToString();
+            MessageBox.Show(cboMaXe.FindStringExact("PT3") + "");
+            cboMaXe.SelectedIndex = 3;
+            txtMaGhe.Text = dgvKhachHang.SelectedRows[0].Cells[5].Value.ToString();
+
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
         }
     }
 }

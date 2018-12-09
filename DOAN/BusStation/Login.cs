@@ -10,129 +10,59 @@ namespace BusStation
 {
     class Login
     {
-        private string maTaiKhoan;
-
-        public string MaTaiKhoan
-        {
-            get { return maTaiKhoan; }
-            set { maTaiKhoan = value; }
-        }
-        private string matKhau;
-
-        public string MatKhau
-        {
-            get { return matKhau; }
-            set { matKhau = value; }
-        }
-
-        //public string MaTaiKhoan { get => maTaiKhoan; set => maTaiKhoan = value; }
-       //public string MatKhau { get => matKhau; set => matKhau = value; }
-
-        public Login(string maTaiKhoan, string matKhau)
-        {
-            this.maTaiKhoan = maTaiKhoan;
-            this.matKhau = matKhau;
-        }
-
-        public Login()
-        {
-            this.maTaiKhoan = String.Empty;
-            this.matKhau = String.Empty;
-        }
+        DB db = new DB();
 
         /// <summary>
         /// Xóa text box cho 2 field của login form
         /// </summary>
-        public void clearTexts(string inputMaTaiKhoan, string matKhau)
+        public void clearTexts(string taiKhoan, string matKhau)
         {
-            inputMaTaiKhoan = String.Empty;
-            inputMaTaiKhoan = String.Empty;
+            taiKhoan = String.Empty;
+            matKhau = String.Empty;
         }
 
         /// <summary>
-        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
+        /// Kiểm tra lỗi nhập liệu
         /// </summary>
-        private bool stringValidator(string input)
+        /// <param name="taiKhoan">Mã tài khoản cần kiểm tra</param>
+        /// <param name="matKhau">Mật khẩu cần kiểm tra</param>
+        /// <returns>true Nếu có lỗi nhập liệu</returns>
+        private bool coLoi(string taiKhoan, string matKhau)
         {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
+            // Kiểm tra nếu người dùng chưa nhập mã tài khoản
+            if (!KiemTraNhapLieu.khongRong(taiKhoan))
             {
+                MessageBox.Show("Vui lòng nhập mã tài khoản!");
                 return true;
             }
-            else
+            // Kiểm tra nếu người dùng chưa nhập matKhau
+            else if (!KiemTraNhapLieu.khongRong(matKhau))
             {
-                return false;
-            }
-        }
-        /// <summary>
-        /// Kiểm tra nếu chuỗi nhập vào là số
-        /// </summary>
-        private bool integerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
+                MessageBox.Show("Vui lòng nhập mật khẩu!");
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary>
         /// Kiểm tra lỗi và kiểm tra người dùng đăng nhập thành công
         /// </summary>
-        internal bool isLoggedIn(string inputMaTaiKhoan, string inputMatKhau)
+        public bool isLoggedIn(string taiKhoan, string matKhau)
         {
-            // Kiểm tra nếu người dùng chưa nhập maTaiKhoan
-            if (string.IsNullOrEmpty(inputMaTaiKhoan))
+            // Kiểm tra lỗi nhập liệu
+            if (!coLoi(taiKhoan, matKhau))
             {
-                MessageBox.Show("Vui lòng nhập mã tài khoản!");
-                return false;
-            }
-            // Kiểm tra maTaiKhoan chỉ gồm các kí tự chữ
-            else if (stringValidator(inputMaTaiKhoan))
-            {
-                MessageBox.Show("Mã tài khoản chỉ gồm các kí tự chữ cái!");
-                return false;
-            }
-            else
-            {
-                // Kiểm tra nếu mã tài khoản nhập vào đúng
-                if (inputMaTaiKhoan != MaTaiKhoan)
+
+                // Nếu xác nhận đúng mã tài khoản và mật khẩu
+                if (db.kiemTraDangNhap(taiKhoan, matKhau))
                 {
-                    MessageBox.Show("Tên đăng nhập không chính xác!");
-                    // Xóa text box
-                    clearTexts(inputMaTaiKhoan, inputMatKhau);
-                    return false;
-                }
-                else
-                {
-                    // Kiểm tra nếu người dùng chưa nhập matKhau
-                    if (string.IsNullOrEmpty(inputMatKhau))
-                    {
-                        MessageBox.Show("Vui lòng nhập mật khẩu!");
-                        return false;
-                    }
-                    // Kiểm tra nếu matKhau chỉ chứa các kí tự số
-                    else if (integerValidator(inputMatKhau))
-                    {
-                        MessageBox.Show("Chỉ nhập các chữ số!");
-                        return false;
-                    }
-                    // Kiểm tra nếu đúng matKhau
-                    else if (inputMatKhau != MatKhau)
-                    {
-                        MessageBox.Show("Mật khẩu không chính xác!");
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
+                    MessageBox.Show("Đăng nhập thành công!");
+                    return true;
+                }    
             }
+
+            MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
+            return false;
         }
     }
 }

@@ -14,6 +14,8 @@ namespace BusStation
 {
     public partial class frmLoaiXe : Form
     {
+        DB db = new DB();
+
         public frmLoaiXe()
         {
             InitializeComponent();
@@ -196,26 +198,12 @@ namespace BusStation
                 }
             }
         }
-        //ham lay du lieu dua vao datagidview
-        xuLyDB xuly = new xuLyDB();
-        public DataTable getAllLoaiXe()
-        {
-            DataTable dtLoaiXe = new DataTable();
-            string nameSp = "SP_layBangLoaiXe";
-            SqlCommand cm = new SqlCommand(nameSp, xuLyDB.connect);
-            cm.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter adepter = new SqlDataAdapter(cm);
-            adepter.Fill(dtLoaiXe);
-            xuLyDB.connect.Close();
 
-            dataGridView1.DataSource = dtLoaiXe;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            return dtLoaiXe;
-        }
         private void frmLoaiXe_Load(object sender, EventArgs e)
         {
-            getAllLoaiXe(); 
+            //gọi hàm để hiển thị
+
+            dataGridView1.DataSource = db.layDuLieuTuBang("LoaiXe");
         }
     }
 }

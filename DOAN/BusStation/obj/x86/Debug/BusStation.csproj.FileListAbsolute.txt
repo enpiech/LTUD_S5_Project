@@ -53,5 +53,57 @@ D:\học kì 3\lt_ud\do_an\DOAN\BusStation\bin\Debug\BusStation.exe
 D:\học kì 3\lt_ud\do_an\DOAN\BusStation\bin\Debug\BusStation.pdb
 D:\học kì 3\lt_ud\do_an\DOAN\BusStation\obj\x86\Debug\BusStation.exe
 D:\học kì 3\lt_ud\do_an\DOAN\BusStation\obj\x86\Debug\BusStation.pdb
-C:\Users\Win 8.1 Version 2\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.exe
-C:\Users\Win 8.1 Version 2\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.pdb
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.exe
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.pdb
+F:\DOAN\BusStation\bin\Debug\BusStation.exe
+F:\DOAN\BusStation\bin\Debug\BusStation.pdb
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.csprojResolveAssemblyReference.cache
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmHangXe.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmKhachHang.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiNhanVien.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiXe.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmLogin.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmMain.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmNhanVien.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmQuanLy.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmTaiKhoanNhanVien.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmXe.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.frmBanVe.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.Properties.Resources.resources
+F:\DOAN\BusStation\obj\x86\Debug\BusStation.csproj.GenerateResource.Cache
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.exe
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.pdb
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\bin\Debug\BusStation.exe
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\bin\Debug\BusStation.pdb
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.csprojResolveAssemblyReference.cache
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmHangXe.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmKhachHang.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiNhanVien.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiXe.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmLogin.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmMain.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmNhanVien.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmQuanLy.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmTaiKhoanNhanVien.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmXe.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.frmBanVe.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.Properties.Resources.resources
+C:\Users\enpie\Documents\GitHub\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.csproj.GenerateResource.Cache
+D:\Project Storage\C#\DOAN\BusStation\bin\Debug\BusStation.exe
+D:\Project Storage\C#\DOAN\BusStation\bin\Debug\BusStation.pdb
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.csprojAssemblyReference.cache
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmHangXe.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmKhachHang.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiNhanVien.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiXe.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmLogin.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmMain.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmNhanVien.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmTaiKhoanNhanVien.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmXe.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.frmBanVe.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.Properties.Resources.resources
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.csproj.GenerateResource.cache
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.csproj.CoreCompileInputs.cache
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.exe
+D:\Project Storage\C#\DOAN\BusStation\obj\x86\Debug\BusStation.pdb
