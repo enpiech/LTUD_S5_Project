@@ -14,220 +14,222 @@ namespace BusStation
 {
     public partial class frmTaiKhoanNhanVien : Form
     {
+        private const string TEN_BANG = "TaiKhoanNhanVien";
         DB db = new DB();
 
         public frmTaiKhoanNhanVien()
         {
             InitializeComponent();
         }
-
         /// <summary>
-        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
-        /// </summary>
-        private bool stringValidator(string input)
-        {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra nếu chuỗi nhập vào là số
-        /// </summary>
-        private bool integerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Thêm tài khoản nhân viên vào cơ sở dữ liệu
-        /// </summary>
-        private bool themTaiKhoan()
-        {
-            string taiKhoan = this.txtTaiKhoan.Text;
-            string matKhau = this.txtMatKhau.Text;
-
-            return false;
-        }
-
-        /// <summary>
-        /// Sửa tài khoản nhân viên trong cơ sở dữ liệu
-        /// </summary>
-        private bool suaTaiKhoan()
-        {
-            string taiKhoan = this.txtTaiKhoan.Text;
-            string matKhau = this.txtMatKhau.Text;
-
-            return false;
-        }
-
-        /// <summary>
-        /// Xóa tìa khoản nhân viên khỏi cơ sở dữ liệu
-        /// </summary>
-        private bool xoaTaiKhoan()
-        {
-            string taiKhoan = this.txtTaiKhoan.Text;
-
-            return false;
-        }
-
-        /// <summary>
-        /// KIểm tra lỗi nhập liệu
-        /// </summary>
-        private bool isError()
-        {
-            string taiKhoan = this.txtTaiKhoan.Text.Trim();
-            string matKhau = this.txtMatKhau.Text.Trim();
-
-            // Kiểm tra nếu người dùng đã nhập tài khoản mới
-            if (taiKhoan == "")
-            {
-                MessageBox.Show("Vui lòng nhập tài khoản mới!");
-                return true;
-            }
-            else if (!stringValidator(taiKhoan))
-            {
-                MessageBox.Show("Mã tài khoản không phù hợp, vui lòng nhập lại!");
-                return true;
-            }
-            // Kiểm tra nếu người dùng đã nhập mật khẩu
-            else if (matKhau == "")
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu!");
-                return true;
-            }
-            else if (!integerValidator(matKhau))
-            {
-                MessageBox.Show("Mật khẩu không phù hợp, vui lòng nhập lại!");
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Kiểm tra lỗi và thêm tài khoản mới
-        /// </summary>
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (!isError())
-            {
-                // Kiểm tra nếu thêm tài khoản thành công
-                if (themTaiKhoan())
-                {
-                    MessageBox.Show("Thêm thành công!");
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm!");
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Xác nhận truóc khi xóa
+        /// hàm kiểm tra nhập liệu
         /// </summary>
         /// <returns></returns>
-        private bool deleteConfirm()
+        private bool coLoi()
         {
-            string taiKhoan = this.txtTaiKhoan.Text;
-
-            if (taiKhoan == "")
-            {
-                MessageBox.Show("Vui lòng chọn xe muốn xóa!");
-                return false;
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Bạn muốn xóa xe này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                if (result == DialogResult.No)
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            //lấy dữ liệu từ các control
+            string maNV = txtMaNV.Text;
+            string tenNV = txtTaiKhoan.Text;
+            string matKhau = txtMatKhau.Text;
+            return false;
         }
-
         /// <summary>
-        /// Kiểm tra và xóa tài khoản đã chọn
-        /// </summary>
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            // Xác nhận trước khi xóa
-            if (deleteConfirm())
-            {
-                // Kiểm tra nếu thêm tài khoản thành công
-                if (xoaTaiKhoan())
-                {
-                    MessageBox.Show("Xóa thành công!");
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi phát sinh, không thể xóa!");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Trở về form chọn bảng
+        /// trở về form chính
         /// </summary>
         private void btnBack_Click(object sender, EventArgs e)
         {
-            foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
-            {
-                if (form.Text == "Quản Lý")
-                {
-                    form.Visible = true;
-                    break;
-                }
-            }
             this.Close();
         }
-
         /// <summary>
-        /// Sửa tài khoản đã chọn
+        /// lấy dữ liệu từ bảng loại xe mổi khi load form
         /// </summary>
-        private void btnUpdate_Click(object sender, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmTaiKhoanNhanVien_Load(object sender, EventArgs e)
         {
-            if (!isError())
+            dgvTKNV.DataSource = db.layDuLieuTuBang(TEN_BANG);
+        }
+        /// <summary>
+        /// Xóa những control nhập dữ liệu
+        /// </summary>
+        private void xoaDuLieuTrenControl()
+        {
+            txtMaNV.Clear();
+            txtTaiKhoan.Clear();
+            txtMatKhau.Clear();
+        }
+        /***** Thêm *****/
+        /// <summary>
+        /// Thêm tài khoản mới vào csdl
+        /// </summary>
+        private bool themTKNhanVien()
+        {
+            string maNV = txtMaNV.Text;
+            string taiKhoan = txtTaiKhoan.Text;
+            string matKhau = txtMatKhau.Text;
+            if (db.themTaiKhoanNV(maNV, taiKhoan, matKhau) == -1)
             {
-                // Kiểm tra nếu thêm tài khoản thành công
-                if (themTaiKhoan())
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// thêm tài khoản
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra lỗi nhập liệu
+            if (!coLoi())
+            {
+                // Kiểm tra xem đã thêm thành công hay không
+                if (themTKNhanVien())
                 {
-                    MessageBox.Show("Thêm thành công!");
+                    MessageBox.Show(ThongBao.themThanhCong);
+                    dgvTKNV.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                    xoaDuLieuTrenControl();
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm!");
+                    MessageBox.Show(ThongBao.khongTheThem);
                 }
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /***** Xóa *****/
+        /// <summary>
+        /// Xác nhận trước khi xóa tài khoản
+        /// </summary>
+        /// <returns>false Nếu không đồng ý</returns>
+        private bool xacNhanXoa()
         {
+            // Kiểm tra dữ liệu
+            string maNV = txtMaNV.Text;
+            if (!KiemTraNhapLieu.khongRong(maNV))
+            {
+                MessageBox.Show(ThongBao.chonTruocKhiXoa);
+                return false;
+            }
+
+            // Mở dialog xác nhận
+            DialogResult result = MessageBox.Show("Bạn muốn xóa?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (result == DialogResult.No)
+            {
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Xóa tài khoản đang chọn ra khỏi cơ sở dữ liệu
+        /// </summary>
+        private bool xoaNhanVien()
+        {
+            string maNV = txtMaNV.Text;
+
+            if (db.xoaTaiKhoanNV(maNV) == -1)
+            {
+                return false;
+            }
+            return true;
 
         }
-
-        private void frmTaiKhoanNhanVien_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Xóa loại xe đã chọn trong csdl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            //gọi hàm để hiển thị
-            dataGridView1.DataSource = db.layDuLieuTuBang("TaiKhoanNhanVien");
+            // Xác nhận trước khi xóa
+            if (xacNhanXoa())
+            {
+                if (xoaNhanVien())
+                {
+                    MessageBox.Show(ThongBao.xoaThanhCong);
+                    dgvTKNV.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                    btnDelete.Enabled = false;
+                    btnAdd.Enabled = true;
+                    btnUpdate.Enabled = false;
+                    xoaDuLieuTrenControl();
+                }
+                else
+                {
+                    MessageBox.Show(ThongBao.khongTheXoa);
+                }
+            }
         }
+        /***** SỬA *****/
+
+        /// <summary>
+        /// Xác nhận trước khi sửa loại nhân viên
+        /// </summary>
+        /// <returns>false Nếu không đồng ý</returns>
+        private bool xacNhanSua()
+        {
+            // Mở dialog xác nhận
+            DialogResult result = MessageBox.Show("Bạn muốn sửa?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (result == DialogResult.No)
+            {
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// sửa tài khoản
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            // Xác nhận trước khi sửa và kiểm tra lỗi
+            if (!coLoi() && xacNhanSua())
+            {
+                string maNV = txtMaNV.Text;
+                string taiKhoan = txtTaiKhoan.Text;
+                string matKhau =txtMatKhau.Text;
+
+                if (db.suaTaiKhoanNV(maNV, taiKhoan, matKhau) != -1)
+                {
+                    MessageBox.Show(ThongBao.suaThanhCong);
+                    dgvTKNV.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                }
+                xoaDuLieuTrenControl();
+                btnAdd.Enabled = true;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show(ThongBao.khongTheSua);
+            }
+        }
+        /// <summary>
+        /// Khi chọn 1 hàng trong View thì lấy dữ liệu lên form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvTKNV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Lấy dữ liệu từ view
+            string maLoaiXe = dgvTKNV.SelectedRows[0].Cells[0].Value.ToString();
+            string taikhoan = dgvTKNV.SelectedRows[0].Cells[1].Value.ToString();
+            string matkhau = dgvTKNV.SelectedRows[0].Cells[2].Value.ToString();
+
+
+            // Truyền dữ liệu lên control tương ứng
+            txtMaNV.Text = maLoaiXe;
+            txtTaiKhoan.Text = taikhoan;
+            txtMatKhau.Text = matkhau;
+
+
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnAdd.Enabled = false;
+        }
+
+
+         
     }
 }

@@ -14,196 +14,230 @@ namespace BusStation
 {
     public partial class frmLoaiXe : Form
     {
+        //khoi tao gia tri
+        private const string TEN_BANG = "LoaiXe";
         DB db = new DB();
 
         public frmLoaiXe()
         {
             InitializeComponent();
         }
-
         /// <summary>
-        /// Kiểm tra chuỗi chỉ chứa các kí từ là chữ
+        /// hàm kiểm tra nhập liệu
         /// </summary>
-        private bool stringValidator(string input)
+        /// <returns></returns>
+        private bool coLoi()
         {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
+            //lấy dữ liệu từ các control
+            string maLoaiXe = txtMaLoaiXe.Text;
+            string tenLoaiXe = txtTenLoaiXe.Text;
+
+            //kiểm tra nhập vào có hợp lệ hay không
+            if (!KiemTraNhapLieu.laChuoi(maLoaiXe))
             {
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else
+            if (!KiemTraNhapLieu.laChuoi(tenLoaiXe))
             {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Kiểm tra nếu chuỗi nhập vào là số
-        /// </summary>
-        private bool integerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
             }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Thêm loại xe mới vào cơ sở dữ liệu
-        /// </summary>
-        private bool themLoaiXe()
-        {
-            string tenLoaiXe = this.txtTenLoaiXe.Text;
-
             return false;
         }
-
         /// <summary>
-        /// Sửa loại xe trong cơ sở dữ liệu
+        /// Xóa những control nhập dữ liệu
         /// </summary>
-        private bool suaLoaiXe()
+        private void xoaDuLieuTrenControl()
         {
-            string tenLoaiXe = this.txtTenLoaiXe.Text;
-
-            return false;
+            txtMaLoaiXe.Clear();
+            txtTenLoaiXe.Clear();
         }
-
         /// <summary>
-        /// Xóa 1 loại xe trong cơ sở dữ liệu
-        /// </summary>
-        private bool xoaLoaiXe()
-        {
-            string tenLoaiXe = this.txtTenLoaiXe.Text;
-
-            return false;
-        }
-
-        private bool isError()
-        {
-            string tenLoaiXe = this.txtTenLoaiXe.Text.Trim();
-            if (!stringValidator(tenLoaiXe) || tenLoaiXe == "")
-            {
-                MessageBox.Show("Tên không hợp lệ, vui lòng nhập lại!");
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Kiểm tra lỗi rồi thêm loại xe mới
-        /// </summary>
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            // Kiểm tra nếu người dùng chưa nhập tên loại xe mới
-            if (!isError())
-            {
-                // Kiểm tra xem đã thêm thành công
-                if (themLoaiXe() == true)
-                {
-                    MessageBox.Show("Thêm loại xe mới thành công!");
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm loại xe mới!");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Xác nhận trước khi xóa
-        /// </summary>
-        private bool deleteConfirm()
-        {
-            string tenLoaiXe = this.txtTenLoaiXe.Text;
-
-            if (tenLoaiXe == "")
-            {
-                MessageBox.Show("Vui lòng chọn loại xe muốn xóa!");
-                return false;
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Bạn muốn xóa loại xe này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                if (result == DialogResult.No)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Kiểm tra lỗi và xóa loại xe đã chọn
-        /// </summary>
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            // Kiểm tra nếu người dùng chưa chọn loại xe cần xóa
-            if (deleteConfirm())
-            {
-                // Lấy tên loại xe từ textbox
-                string tenLoaiXe = this.txtTenLoaiXe.Text.Trim();
-
-                // Kiểm tra nếu có thể xóa thì xóa loại xe đã chọn
-                if (xoaLoaiXe() == true)
-                {
-                    MessageBox.Show("Xóa loại xe {0} thành công!", tenLoaiXe);
-                }
-                else
-                {
-                    MessageBox.Show("Không thể xóa loại xe này!");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Trở về form chọn bảng
+        /// trở về form chính
         /// </summary>
         private void btnBack_Click(object sender, EventArgs e)
         {
-            foreach (Form form in ((frmMain)this.MdiParent).MdiChildren)
-            {
-                if (form.Text == "Quản Lý")
-                {
-                    form.Visible = true;
-                    break;
-                }
-            }
+            //đóng form hiện tại
             this.Close();
         }
-
         /// <summary>
-        /// Sửa loại xe đang chọn
+        /// lấy dữ liệu từ bảng loại xe mổi khi load form
         /// </summary>
-        private void btnUpdate_Click(object sender, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmLoaiXe_Load(object sender, EventArgs e)
         {
-            // Kiểm tra nếu người dùng chưa nhập tên loại xe mới
-            if (!isError())
+            dgvLoaiXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
+        }
+        /***** Thêm *****/
+        /// <summary>
+        /// Thêm loại xe mới vào cơ sở dữ liệu
+        /// </summary>
+        private bool themNhanVien()
+        {
+            string maLoaiXe = txtMaLoaiXe.Text;
+            string tenLoaiXe = txtTenLoaiXe.Text;
+
+            if (db.themLoaiXe(maLoaiXe, tenLoaiXe) == -1)
             {
-                // Kiểm tra xem đã thêm thành công
-                if (suaLoaiXe() == true)
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// thêm loại xe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra lỗi nhập liệu
+            if (!coLoi())
+            {
+                // Kiểm tra xem đã thêm thành công hay không
+                if (themNhanVien())
                 {
-                    MessageBox.Show("Thêm loại xe mới thành công!");
+                    MessageBox.Show(ThongBao.themThanhCong);
+                    dgvLoaiXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                    xoaDuLieuTrenControl();
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi phát sinh, không thể thêm loại xe mới!");
+                    MessageBox.Show(ThongBao.khongTheThem);
                 }
             }
         }
-
-        private void frmLoaiXe_Load(object sender, EventArgs e)
+        /***** Xóa *****/
+        /// <summary>
+        /// Xác nhận trước khi xóa loại xe
+        /// </summary>
+        /// <returns>false Nếu không đồng ý</returns>
+        private bool xacNhanXoa()
         {
-            //gọi hàm để hiển thị
+            // Kiểm tra dữ liệu
+            string maLoaiXe = txtMaLoaiXe.Text;
+            if (!KiemTraNhapLieu.khongRong(maLoaiXe))
+            {
+                MessageBox.Show(ThongBao.chonTruocKhiXoa);
+                return false;
+            }
 
-            dataGridView1.DataSource = db.layDuLieuTuBang("LoaiXe");
+            // Mở dialog xác nhận
+            DialogResult result = MessageBox.Show("Bạn muốn xóa?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (result == DialogResult.No)
+            {
+                return false;
+            }
+            return true;
         }
-    }
+        /// <summary>
+        /// Xóa loại xe đang chọn ra khỏi cơ sở dữ liệu
+        /// </summary>
+        private bool xoaNhanVien()
+        {
+            string maLoaiXe = txtMaLoaiXe.Text;
+
+            if (db.xoaLoaiXe(maLoaiXe) == -1)
+            {
+                return false;
+            }
+            return true;
+
+        }
+        /// <summary>
+        /// Xóa loại xe đã chọn trong csdl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+            // Xác nhận trước khi xóa
+            if (xacNhanXoa())
+            {
+                if (xoaNhanVien())
+                {
+                    MessageBox.Show(ThongBao.xoaThanhCong);
+                    dgvLoaiXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                    btnXoa.Enabled = false;
+                    btnThem.Enabled = true;
+                    btnSua.Enabled = false;
+                    xoaDuLieuTrenControl();
+                }
+                else
+                {
+                    MessageBox.Show(ThongBao.khongTheXoa);
+                }
+            }
+        }
+        /***** SỬA *****/
+
+        /// <summary>
+        /// Xác nhận trước khi sửa loại xe
+        /// </summary>
+        /// <returns>false Nếu không đồng ý</returns>
+        private bool xacNhanSua()
+        {
+            // Mở dialog xác nhận
+            DialogResult result = MessageBox.Show("Bạn muốn sửa?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (result == DialogResult.No)
+            {
+                return false;
+            }
+            return true;
+        }
+       /// <summary>
+       /// sữa loại xe đã chọn trong csdl
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
+        private void btnSua_Click_1(object sender, EventArgs e)
+        {
+            // Xác nhận trước khi xóa và kiểm tra lỗi
+            if (!coLoi() && xacNhanSua())
+            {
+                string maLoaiNV = txtMaLoaiXe.Text;
+                string tenLoaiNV = txtTenLoaiXe.Text;
+
+                if (db.suaLoaiXe(maLoaiNV, tenLoaiNV) != -1)
+                {
+                    MessageBox.Show(ThongBao.suaThanhCong);
+                    dgvLoaiXe.DataSource = db.layDuLieuTuBang(TEN_BANG);
+                }
+                xoaDuLieuTrenControl();
+                btnThem.Enabled = true;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show(ThongBao.khongTheSua);
+            }
+        }
+        /// <summary>
+        /// Khi chọn 1 hàng trong View thì lấy dữ liệu lên form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dvgLoaiXe_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Lấy dữ liệu từ view
+            string maLoaiXe = dgvLoaiXe.SelectedRows[0].Cells[0].Value.ToString();
+            string tenLoaiXe = dgvLoaiXe.SelectedRows[0].Cells[1].Value.ToString();
+
+
+            // Truyền dữ liệu lên control tương ứng
+            txtMaLoaiXe.Text = maLoaiXe;
+            txtTenLoaiXe.Text = tenLoaiXe;
+
+
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnThem.Enabled = false;
+        }
+       
+
+    }       
 }

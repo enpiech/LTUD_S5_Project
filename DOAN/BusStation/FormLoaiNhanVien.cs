@@ -73,7 +73,7 @@ namespace BusStation
 
 
         /// <summary>
-        /// lấy dữ liệu từ bảng loại xe mổi khi load form
+        /// lấy dữ liệu từ bảng loại nhân viên mổi khi load form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -81,9 +81,10 @@ namespace BusStation
         {
             dgvLoaiNhanVien.DataSource = db.layDuLieuTuBang(TEN_BANG);
         }
+
         /***** Thêm *****/
         /// <summary>
-        /// Thêm nhân viên mới vào cơ sở dữ liệu
+        /// Thêm loại nhân viên mới vào cơ sở dữ liệu
         /// </summary>
         private bool themNhanVien()
         {
@@ -98,7 +99,7 @@ namespace BusStation
             return true;
         }
         /// <summary>
-        /// thêm loại xe
+        /// thêm loại nhân viên
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -122,7 +123,7 @@ namespace BusStation
         }
         /***** Xóa *****/
         /// <summary>
-        /// Xác nhận trước khi xóa nhân viên
+        /// Xác nhận trước khi xóa loại nhân viên
         /// </summary>
         /// <returns>false Nếu không đồng ý</returns>
         private bool xacNhanXoa()
@@ -159,7 +160,7 @@ namespace BusStation
 
         }
         /// <summary>
-        /// Xóa loại xe đã chọn trong csdl
+        /// Xóa loại nhân viên đã chọn trong csdl
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -186,7 +187,7 @@ namespace BusStation
         /***** SỬA *****/
 
         /// <summary>
-        /// Xác nhận trước khi sửa nhân viên
+        /// Xác nhận trước khi sửa loại nhân viên
         /// </summary>
         /// <returns>false Nếu không đồng ý</returns>
         private bool xacNhanSua()
@@ -203,7 +204,7 @@ namespace BusStation
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // Xác nhận trước khi xóa và kiểm tra lỗi
+            // Xác nhận trước khi sửa và kiểm tra lỗi
             if (!coLoi() && xacNhanSua())
             {
                 string maNV = txtMaNV.Text;

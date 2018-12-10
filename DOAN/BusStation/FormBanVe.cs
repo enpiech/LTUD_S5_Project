@@ -14,74 +14,44 @@ namespace BusStation
 {
     public partial class frmBanVe : Form
     {
+        //khoi tao gia tri
+        private const string TEN_BANG = "Xe";
         DB db = new DB();
 
         public frmBanVe()
         {
             InitializeComponent();
         }
-
-        private void txtTenKH_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// hàm kiểm tra nhập liệu
+        /// </summary>
+        /// <returns></returns>
+        private bool coLoi()
         {
-            Control ctrl = (Control) sender;
-            if (KiemTraNhapLieu.laChuoi(txtTenKH.Text))
-            {
-                errorProvider1.SetError(ctrl, ThongBao.duLieuKhongPhuHop);
-                txtTenKH.Clear();
-                txtTenKH.Focus();
-            }
-            else if(txtTenKH.Text.Length == 0)
-            {
-                errorProvider1.SetError(ctrl, "vui lòng nhập tên khách hàng");
-                txtTenKH.Clear();
-                txtTenKH.Focus();
-            }else
-            {
-                errorProvider1.Clear();
-            }
-        }
+            //lấy dữ liệu từ các control
+            string tenKH = txtTenKH.Text;
+            string CMND = txtCMND.Text;
+            string sDT = txtSoDienThoai.Text;
 
-        private void txtCMND_TextChanged(object sender, EventArgs e)
-        {
-            Control ctrl = (Control)sender;
-            if (KiemTraNhapLieu.laSoNguyen(txtCMND.Text))
+            //kiểm tra nhập vào có hợp lệ hay không
+            if (!KiemTraNhapLieu.laChuoi(tenKH))
             {
-                errorProvider1.SetError(txtCMND, "không được nhập chữ");
-                txtCMND.Clear();
-                txtCMND.Focus();
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
+                return true;
             }
-            else if (txtCMND.Text.Length == 0)
+            if (!KiemTraNhapLieu.laCMND(CMND))
             {
-                errorProvider1.SetError(ctrl, "vui lòng nhập tên khách hàng");
-                txtCMND.Clear();
-                txtCMND.Focus();
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
+                return true;
             }
-            else
+            if (!KiemTraNhapLieu.laSoDienThoai(sDT))
             {
-                errorProvider1.Clear();
+                MessageBox.Show(ThongBao.duLieuKhongPhuHop);
+                return true;
             }
+            return false;
         }
-
-        private void txtSoDienThoai_TextChanged(object sender, EventArgs e)
-        {
-            Control ctrl = (Control)sender;
-            if (KiemTraNhapLieu.laSoNguyen(txtSoDienThoai.Text))
-            {
-                errorProvider1.SetError(txtSoDienThoai, "không được nhập chữ");
-                txtCMND.Clear();
-                txtCMND.Focus();
-            }
-            else if (txtSoDienThoai.Text.Length == 0)
-            {
-                errorProvider1.SetError(ctrl, "vui lòng nhập tên khách hàng");
-                txtSoDienThoai.Clear();
-                txtSoDienThoai.Focus();
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
+        
 
         private void btnMuaVe_Click(object sender, FormClosingEventArgs e)
         {
@@ -106,15 +76,6 @@ namespace BusStation
                 e.Cancel = true;
             }
         }
-
-        private void MuaVe_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult r;
-            r = MessageBox.Show("Bạn muốn thoát", "Thoát Chương Trình", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (r == DialogResult.No)
-                e.Cancel = true;
-        }
-
         private void btnThoat_Click(object sender, EventArgs e)
         {
             // Đóng form hiện tại
@@ -146,22 +107,10 @@ namespace BusStation
                 MessageBox.Show("Mua Vé Thành Công");
             }
         }
-
-        private void btnTim_Click(object sender, EventArgs e)
-        {
-            string tenKH = txtTenKH.Text.Trim();
-            string cmnd = txtCMND.Text.Trim();
-            string sdt = txtSoDienThoai.Text.Trim();
-            string hangXe = cboHangXe.Text.Trim();
-            string loaiXe = cboLoaiXe.Text.Trim();
-            string soGhe = cboGhe.Text.Trim();
-      
-        }
-
         private void frmBanVe_Load(object sender, EventArgs e)
         {
             //gọi hàm để hiển thị
-            dataGridView1.DataSource = db.layDuLieuTuBang("HangXe");
+            dgvBanVe.DataSource = db.layDuLieuTuBang(TEN_BANG);
         }  
     }
 }

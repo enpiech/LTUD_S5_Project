@@ -14,7 +14,7 @@ namespace BusStation
         /// Liên kết đến cơ sở dữ liệu
         /// </summary>
         private SqlConnection connectDB = new SqlConnection();
-        private string connectionString = @"Data Source=DESKTOP-6VMB17O\SQLEXPRESS;Initial Catalog=QLyBenXe;Integrated Security=True";
+        private string connectionString = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLyBenXe;Integrated Security=True";
         
         public DB()
         {
@@ -445,7 +445,7 @@ namespace BusStation
         /// <returns>-1 nếu có lỗi xảy ra</returns>
         public int themLoaiNV(string maLoaiNV, string tenLoaiNV, double luongCoBan)
         {
-            string tensp = "sp_themNV";
+            string tensp = "sp_themLoaiNV";
             int exc = -1;
 
             try
@@ -479,7 +479,7 @@ namespace BusStation
         /// <returns>-1 nếu có lỗi xảy ra</returns>
         public int themLoaiXe(string maLoaiXe, string tenLoaiXe)
         {
-            string tensp = "sp_themNV";
+            string tensp = "sp_themLoaiXe";
             int exc = -1;
 
             try
@@ -558,7 +558,7 @@ namespace BusStation
         /// <param name="maTK">Mã tài khoản nhân viên mới</param>
         /// <param name="matKhau">Mật khẩu mới</param>
         /// <returns>-1 nếu có lỗi xảy ra</returns>
-        public int themTaiKhoanNV(string maNV, string maTK, string matKhau)
+        public int themTaiKhoanNV(string maNV, string MaTK, string MatKhau)
         {
             string tensp = "sp_themTaiKhoanNV";
             int exc = -1;
@@ -569,8 +569,8 @@ namespace BusStation
                 SqlCommand command = new SqlCommand(tensp, connectDB);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@maNV", maNV);
-                command.Parameters.AddWithValue("@maTK", maTK);
-                command.Parameters.AddWithValue("@matKhau", matKhau);
+                command.Parameters.AddWithValue("@maTK", MaTK);
+                command.Parameters.AddWithValue("@matKhau", MatKhau);
 
                 exc = command.ExecuteNonQuery();
             }
@@ -835,9 +835,9 @@ namespace BusStation
         /// <param name="maTK">Mã tài khoản nhân viên mới</param>
         /// <param name="matKhau">Mật khẩu mới</param>
         /// <returns></returns>
-        public int suaTaiKhoanNV(string maNV, string maTK, string matKhau)
+        public int suaTaiKhoanNV(string MaNV, string MaTK, string MatKhau)
         {
-            string tensp = "sp_suaTaiKhoanNV";
+            string tensp = "sp_suaTaiKhoanNhanVien";
             int exc = -1;
 
             try
@@ -846,9 +846,9 @@ namespace BusStation
 
                 SqlCommand command = new SqlCommand(tensp, connectDB);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@maNV", maNV);
-                command.Parameters.AddWithValue("@maTK", maTK);
-                command.Parameters.AddWithValue("@matKhau", matKhau);
+                command.Parameters.AddWithValue("@maNV", MaNV);
+                command.Parameters.AddWithValue("@maTK", MaTK);
+                command.Parameters.AddWithValue("@matKhau", MatKhau);
 
                 exc = command.ExecuteNonQuery();
             }
