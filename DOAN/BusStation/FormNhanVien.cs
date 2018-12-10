@@ -39,44 +39,6 @@ namespace BusStation
         }
 
         /// <summary>
-        /// Thêm nhân viên mới vào cơ sở dữ liệu
-        /// </summary>
-        private bool themNhanVien()
-        {
-            string maNV = txtMaNV.Text;
-            string tenNV = txtTenNV.Text;
-            string cmnd = txtCmnd.Text;
-            DateTime ngaySinh = dtpNgaySinh.Value;
-            string diaChi = txtDiaChi.Text;
-            string queQuan = txtQueQuan.Text;
-            DateTime ngayBatDau = dtpNgayBatDau.Value; 
-            string loaiNhanVien = cboLoaiNV.SelectedValue.ToString();
-            string sdt = txtSdt.Text;
-            double luong = Convert.ToDouble(txtLuong.Text);
-
-            if(db.themNhanVien(maNV, tenNV, ngaySinh, diaChi, queQuan, ngayBatDau, loaiNhanVien, sdt, luong) == -1)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// Xóa loại nhân viên đang chọn ra khỏi cơ sở dữ liệu
-        /// </summary>
-        private bool xoaNhanVien()
-        {
-            string maNV = txtMaNV.Text;
-
-            if(db.xoaNhanVien(maNV) == -1)
-            {
-                return false;
-            }
-            return true;
-
-        }
-
-        /// <summary>
         /// Xác nhận trước khi xóa nhân viên
         /// </summary>
         /// <returns>false Nếu không đồng ý</returns>
@@ -182,8 +144,18 @@ namespace BusStation
             // Kiểm tra lỗi nhập liệu
             if (!coLoi())
             {
-                // Kiểm tra xem đã thêm thành công hay không
-                if (themNhanVien())
+                string maNV = txtMaNV.Text;
+                string tenNV = txtTenNV.Text;
+                string cmnd = txtCmnd.Text;
+                DateTime ngaySinh = dtpNgaySinh.Value;
+                string diaChi = txtDiaChi.Text;
+                string queQuan = txtQueQuan.Text;
+                DateTime ngayBatDau = dtpNgayBatDau.Value;
+                string loaiNhanVien = cboLoaiNV.SelectedValue.ToString();
+                string sdt = txtSdt.Text;
+                double luong = Convert.ToDouble(txtLuong.Text);
+
+                if (db.themNhanVien(maNV, tenNV, ngaySinh, diaChi, queQuan, ngayBatDau, loaiNhanVien, sdt, luong) != -1)
                 {
                     MessageBox.Show(ThongBao.themThanhCong);
                     dgvNhanVien.DataSource = db.layDuLieuTuBang(TEN_BANG);
@@ -247,7 +219,9 @@ namespace BusStation
             // Xác nhận trước khi xóa
             if (xacNhanXoa())
             {
-                if (xoaNhanVien())
+                string maNV = txtMaNV.Text;
+
+                if (db.xoaNhanVien(maNV) == -1)
                 {
                     MessageBox.Show(ThongBao.xoaThanhCong);
                     dgvNhanVien.DataSource = db.layDuLieuTuBang(TEN_BANG);
@@ -285,8 +259,7 @@ namespace BusStation
             cboLoaiNV.SelectedIndex = cboLoaiNV.FindStringExact(dgvNhanVien.SelectedRows[0].Cells[7].Value.ToString());
             txtSdt.Text = dgvNhanVien.SelectedRows[0].Cells[8].Value.ToString();
             txtLuong.Text = dgvNhanVien.SelectedRows[0].Cells[9].Value.ToString();
-
-            btnThem.Enabled = false;
+            
             btnXoa.Enabled = true;
             btnSua.Enabled = true;
         }

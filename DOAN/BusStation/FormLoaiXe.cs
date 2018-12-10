@@ -165,10 +165,10 @@ namespace BusStation
                     btnSua.Enabled = false;
                     xoaDuLieuTrenControl();
                 }
-                else
-                {
-                    MessageBox.Show(ThongBao.khongTheXoa);
-                }
+            }
+            else
+            {
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
         }
         /***** SỬA *****/

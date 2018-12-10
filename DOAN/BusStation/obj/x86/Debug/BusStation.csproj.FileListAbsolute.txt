@@ -124,3 +124,19 @@ C:\Users\Win 8.1 Version 2\Documents\doan_ltud\LTUD_S5_Project\DOAN\BusStation\o
 C:\Users\Win 8.1 Version 2\Documents\doan_ltud\LTUD_S5_Project\DOAN\BusStation\obj\x86\Debug\BusStation.csproj.GenerateResource.Cache
 C:\Users\Win 8.1 Version 2\Documents\doan_ltud\LTUD_S5_Project\DOAN\BusStation\bin\Debug\BusStation.exe
 C:\Users\Win 8.1 Version 2\Documents\doan_ltud\LTUD_S5_Project\DOAN\BusStation\bin\Debug\BusStation.pdb
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.exe
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.pdb
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\bin\Debug\BusStation.exe
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\bin\Debug\BusStation.pdb
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.csprojResolveAssemblyReference.cache
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmHangXe.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmKhachHang.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiNhanVien.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmLoaiXe.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmLogin.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmMain.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmNhanVien.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmTaiKhoanNhanVien.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.frmXe.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.Properties.Resources.resources
+C:\Users\enpie\Downloads\LTUD_S5_Project-final\DOAN\BusStation\obj\x86\Debug\BusStation.csproj.GenerateResource.Cache

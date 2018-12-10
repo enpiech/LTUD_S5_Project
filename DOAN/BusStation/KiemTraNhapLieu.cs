@@ -117,5 +117,19 @@ namespace BusStation
             }
             return true;
         }
+
+        /// <summary>
+        /// Kiểm tra nếu chuỗi nhập vào là số xe
+        /// </summary>
+        /// <param name="input">Chuỗi cần kiểm tra</param>
+        /// <returns></returns>
+        public static bool laSoXe(string input)
+        {
+            if (khongRong(input) && (input.Length == 8 || input.Length == 9))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

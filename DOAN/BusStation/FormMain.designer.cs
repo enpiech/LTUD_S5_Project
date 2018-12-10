@@ -34,7 +34,6 @@
             this.mnuTuyChon = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDangXuat = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThoat = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBanVe = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuQuanLy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHangXe = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuKhachHang = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +51,6 @@
             this.mnuMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTuyChon,
-            this.mnuBanVe,
             this.mnuQuanLy});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
@@ -80,24 +78,15 @@
             // 
             this.mnuDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("mnuDangXuat.Image")));
             this.mnuDangXuat.Name = "mnuDangXuat";
-            this.mnuDangXuat.Size = new System.Drawing.Size(169, 26);
+            this.mnuDangXuat.Size = new System.Drawing.Size(163, 26);
             this.mnuDangXuat.Text = "Đăng Xuất";
             // 
             // mnuThoat
             // 
             this.mnuThoat.Image = ((System.Drawing.Image)(resources.GetObject("mnuThoat.Image")));
             this.mnuThoat.Name = "mnuThoat";
-            this.mnuThoat.Size = new System.Drawing.Size(169, 26);
+            this.mnuThoat.Size = new System.Drawing.Size(163, 26);
             this.mnuThoat.Text = "Thoát";
-            // 
-            // mnuBanVe
-            // 
-            this.mnuBanVe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mnuBanVe.Image = ((System.Drawing.Image)(resources.GetObject("mnuBanVe.Image")));
-            this.mnuBanVe.Name = "mnuBanVe";
-            this.mnuBanVe.Size = new System.Drawing.Size(100, 26);
-            this.mnuBanVe.Text = "Bán Vé";
-            this.mnuBanVe.Click += new System.EventHandler(this.mnuBanVe_Click);
             // 
             // mnuQuanLy
             // 
@@ -119,43 +108,43 @@
             // mnuHangXe
             // 
             this.mnuHangXe.Name = "mnuHangXe";
-            this.mnuHangXe.Size = new System.Drawing.Size(256, 26);
+            this.mnuHangXe.Size = new System.Drawing.Size(250, 26);
             this.mnuHangXe.Text = "Hãng Xe";
             // 
             // mnuKhachHang
             // 
             this.mnuKhachHang.Name = "mnuKhachHang";
-            this.mnuKhachHang.Size = new System.Drawing.Size(256, 26);
+            this.mnuKhachHang.Size = new System.Drawing.Size(250, 26);
             this.mnuKhachHang.Text = "Khách Hàng";
             // 
             // mnuLoaiNV
             // 
             this.mnuLoaiNV.Name = "mnuLoaiNV";
-            this.mnuLoaiNV.Size = new System.Drawing.Size(256, 26);
+            this.mnuLoaiNV.Size = new System.Drawing.Size(250, 26);
             this.mnuLoaiNV.Text = "Loại Nhân Viên";
             // 
             // mnuLoaiXe
             // 
             this.mnuLoaiXe.Name = "mnuLoaiXe";
-            this.mnuLoaiXe.Size = new System.Drawing.Size(256, 26);
+            this.mnuLoaiXe.Size = new System.Drawing.Size(250, 26);
             this.mnuLoaiXe.Text = "Loại Xe";
             // 
             // mnuNhanVien
             // 
             this.mnuNhanVien.Name = "mnuNhanVien";
-            this.mnuNhanVien.Size = new System.Drawing.Size(256, 26);
+            this.mnuNhanVien.Size = new System.Drawing.Size(250, 26);
             this.mnuNhanVien.Text = "Nhân Viên";
             // 
             // mnuTaiKhoanNV
             // 
             this.mnuTaiKhoanNV.Name = "mnuTaiKhoanNV";
-            this.mnuTaiKhoanNV.Size = new System.Drawing.Size(256, 26);
+            this.mnuTaiKhoanNV.Size = new System.Drawing.Size(250, 26);
             this.mnuTaiKhoanNV.Text = "Tài Khoản Nhân Viên";
             // 
             // mnuXe
             // 
             this.mnuXe.Name = "mnuXe";
-            this.mnuXe.Size = new System.Drawing.Size(256, 26);
+            this.mnuXe.Size = new System.Drawing.Size(250, 26);
             this.mnuXe.Text = "Xe";
             // 
             // imglMain
@@ -199,7 +188,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip mnuMain;
-        private System.Windows.Forms.ToolStripMenuItem mnuBanVe;
         private System.Windows.Forms.ToolStripMenuItem mnuQuanLy;
         private System.Windows.Forms.ToolStripMenuItem mnuTuyChon;
         private System.Windows.Forms.ToolStripMenuItem mnuDangXuat;

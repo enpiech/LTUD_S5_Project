@@ -178,10 +178,6 @@ namespace BusStation
                     btnUpdate.Enabled = false;
                     xoaDuLieuTrenControl();
                 }
-                else
-                {
-                    MessageBox.Show(ThongBao.khongTheXoa);
-                }
             }
         }
         /***** SỬA *****/

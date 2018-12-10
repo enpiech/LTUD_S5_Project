@@ -59,51 +59,61 @@ namespace BusStation
         public void moForm(string tenForm)
         {
             Form form;
-            if (tenForm == "BanVe")
-            {
-                form = new frmBanVe();
-            }
-            else if (tenForm == "HangXe")
-            {
-                form = new frmHangXe();
-            }
-            else if (tenForm == "KhachHang")
-            {
-                form = new frmKhachHang();
-            }
-            else if (tenForm == "LoaiNV")
-            {
-                form = new frmLoaiNhanVien();
-            }
-            else if (tenForm == "LoaiXe")
-            {
-                form = new frmLoaiXe();
-            }
-            else if (tenForm == "Login")
+
+            if (tenForm == "Login")
             {
                 form = new frmLogin();
-            }
-            else if (tenForm == "NhanVien")
-            {
-                form = new frmNhanVien();
-            }
-            else if (tenForm == "TaiKhoanNV")
-            {
-                form = new frmTaiKhoanNhanVien();
-            }
-            else
-            {
-                form = new frmXe();
-            }
-            try
-            {
                 form.MdiParent = this;
                 form.Show();
             }
-            catch (Exception ex)
+            else
             {
-                form.Focus();
-                MessageBox.Show("Phát sinh lỗi\n\n" + ex.Message.ToString());
+                FormCollection fc = Application.OpenForms;
+                foreach (Form frm in fc)
+                {
+                    if (frm.Name.Equals("frm" + tenForm))
+                    {
+                        frm.Focus();
+                        return;
+                    }
+                }
+                if (tenForm == "HangXe")
+                {
+                    form = new frmHangXe();
+                }
+                else if (tenForm == "KhachHang")
+                {
+                    form = new frmKhachHang();
+                }
+                else if (tenForm == "LoaiNV")
+                {
+                    form = new frmLoaiNhanVien();
+                }
+                else if (tenForm == "LoaiXe")
+                {
+                    form = new frmLoaiXe();
+                }
+                else if (tenForm == "NhanVien")
+                {
+                    form = new frmNhanVien();
+                }
+                else if (tenForm == "TaiKhoanNV")
+                {
+                    form = new frmTaiKhoanNhanVien();
+                }
+                else
+                {
+                    form = new frmXe();
+                }
+                try
+                {
+                    form.MdiParent = this;
+                    form.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Phát sinh lỗi\n\n" + ex.Message.ToString());
+                }
             }
         }
 
@@ -117,13 +127,6 @@ namespace BusStation
             {
                 // Mở khóa menu cho nhân viên quản lý
                 mnuQuanLy.Enabled = true;
-                mnuBanVe.Enabled = true;
-            }
-            // Nếu là nhân viên phòng vé
-            else if (NVHienTai.LoaiNV == "NVPV")
-            {
-                // Mở khóa menu cho nhân viên phòng vé
-                mnuBanVe.Enabled = true;
             }
 
             // Mở khóa menu đăng xuất
@@ -135,7 +138,6 @@ namespace BusStation
         /// </summary>
         public void voHieuHoaFormMain()
         {
-            mnuBanVe.Enabled = false;
             mnuQuanLy.Enabled = false;
             mnuDangXuat.Enabled = false;
         }

@@ -14,7 +14,7 @@ namespace BusStation
         /// Liên kết đến cơ sở dữ liệu
         /// </summary>
         private SqlConnection connectDB = new SqlConnection();
-        private string connectionString = @"Data Source=ADMIN-PC\SQLEXPRESS;Initial Catalog=QLyBenXe;Integrated Security=True";
+        private string connectionString = @"Data Source=DESKTOP-6VMB17O\SQLEXPRESS;Initial Catalog=QLyBenXe;Integrated Security=True";
         
         public DB()
         {
@@ -90,7 +90,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -126,7 +126,7 @@ namespace BusStation
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
             }
             finally
             {
@@ -159,7 +159,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
             }
             finally
             {
@@ -191,7 +191,39 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
+            }
+            finally
+            {
+                dongKetNoi();
+            }
+
+            return exc;
+        }
+
+        /// <summary>
+        /// Xóa xe theo mã nhập vào
+        /// </summary>
+        /// <param name="maXe"></param>
+        /// <returns>-1 nếu có lỗi xảy ra</returns>
+        public int xoaXe(string maXe)
+        {
+            string tensp = "sp_xoaXe";
+            int exc = -1;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maXe", maXe);
+
+                exc = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -206,9 +238,9 @@ namespace BusStation
         /// </summary>
         /// <param name="maHangXe">Mã khách hàng cần xóa</param>
         /// <returns>- 1 nếu có lỗi xảy ra</returns>
-        public int xoaKhachHang(string maHangXe)
+        public int xoaKhachHang(string maKhachHang)
         {
-            string tensp = "sp_xoaHangXe";
+            string tensp = "sp_xoaKhachHang";
             int exc = -1;
 
             try
@@ -217,13 +249,13 @@ namespace BusStation
 
                 SqlCommand command = new SqlCommand(tensp, connectDB);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@maHangXe", maHangXe);
+                command.Parameters.AddWithValue("@maKH", maKhachHang);
 
                  exc = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -254,7 +286,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -285,7 +317,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -317,7 +349,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -348,7 +380,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -386,7 +418,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -427,7 +459,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -445,7 +477,7 @@ namespace BusStation
         /// <returns>-1 nếu có lỗi xảy ra</returns>
         public int themLoaiNV(string maLoaiNV, string tenLoaiNV, double luongCoBan)
         {
-            string tensp = "sp_themLoaiNV";
+            string tensp = "sp_themNV";
             int exc = -1;
 
             try
@@ -462,7 +494,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -479,7 +511,7 @@ namespace BusStation
         /// <returns>-1 nếu có lỗi xảy ra</returns>
         public int themLoaiXe(string maLoaiXe, string tenLoaiXe)
         {
-            string tensp = "sp_themLoaiXe";
+            string tensp = "sp_themNV";
             int exc = -1;
 
             try
@@ -495,7 +527,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -542,7 +574,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -558,7 +590,7 @@ namespace BusStation
         /// <param name="maTK">Mã tài khoản nhân viên mới</param>
         /// <param name="matKhau">Mật khẩu mới</param>
         /// <returns>-1 nếu có lỗi xảy ra</returns>
-        public int themTaiKhoanNV(string maNV, string MaTK, string MatKhau)
+        public int themTaiKhoanNV(string maNV, string maTK, string matKhau)
         {
             string tensp = "sp_themTaiKhoanNV";
             int exc = -1;
@@ -569,14 +601,14 @@ namespace BusStation
                 SqlCommand command = new SqlCommand(tensp, connectDB);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@maNV", maNV);
-                command.Parameters.AddWithValue("@maTK", MaTK);
-                command.Parameters.AddWithValue("@matKhau", MatKhau);
+                command.Parameters.AddWithValue("@maTK", maTK);
+                command.Parameters.AddWithValue("@matKhau", matKhau);
 
                 exc = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -599,9 +631,9 @@ namespace BusStation
         /// <param name="soLuongKhachHang">Số lượng khách hàng xe mới</param>
         /// <param name="maNVLaiXe">Mã nhân viên lái xe mới</param>
         /// <returns>-1 nếu có lỗi xảy ra</returns>
-        public int themXe(string maXe, string maHangXe, string soXe, string maLoaiXe, string hanhTrinh, int gia, DateTime gioXuatPhat, int soLuongGhe, int soLuongKhachHang, string maNVLaiXe)
+        public int themXe(string maXe, string maHangXe, string soXe, string maLoaiXe, string hanhTrinh, double gia, DateTime gioXuatPhat, int soLuongGhe, int soLuongKhachHang, string maNVLaiXe)
         {
-            string tensp = "sp_themTaiKhoanNV";
+            string tensp = "sp_themXe";
             int exc = -1;
 
             try
@@ -625,7 +657,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -662,7 +694,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -703,7 +735,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -738,7 +770,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -771,7 +803,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -819,7 +851,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -835,9 +867,9 @@ namespace BusStation
         /// <param name="maTK">Mã tài khoản nhân viên mới</param>
         /// <param name="matKhau">Mật khẩu mới</param>
         /// <returns></returns>
-        public int suaTaiKhoanNV(string MaNV, string MaTK, string MatKhau)
+        public int suaTaiKhoanNV(string maNV, string maTK, string matKhau)
         {
-            string tensp = "sp_suaTaiKhoanNhanVien";
+            string tensp = "sp_suaTaiKhoanNV";
             int exc = -1;
 
             try
@@ -846,15 +878,15 @@ namespace BusStation
 
                 SqlCommand command = new SqlCommand(tensp, connectDB);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@maNV", MaNV);
-                command.Parameters.AddWithValue("@maTK", MaTK);
-                command.Parameters.AddWithValue("@matKhau", MatKhau);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@maTK", maTK);
+                command.Parameters.AddWithValue("@matKhau", matKhau);
 
                 exc = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -877,9 +909,9 @@ namespace BusStation
         /// <param name="soLuongKhachHang">Số lượng khách hàng xe mới</param>
         /// <param name="maNVLaiXe">Mã nhân viên lái xe mới</param>
         /// <returns></returns>
-        public int suaXe(string maXe, string maHangXe, string soXe, string maLoaiXe, string hanhTrinh, int gia, DateTime gioXuatPhat, int soLuongGhe, int soLuongKhachHang, string maNVLaiXe)
+        public int suaXe(string maXe, string maHangXe, string soXe, string maLoaiXe, string hanhTrinh, double gia, DateTime gioXuatPhat, int soLuongGhe, int soLuongKhachHang, string maNVLaiXe)
         {
-            string tensp = "sp_suaTaiKhoanNV";
+            string tensp = "sp_suaXe";
             int exc = -1;
 
             try
@@ -903,13 +935,185 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
                 dongKetNoi();
             }
             return exc;
+        }
+
+        /// <summary>
+        /// Tìm mã xe theo số xe nhập vào
+        /// </summary>
+        /// <param name="soXe">Số xe cần tìm mã</param>
+        /// <returns></returns>
+        public int timMaXe(string soXe)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "Xe");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == soXe)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }   
+            return count;
+        }
+
+        /// <summary>
+        /// Tìm mã hãng xe theo tên hãng xe nhập vào
+        /// </summary>
+        /// <param name="tenHangXe"></param>
+        /// <returns></returns>
+        public int timMaHangXe(string tenHangXe)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "HangXe");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == tenHangXe)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Tìm mã loại xe theo tên loại xe nhập vào
+        /// </summary>
+        /// <param name="tenLoaiXe"></param>
+        /// <returns></returns>
+        public int timMaLoaiXe(string tenLoaiXe)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "LoaiXe");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == tenLoaiXe)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Tìm mã nhân viên theo tên nhân viên nhập vào
+        /// </summary>
+        /// <param name="tenNhanVien"></param>
+        /// <returns></returns>
+        public int timMaNhanVien(string tenNhanVien)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "NhanVien");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == tenNhanVien)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }
+            return count;
         }
     }
 }
