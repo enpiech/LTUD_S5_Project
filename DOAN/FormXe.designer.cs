@@ -33,13 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.btnTroVe = new System.Windows.Forms.Button();
             this.imglXe = new System.Windows.Forms.ImageList(this.components);
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.lblGia = new System.Windows.Forms.Label();
             this.lblHanhTrinh = new System.Windows.Forms.Label();
             this.lblLoaiXe = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.lblHangXe = new System.Windows.Forms.Label();
             this.lblSoXe = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.lblSoLuongKhachHang = new System.Windows.Forms.Label();
             this.lblNhanVienLaiXe = new System.Windows.Forms.Label();
             this.cboNVLaiXe = new System.Windows.Forms.ComboBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
             this.gbThongTin = new System.Windows.Forms.GroupBox();
             this.txtGiaVe = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,23 +69,23 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnBack
+            // btnTroVe
             // 
-            this.btnBack.BackColor = System.Drawing.Color.White;
-            this.btnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnBack.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.Red;
-            this.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBack.ImageKey = "dangXuat.jpg";
-            this.btnBack.ImageList = this.imglXe;
-            this.btnBack.Location = new System.Drawing.Point(6, 170);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(139, 44);
-            this.btnBack.TabIndex = 21;
-            this.btnBack.Text = "Trở về";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnTroVe_Click);
+            this.btnTroVe.BackColor = System.Drawing.Color.White;
+            this.btnTroVe.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnTroVe.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTroVe.ForeColor = System.Drawing.Color.Red;
+            this.btnTroVe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTroVe.ImageKey = "dangXuat.jpg";
+            this.btnTroVe.ImageList = this.imglXe;
+            this.btnTroVe.Location = new System.Drawing.Point(6, 170);
+            this.btnTroVe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTroVe.Name = "btnTroVe";
+            this.btnTroVe.Size = new System.Drawing.Size(139, 44);
+            this.btnTroVe.TabIndex = 21;
+            this.btnTroVe.Text = "Trở về";
+            this.btnTroVe.UseVisualStyleBackColor = false;
+            this.btnTroVe.Click += new System.EventHandler(this.btnTroVe_Click);
             // 
             // imglXe
             // 
@@ -114,22 +114,22 @@
             this.imglXe.Images.SetKeyName(20, "user.jpg");
             this.imglXe.Images.SetKeyName(21, "xoa.png");
             // 
-            // btnAdd
+            // btnThem
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.White;
-            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.Red;
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.ImageKey = "tải xuống.jpg";
-            this.btnAdd.ImageList = this.imglXe;
-            this.btnAdd.Location = new System.Drawing.Point(6, 26);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(139, 44);
-            this.btnAdd.TabIndex = 18;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnThem_Click);
+            this.btnThem.BackColor = System.Drawing.Color.White;
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.Color.Red;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.ImageKey = "tải xuống.jpg";
+            this.btnThem.ImageList = this.imglXe;
+            this.btnThem.Location = new System.Drawing.Point(6, 26);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(139, 44);
+            this.btnThem.TabIndex = 18;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // lblGia
             // 
@@ -158,22 +158,22 @@
             this.lblLoaiXe.TabIndex = 8;
             this.lblLoaiXe.Text = "Loại Xe:";
             // 
-            // btnDelete
+            // btnXoa
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.ImageKey = "flat-delete-icon-circle-remove-sign-button-vector-13229630.jpg";
-            this.btnDelete.ImageList = this.imglXe;
-            this.btnDelete.Location = new System.Drawing.Point(6, 74);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(139, 44);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnXoa.BackColor = System.Drawing.Color.White;
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.Red;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.ImageKey = "flat-delete-icon-circle-remove-sign-button-vector-13229630.jpg";
+            this.btnXoa.ImageList = this.imglXe;
+            this.btnXoa.Location = new System.Drawing.Point(6, 74);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(139, 44);
+            this.btnXoa.TabIndex = 19;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // lblHangXe
             // 
@@ -235,7 +235,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvXe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvXe.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvXe.Location = new System.Drawing.Point(0, 286);
+            this.dgvXe.Location = new System.Drawing.Point(0, 307);
             this.dgvXe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvXe.MultiSelect = false;
             this.dgvXe.Name = "dgvXe";
@@ -250,7 +250,7 @@
             this.dgvXe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvXe.RowTemplate.Height = 24;
             this.dgvXe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvXe.Size = new System.Drawing.Size(932, 379);
+            this.dgvXe.Size = new System.Drawing.Size(932, 358);
             this.dgvXe.TabIndex = 22;
             this.dgvXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvXe_CellClick);
             // 
@@ -353,22 +353,22 @@
             this.cboNVLaiXe.Size = new System.Drawing.Size(220, 31);
             this.cboNVLaiXe.TabIndex = 15;
             // 
-            // btnUpdate
+            // btnSua
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.White;
-            this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.Red;
-            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.ImageKey = "sua.png";
-            this.btnUpdate.ImageList = this.imglXe;
-            this.btnUpdate.Location = new System.Drawing.Point(6, 122);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(139, 44);
-            this.btnUpdate.TabIndex = 20;
-            this.btnUpdate.Text = "Sửa";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnCapNhat_Click);
+            this.btnSua.BackColor = System.Drawing.Color.White;
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.Red;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.ImageKey = "sua.png";
+            this.btnSua.ImageList = this.imglXe;
+            this.btnSua.Location = new System.Drawing.Point(6, 122);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(139, 44);
+            this.btnSua.TabIndex = 20;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // gbThongTin
             // 
@@ -429,10 +429,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.btnBack);
-            this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.btnThem);
+            this.groupBox1.Controls.Add(this.btnXoa);
+            this.groupBox1.Controls.Add(this.btnTroVe);
+            this.groupBox1.Controls.Add(this.btnSua);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Red;
             this.groupBox1.Location = new System.Drawing.Point(771, 60);
@@ -444,10 +444,10 @@
             // 
             // frmXe
             // 
-            this.AcceptButton = this.btnAdd;
+            this.AcceptButton = this.btnThem;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnBack;
+            this.CancelButton = this.btnTroVe;
             this.ClientSize = new System.Drawing.Size(932, 665);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
@@ -474,12 +474,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnTroVe;
+        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label lblGia;
         private System.Windows.Forms.Label lblHanhTrinh;
         private System.Windows.Forms.Label lblLoaiXe;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label lblHangXe;
         private System.Windows.Forms.Label lblSoXe;
         private System.Windows.Forms.Label lblTitle;
@@ -496,7 +496,7 @@
         private System.Windows.Forms.Label lblSoLuongKhachHang;
         private System.Windows.Forms.Label lblNhanVienLaiXe;
         private System.Windows.Forms.ComboBox cboNVLaiXe;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.GroupBox gbThongTin;
         private System.Windows.Forms.ImageList imglXe;
         private System.Windows.Forms.TextBox txtGiaVe;

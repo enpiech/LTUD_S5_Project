@@ -90,7 +90,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -126,7 +126,7 @@ namespace BusStation
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
             }
             finally
             {
@@ -159,7 +159,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheLayDuLieu + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
             }
             finally
             {
@@ -191,7 +191,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -223,7 +223,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -255,7 +255,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -286,7 +286,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -317,7 +317,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -349,7 +349,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -380,7 +380,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -418,7 +418,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheXoa + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheXoa);
             }
             finally
             {
@@ -459,7 +459,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -494,7 +494,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -527,7 +527,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -574,7 +574,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -608,7 +608,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -657,7 +657,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheThem + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheThem);
             }
             finally
             {
@@ -694,7 +694,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -735,7 +735,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -770,7 +770,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -803,7 +803,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -851,7 +851,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -886,7 +886,7 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
@@ -911,7 +911,7 @@ namespace BusStation
         /// <returns></returns>
         public int suaXe(string maXe, string maHangXe, string soXe, string maLoaiXe, string hanhTrinh, double gia, DateTime gioXuatPhat, int soLuongGhe, int soLuongKhachHang, string maNVLaiXe)
         {
-            string tensp = "sp_suaTaiKhoanNV";
+            string tensp = "sp_suaXe";
             int exc = -1;
 
             try
@@ -935,13 +935,185 @@ namespace BusStation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ThongBao.khongTheSua + "\n" + ex.Message);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
             finally
             {
                 dongKetNoi();
             }
             return exc;
+        }
+
+        /// <summary>
+        /// Tìm mã xe theo số xe nhập vào
+        /// </summary>
+        /// <param name="soXe">Số xe cần tìm mã</param>
+        /// <returns></returns>
+        public int timMaXe(string soXe)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "Xe");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == soXe)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }   
+            return count;
+        }
+
+        /// <summary>
+        /// Tìm mã hãng xe theo tên hãng xe nhập vào
+        /// </summary>
+        /// <param name="tenHangXe"></param>
+        /// <returns></returns>
+        public int timMaHangXe(string tenHangXe)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "HangXe");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == tenHangXe)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Tìm mã loại xe theo tên loại xe nhập vào
+        /// </summary>
+        /// <param name="tenLoaiXe"></param>
+        /// <returns></returns>
+        public int timMaLoaiXe(string tenLoaiXe)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "LoaiXe");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == tenLoaiXe)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Tìm mã nhân viên theo tên nhân viên nhập vào
+        /// </summary>
+        /// <param name="tenNhanVien"></param>
+        /// <returns></returns>
+        public int timMaNhanVien(string tenNhanVien)
+        {
+            int count = 0;
+            string tensp = "sp_layDuLieuTuBang";
+            SqlDataReader dr;
+
+            try
+            {
+                moKetNoi();
+
+                SqlCommand command = new SqlCommand(tensp, connectDB);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@tenBang", "NhanVien");
+
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if ((string)dr.GetValue(0) == tenNhanVien)
+                    {
+                        return count;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ThongBao.khongTheLayDuLieu);
+            }
+            finally
+            {
+                dongKetNoi();
+            }
+            return count;
         }
     }
 }

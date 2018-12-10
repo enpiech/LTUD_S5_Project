@@ -32,7 +32,7 @@ namespace BusStation
             string gia = txtGiaVe.Text;
 
             // Kiểm tra người dùng đã nhập số xe
-            if (!KiemTraNhapLieu.laSoXe(soXe) || !KiemTraNhapLieu.khongRong(maXe) || !KiemTraNhapLieu.khongRong(gia))
+            if (!KiemTraNhapLieu.khongRong(soXe) || !KiemTraNhapLieu.khongRong(maXe) || !KiemTraNhapLieu.khongRong(gia))
             {
                 MessageBox.Show(ThongBao.duLieuKhongPhuHop);
                 return true;
@@ -129,6 +129,7 @@ namespace BusStation
                 {
                     MessageBox.Show(ThongBao.khongTheXoa);
                 }
+                loadDuLieu();
             }  
         }
 
@@ -154,21 +155,20 @@ namespace BusStation
                 string hanhTrinh = txtHanhTrinh.Text;
                 double gia = Convert.ToDouble(txtGiaVe.Text);
                 DateTime gioXuatPhat = dtpGioXuatPhat.Value;
-                int soLuongGhe = Convert.ToInt32(numSoLuongGhe);
-                int soLuongKhachHang = Convert.ToInt32(numSoLuongKhachHang);
+                int soLuongGhe = (int)numSoLuongGhe.Value;
+                int soLuongKhachHang = (int)numSoLuongKhachHang.Value;
                 string maNVLaiXe = cboNVLaiXe.SelectedValue.ToString();
 
-                // Kiểm tra xem thêm thành công hay không
+                //Kiểm tra xem thêm thành công hay không
                 if (db.suaXe(maXe, maHangXe, soXe, maLoaiXe, hanhTrinh, gia, gioXuatPhat, soLuongGhe, soLuongKhachHang, maLoaiXe) != -1)
                 {
-                    MessageBox.Show(ThongBao.themThanhCong);
-                    dgvXe.DataSource = db.layDuLieuTuBang("Xe");
+                    MessageBox.Show(ThongBao.suaThanhCong);
                 }
                 loadDuLieu();
             }
             else
             {
-                MessageBox.Show(ThongBao.khongTheThem);
+                MessageBox.Show(ThongBao.khongTheSua);
             }
         }
 
@@ -200,8 +200,8 @@ namespace BusStation
             cboNVLaiXe.DisplayMember = "TenNV";
             cboNVLaiXe.ValueMember = "MaNV";
 
-            btnDelete.Enabled = false;
-            btnUpdate.Enabled = false;
+            btnXoa.Enabled = false;
+            btnSua.Enabled = false;
         }
 
         /// <summary>
@@ -217,15 +217,18 @@ namespace BusStation
         private void dgvXe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtMaXe.Text = dgvXe.SelectedRows[0].Cells[0].Value.ToString();
-            cboHangXe.SelectedIndex = cboHangXe.FindStringExact(dgvXe.SelectedRows[0].Cells[1].Value.ToString());
+            cboHangXe.SelectedIndex = db.timMaHangXe(dgvXe.SelectedRows[0].Cells[1].Value.ToString());
             txtSoXe.Text = dgvXe.SelectedRows[0].Cells[2].Value.ToString();
-            cboLoaiXe.SelectedIndex = cboLoaiXe.FindStringExact(dgvXe.SelectedRows[0].Cells[3].Value.ToString());
+            cboLoaiXe.SelectedIndex = db.timMaLoaiXe(dgvXe.SelectedRows[0].Cells[3].Value.ToString());
             txtHanhTrinh.Text = dgvXe.SelectedRows[0].Cells[4].Value.ToString();
             txtGiaVe.Text = dgvXe.SelectedRows[0].Cells[5].Value.ToString();
             dtpGioXuatPhat.Value = Convert.ToDateTime(dgvXe.SelectedRows[0].Cells[6].Value);
             numSoLuongGhe.Value = Convert.ToInt32(dgvXe.SelectedRows[0].Cells[7].Value);
             numSoLuongKhachHang.Value = Convert.ToInt32(dgvXe.SelectedRows[0].Cells[8].Value);
-            cboNVLaiXe.SelectedIndex = cboNVLaiXe.FindStringExact(dgvXe.SelectedRows[0].Cells[9].Value.ToString());
+            cboNVLaiXe.SelectedIndex = db.timMaLoaiXe(dgvXe.SelectedRows[0].Cells[9].Value.ToString());
+
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
         }
     }
 }

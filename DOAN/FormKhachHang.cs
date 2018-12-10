@@ -31,9 +31,10 @@ namespace BusStation
         {
             dgvKhachHang.DataSource = db.layDuLieuTuBang(TEN_BANG);
 
-            cboMaXe.DataSource = db.layDuLieuTuBang("Xe");
+            //db.themDuLieuVaoComboBox(cboMaXe, "Xe");
             cboMaXe.ValueMember = "MaXe";
             cboMaXe.DisplayMember = "SoXe";
+            cboMaXe.DataSource = db.layDuLieuTuBang("Xe");
         }
 
         /// <summary>
@@ -43,7 +44,6 @@ namespace BusStation
         {
             txtMaKhachHang.Clear();
             txtTenKhachHang.Clear();
-            cboMaXe.SelectedIndex = cboMaXe.Items.Count - 1;
             txtSoDienThoai.Clear();
             txtMaGhe.Clear();
             txtCmnd.Clear();
@@ -227,10 +227,8 @@ namespace BusStation
             txtTenKhachHang.Text = dgvKhachHang.SelectedRows[0].Cells[1].Value.ToString();
             txtCmnd.Text = dgvKhachHang.SelectedRows[0].Cells[2].Value.ToString();
             txtSoDienThoai.Text = dgvKhachHang.SelectedRows[0].Cells[3].Value.ToString();
-            MessageBox.Show(cboMaXe.FindStringExact("PT3") + "");
-            cboMaXe.SelectedIndex = 3;
             txtMaGhe.Text = dgvKhachHang.SelectedRows[0].Cells[5].Value.ToString();
-
+            cboMaXe.SelectedIndex = db.timMaXe(dgvKhachHang.SelectedRows[0].Cells[4].Value.ToString());
             btnDelete.Enabled = true;
             btnUpdate.Enabled = true;
         }
