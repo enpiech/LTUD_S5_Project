@@ -123,7 +123,9 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvhangXe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvhangXe.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvhangXe.RowTemplate.Height = 24;
+            this.dgvhangXe.RowTemplate.ReadOnly = true;
             this.dgvhangXe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvhangXe.Size = new System.Drawing.Size(929, 386);
             this.dgvhangXe.TabIndex = 11;

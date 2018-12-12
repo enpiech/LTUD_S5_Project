@@ -50,6 +50,10 @@ namespace BusStation
             if (result == DialogResult.No)
             {
                 e.Cancel = true;
+                if (mnuQuanLy.Enabled == false)
+                {
+                    moForm("Login");
+                }
             }
         }
 
